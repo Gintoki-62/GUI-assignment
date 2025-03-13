@@ -15,8 +15,10 @@
         <%="Hello World!"%>
         <%="Hello GUI!"%>
         <%="Hello yan xin, welcome to assignment world hahaha!"%>
-        <%="Hello jia rou, welcome to assignment world hahaha!"%>
-        <%="Hello wai yan, welcome to assignment world hahaha!"%>
+        <%="Hello jia rou, "%>
+        <%="Hello wai yan"%>
+        <%="Hello angel, haha today forget have a classhahahha!"%>
+        <%="Hello angel, haha today forget have a classhahahha!"%>
         <%="Hello angel, haha today forget have a classhahahha!"%>
     </body>
 </html>
