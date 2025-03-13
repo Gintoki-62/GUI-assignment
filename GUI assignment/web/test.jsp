@@ -14,5 +14,9 @@
     <body>
         <%="Hello World!"%>
         <%="Hello GUI!"%>
+        <%="Hello yan xin, welcome to assignment world hahaha!"%>
+        <%="Hello jia rou!"%>
+        <%="Hello wai yan!"%>
+        <%="Hello angel!"%>
     </body>
 </html>
