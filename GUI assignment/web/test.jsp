@@ -17,6 +17,6 @@
         <%="Hello yan xin, welcome to assignment world hahaha!"%>
         <%="Hello jia rou, welcome to assignment world hahaha!"%>
         <%="Hello wai yan, welcome to assignment world hahaha!"%>
-        <%="Hello angel, welcome to assignment world hahaha!"%>
+        <%="Hello angel, !"%>
     </body>
 </html>
