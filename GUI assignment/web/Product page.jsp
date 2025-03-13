@@ -4,18 +4,24 @@
     Author     : tanan
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Book Loom</title>
     </head>
     <body>
-        <h1>Hello product!</h1>
-        <h1>Hello world!</h1>
-        <h1>Hello gui !</h1>
-        <h1>Hello yayyayaya !</h1>
-        <h1>Hello gui !</h1>
+        <h2>Search Products</h2>
+        <form action="SearchServlet" method="GET">
+            <input type="text" name="search" placeholder="Enter product name">
+            <input type="image" src="search.png" alt="Search" width="50" height="50">
+        </form>
+
+
+
+
     </body>
 </html>
+
+
