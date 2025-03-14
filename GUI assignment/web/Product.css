@@ -29,7 +29,33 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     box-shadow: 4px 4px 10px rgba(0, 0, 255, 0.2);
 }
 .bookContent {
-    display: none;
-    padding: 20px;
-    margin-top: 10px;
+    text-align: center;
+    display: block;
+    overflow: hidden;
+}
+.bookContent div{
+    float: left;
+    margin: 10px 45px 20px 10px;
+    border-color: grey; 
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); 
+    width:220px; 
+    height:300px; 
+    padding:25px 0px; 
+    border-radius: 10px;
+    text-align: center;
+}
+#english {
+    display: flex; 
+}
+.bookContentBtn{
+    background-color: transparent; 
+    border:none; 
+    text-decoration: underline;
+    padding-top: 10px;
+}
+.bookContentBtn:hover{
+    background-color: transparent;
+    color: #533FD7;
+    border:none; 
+    text-decoration: underline
 }
