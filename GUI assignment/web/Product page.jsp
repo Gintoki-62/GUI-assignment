@@ -5,12 +5,12 @@
 --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="Product.css"/>
+        <script src="Product.js" />
         <title>Book Loom</title>
     </head>
     <body>
@@ -33,8 +33,8 @@
         </div>
         
         <div id="english" class="bookContent">
-          <h3>English Books</h3>
-          <p>Home is where the heart is..</p>
+            <img src="image/engbook1.jpg" width="200" height="200"/>
+       
         </div>
 
         <div id="melayu" class="bookContent">
@@ -57,24 +57,26 @@
           <p>Who we are and what we do.</p>
         </div>
 
-        <script>
-            function openProduct(productName) {
-              var i, bookContent, tablink;
-              bookContent = document.getElementsByClassName("bookContent");
-              for (i = 0; i < bookContent.length; i++) {
-                bookContent[i].style.display = "none";
-              }
-              tablink = document.getElementsByClassName("tablink");
-              for (i = 0; i < tablink.length; i++) {
-                tablink[i].style.backgroundColor = "";
-              }
-              document.getElementById(productName).style.display = "block";
-              
-            }
+    <script>
+        function openProduct(productName) {
+          var i, bookContent, tablink;
+          bookContent = document.getElementsByClassName("bookContent");
+          for (i = 0; i < bookContent.length; i++) {
+            bookContent[i].style.display = "none";
+          }
+          tablink = document.getElementsByClassName("tablink");
+          for (i = 0; i < tablink.length; i++) {
+            tablink[i].style.backgroundColor = "";
+          }
+          document.getElementById(productName).style.display = "block";
 
-            // Get the element with id="defaultOpen" and click on it
-            document.getElementById("defaultOpen").click();
-        </script>
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+        
+
 
     </body>
 </html>
