@@ -11,7 +11,7 @@
     <!-- Header Section -->
     <header>
         <div class="top-bar">
-            <!--<img src="Logo.png" alt="BookLoom Logo" class="logo">-->
+            <img src="Logo.png" alt="BookLoom Logo" class="logo" style="width:250px;">
             <nav>
                 <a href="index.jsp">Home</a>
                 <a href="books.jsp">Books</a>
