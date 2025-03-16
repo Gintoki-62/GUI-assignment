@@ -67,7 +67,7 @@
 					
 					<!-- Logo desktop -->		
 					<a href="#" class="logo">
-						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
+						<img src="Logo.png" alt="IMG-LOGO" style="width:300px; height:350px;">
 					</a>
 
 					<!-- Menu desktop -->
@@ -322,7 +322,7 @@
 
 
 	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg.1.jpg');">
 		<h2 class="ltext-105 cl0 txt-center">
 			About
 		</h2>
@@ -340,23 +340,20 @@
 						</h3>
 
 						<p class="stext-113 cl6 p-b-26">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat consequat enim, non auctor massa ultrices non. Morbi sed odio massa. Quisque at vehicula tellus, sed tincidunt augue. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas varius egestas diam, eu sodales metus scelerisque congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas gravida justo eu arcu egestas convallis. Nullam eu erat bibendum, tempus ipsum eget, dictum enim. Donec non neque ut enim dapibus tincidunt vitae nec augue. Suspendisse potenti. Proin ut est diam. Donec condimentum euismod tortor, eget facilisis diam faucibus et. Morbi a tempor elit.
+							Welcome to The BookLoom, your one-stop destination for books and stationery essentials! Founded with a passion for literature and creativity, The BookLoom began as a small bookstore catering to book lovers and students. Over time, we expanded our collection to include premium stationery, art supplies, and office essentials, making us the go-to place for readers, writers, and artists alike. Our journey has been fueled by the love of knowledge and the belief that books and stationery play a vital role in shaping minds and nurturing creativity.
 						</p>
 
 						<p class="stext-113 cl6 p-b-26">
-							Donec gravida lorem elit, quis condimentum ex semper sit amet. Fusce eget ligula magna. Aliquam aliquam imperdiet sodales. Ut fringilla turpis in vehicula vehicula. Pellentesque congue ac orci ut gravida. Aliquam erat volutpat. Donec iaculis lectus a arcu facilisis, eu sodales lectus sagittis. Etiam pellentesque, magna vel dictum rutrum, neque justo eleifend elit, vel tincidunt erat arcu ut sem. Sed rutrum, turpis ut commodo efficitur, quam velit convallis ipsum, et maximus enim ligula ac ligula. 
+							At The BookLoom, we take pride in curating a diverse selection of books across various genres, from fiction and non-fiction to academic and self-improvement. Our stationery collection features high-quality products that cater to professionals, students, and hobbyists. Whether you're looking for the perfect novel, an elegant notebook, or the finest writing tools, we have something for everyone.
 						</p>
 
-						<p class="stext-113 cl6 p-b-26">
-							Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
-						</p>
 					</div>
 				</div>
 
 				<div class="col-11 col-md-5 col-lg-4 m-lr-auto">
 					<div class="how-bor1 ">
 						<div class="hov-img0">
-							<img src="images/about-01.jpg" alt="IMG">
+							<img src="images/about.01.jpg" alt="IMG">
 						</div>
 					</div>
 				</div>
@@ -370,16 +367,16 @@
 						</h3>
 
 						<p class="stext-113 cl6 p-b-26">
-							Mauris non lacinia magna. Sed nec lobortis dolor. Vestibulum rhoncus dignissim risus, sed consectetur erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam maximus mauris sit amet odio convallis, in pharetra magna gravida. Praesent sed nunc fermentum mi molestie tempor. Morbi vitae viverra odio. Pellentesque ac velit egestas, luctus arcu non, laoreet mauris. Sed in ipsum tempor, consequat odio in, porttitor ante. Ut mauris ligula, volutpat in sodales in, porta non odio. Pellentesque tempor urna vitae mi vestibulum, nec venenatis nulla lobortis. Proin at gravida ante. Mauris auctor purus at lacus maximus euismod. Pellentesque vulputate massa ut nisl hendrerit, eget elementum libero iaculis.
+                                                    Our mission at The BookLoom is to <b>inspire learning, creativity, and personal growth</b>by providing a carefully selected range of books and stationery. We aim to create a welcoming space where individuals can explore new ideas, unleash their creativity, and find the tools they need to achieve their goals.
 						</p>
 
 						<div class="bor16 p-l-29 p-b-9 m-t-22">
 							<p class="stext-114 cl6 p-r-40 p-b-11">
-								Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them after a while.
+								We are committed to offering quality products, excellent customer service, and a shopping experience that fosters a love for reading and creativity. Through our dedication to literature and stationery, we hope to build a community of lifelong learners, thinkers, and dreamers
 							</p>
 
 							<span class="stext-111 cl8">
-								- Steve Job’s 
+								Join us on this journey and discover the joy of books and stationery at The BookLoom!
 							</span>
 						</div>
 					</div>
@@ -388,7 +385,7 @@
 				<div class="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">
 					<div class="how-bor2">
 						<div class="hov-img0">
-							<img src="images/about-02.jpg" alt="IMG">
+							<img src="images/about.02.jpg" alt="IMG">
 						</div>
 					</div>
 				</div>
