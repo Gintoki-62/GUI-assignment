@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<title>Product</title>
+        <%@page import="java.util.List, DB.bookDB, domain.Book"%>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -193,7 +194,14 @@
             </div>
     </div>
 
-	
+
+    <%
+    // Fetch all books from the database
+    bookDB db = new bookDB();
+    List<Book> books = db.getRecord();
+    
+%>
+    
     <!-- Product -->
     <div class="bg0 m-t-23 p-b-140">
         <div class="container">
@@ -223,10 +231,17 @@
             </div>
                 <!-- Search product -->
                 <div class="dis-none panel-search w-full p-t-10 p-b-15">
-                    <div class="bor8 dis-flex p-l-15">
-                        <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04"><i class="zmdi zmdi-search"></i></button>
-                            <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
-                    </div>	
+                    <form method="GET" action="search-book.jsp">
+        <div class="bor8 dis-flex p-l-15">
+            <button type="submit" class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
+                <i class="zmdi zmdi-search"></i>
+            </button>
+            <input class="mtext-107 cl2 size-114 plh2 p-r-15" 
+                   type="text" 
+                   name="search-product" 
+                   placeholder="Search Book">
+        </div>
+    </form>	
                 </div>
 
                 <!-- Filter -->
@@ -283,6 +298,10 @@
                 </div>
                 
     <div class="row isotope-grid">
+            <%
+        if (books != null && !books.isEmpty()) {
+            for (Book book : books) {
+    %>
     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item EngBook comics">
             <!-- Block2 -->
             <div class="block2">
@@ -292,15 +311,28 @@
                 </div>
                 <div class="block2-txt flex-w flex-t p-t-14">
                     <div class="block2-txt-child1 flex-col-l ">
-                        <a href="product-detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                            Esprit Ruffle Shirt</a>
-                        <span class="stext-105 cl3">RM 16.64</span>
+                        <a href="product-detail.jsp?" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                            <%= book.getBOOK_NAME() %></a>
+                        <span class="stext-105 cl3">RM <%= book.getBOOK_PRICE() %></span>
+                        <span class="stext-105 cl3">AUTHOR: <%= book.getAUTHOR_NAME() %></span>
+                        <span class="stext-105 cl3">AUTHOR: <%= book.getPUBLISHER() %></span>
+                        <span class="stext-105 cl3">AUTHOR: <%= book.getNO_OF_PAGE() %></span>
+                        <span class="stext-105 cl3">AUTHOR: <%= book.getBOOK_DESC() %></span>
+                        <span class="stext-105 cl3">AUTHOR: <%= book.getBOOK_TYPE() %></span>
                     </div>
                 </div>
             </div>
         </div>
-    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-        <!-- Block2 -->
+                     <%
+            }
+        } else {
+    %>
+        <p>No books available in the database.</p>
+    <%
+        }
+    %>
+<!--    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+         Block2 
         <div class="block2">
             <div class="block2-pic hov-img0"> <img src="images/product-02.jpg" alt="IMG-PRODUCT">
                 <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
@@ -322,7 +354,7 @@
         </div>
     </div>
     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-        <!-- Block2 -->
+         Block2 
         <div class="block2">
             <div class="block2-pic hov-img0"><img src="images/product-03.jpg" alt="IMG-PRODUCT">
                 <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
@@ -344,7 +376,7 @@
         </div>
     </div>
     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches">
-        <!-- Block2 -->
+         Block2 
         <div class="block2">
             <div class="block2-pic hov-img0"><img src="images/product-06.jpg" alt="IMG-PRODUCT">
                 <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
@@ -366,7 +398,7 @@
         </div>
     </div>
     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item shoes">
-        <!-- Block2 -->
+         Block2 
         <div class="block2">
         <div class="block2-pic hov-img0">
             <img src="images/product-09.jpg" alt="IMG-PRODUCT">
@@ -390,7 +422,7 @@
             </div>
         </div>
     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-            <!-- Block2 -->
+             Block2 
             <div class="block2">
                 <div class="block2-pic hov-img0"><img src="images/product-12.jpg" alt="IMG-PRODUCT">
                     <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
@@ -412,7 +444,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
         </div>
     </div>
