@@ -1,0 +1,287 @@
+Tue Mar 18 14:41:19 MYT 2025 : Apache Derby Network Server - 10.16.1.1 - (1901046) started and ready to accept connections on port 1527
+----------------------------------------------------------------
+Tue Mar 18 14:41:19 MYT 2025:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-0195-a7fc-3553-ffffed357feb 
+on database directory C:\Users\tanan\OneDrive\Documents\GitHub\GUI-assignment\GUI assignment\bookLoomDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e 
+Loaded from file:/C:/Users/tanan/GlassFish_Server/db-derby-10.16.1.1-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=20.0.2+9-78
+user.dir=C:\Users\tanan\GlassFish_Server\db-derby-10.16.1.1-bin
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\tanan\OneDrive\Documents\GitHub\GUI-assignment\GUI assignment
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Tue Mar 18 14:41:20 MYT 2025:
+Shutting down instance a816c00e-0195-a7fc-3553-ffffed357feb on database directory C:\Users\tanan\OneDrive\Documents\GitHub\GUI-assignment\GUI assignment\bookLoomDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e 
+Tue Mar 18 14:41:20 MYT 2025 Thread[#28,DRDAConnThread_3,5,main] (DATABASE = bookLoomDB), (DRDAID = {2}), Database 'bookLoomDB' shutdown.
+----------------------------------------------------------------
+Tue Mar 18 14:41:36 MYT 2025:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance 97e00100-0195-a7fc-3553-ffffed357feb 
+on database directory C:\Users\tanan\OneDrive\Documents\GitHub\GUI-assignment\GUI assignment\bookLoomDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e 
+Loaded from file:/C:/Users/tanan/GlassFish_Server/db-derby-10.16.1.1-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=20.0.2+9-78
+user.dir=C:\Users\tanan\GlassFish_Server\db-derby-10.16.1.1-bin
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\tanan\OneDrive\Documents\GitHub\GUI-assignment\GUI assignment
+Database Class Loader started - derby.database.classpath=''
+Tue Mar 18 14:42:46 MYT 2025 Thread[#28,DRDAConnThread_3,5,main] Cleanup action starting
+java.sql.SQLException: Database 'collegedb' not found.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:115)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:141)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:225)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:220)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(EmbedConnection.java:3208)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(EmbedConnection.java:767)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:437)
+	at org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:295)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:922)
+	at org.apache.derby.jdbc.EmbeddedDriver.connect(EmbeddedDriver.java:125)
+	at org.apache.derby.impl.drda.Database.makeConnection(Database.java:253)
+	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(DRDAConnThread.java:1474)
+	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(DRDAConnThread.java:1424)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(DRDAConnThread.java:3378)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(DRDAConnThread.java:1208)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(DRDAConnThread.java:1008)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(DRDAConnThread.java:298)
+Caused by: ERROR XJ004: Database 'collegedb' not found.
+	at org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(SQLExceptionFactory.java:170)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:75)
+	... 17 more
+============= begin nested exception, level (1) ===========
+ERROR XJ004: Database 'collegedb' not found.
+	at org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(SQLExceptionFactory.java:170)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:75)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:141)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:225)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:220)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(EmbedConnection.java:3208)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(EmbedConnection.java:767)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:437)
+	at org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:295)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:922)
+	at org.apache.derby.jdbc.EmbeddedDriver.connect(EmbeddedDriver.java:125)
+	at org.apache.derby.impl.drda.Database.makeConnection(Database.java:253)
+	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(DRDAConnThread.java:1474)
+	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(DRDAConnThread.java:1424)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(DRDAConnThread.java:3378)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(DRDAConnThread.java:1208)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(DRDAConnThread.java:1008)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(DRDAConnThread.java:298)
+============= end nested exception, level (1) ===========
+Cleanup action completed
+Tue Mar 18 14:42:46 MYT 2025 Thread[#28,DRDAConnThread_3,5,main] (DATABASE = collegedb), (DRDAID = {4}), Database 'collegedb' not found.
+Tue Mar 18 14:42:51 MYT 2025 Thread[#28,DRDAConnThread_3,5,main] Cleanup action starting
+java.sql.SQLException: Database 'collegedb' not found.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:115)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:141)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:225)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:220)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(EmbedConnection.java:3208)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(EmbedConnection.java:767)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:437)
+	at org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:295)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:922)
+	at org.apache.derby.jdbc.EmbeddedDriver.connect(EmbeddedDriver.java:125)
+	at org.apache.derby.impl.drda.Database.makeConnection(Database.java:253)
+	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(DRDAConnThread.java:1474)
+	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(DRDAConnThread.java:1424)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(DRDAConnThread.java:3378)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(DRDAConnThread.java:1208)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(DRDAConnThread.java:1008)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(DRDAConnThread.java:298)
+Caused by: ERROR XJ004: Database 'collegedb' not found.
+	at org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(SQLExceptionFactory.java:170)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:75)
+	... 17 more
+============= begin nested exception, level (1) ===========
+ERROR XJ004: Database 'collegedb' not found.
+	at org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(SQLExceptionFactory.java:170)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:75)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:141)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:225)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:220)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(EmbedConnection.java:3208)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(EmbedConnection.java:767)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:437)
+	at org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:295)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:922)
+	at org.apache.derby.jdbc.EmbeddedDriver.connect(EmbeddedDriver.java:125)
+	at org.apache.derby.impl.drda.Database.makeConnection(Database.java:253)
+	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(DRDAConnThread.java:1474)
+	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(DRDAConnThread.java:1424)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(DRDAConnThread.java:3378)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(DRDAConnThread.java:1208)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(DRDAConnThread.java:1008)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(DRDAConnThread.java:298)
+============= end nested exception, level (1) ===========
+Cleanup action completed
+Tue Mar 18 14:42:51 MYT 2025 Thread[#28,DRDAConnThread_3,5,main] (DATABASE = collegedb), (DRDAID = {5}), Database 'collegedb' not found.
+Tue Mar 18 14:43:08 MYT 2025 Thread[#28,DRDAConnThread_3,5,main] Cleanup action starting
+java.sql.SQLException: Database 'collegedb' not found.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:115)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:141)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:225)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:220)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(EmbedConnection.java:3208)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(EmbedConnection.java:767)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:437)
+	at org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:295)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:922)
+	at org.apache.derby.jdbc.EmbeddedDriver.connect(EmbeddedDriver.java:125)
+	at org.apache.derby.impl.drda.Database.makeConnection(Database.java:253)
+	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(DRDAConnThread.java:1474)
+	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(DRDAConnThread.java:1424)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(DRDAConnThread.java:3378)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(DRDAConnThread.java:1208)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(DRDAConnThread.java:1008)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(DRDAConnThread.java:298)
+Caused by: ERROR XJ004: Database 'collegedb' not found.
+	at org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(SQLExceptionFactory.java:170)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:75)
+	... 17 more
+============= begin nested exception, level (1) ===========
+ERROR XJ004: Database 'collegedb' not found.
+	at org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(SQLExceptionFactory.java:170)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:75)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:141)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:225)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:220)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(EmbedConnection.java:3208)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(EmbedConnection.java:767)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:437)
+	at org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:295)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:922)
+	at org.apache.derby.jdbc.EmbeddedDriver.connect(EmbeddedDriver.java:125)
+	at org.apache.derby.impl.drda.Database.makeConnection(Database.java:253)
+	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(DRDAConnThread.java:1474)
+	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(DRDAConnThread.java:1424)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(DRDAConnThread.java:3378)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(DRDAConnThread.java:1208)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(DRDAConnThread.java:1008)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(DRDAConnThread.java:298)
+============= end nested exception, level (1) ===========
+Cleanup action completed
+Tue Mar 18 14:43:08 MYT 2025 Thread[#28,DRDAConnThread_3,5,main] (DATABASE = collegedb), (DRDAID = {6}), Database 'collegedb' not found.
+Tue Mar 18 14:43:21 MYT 2025 Thread[#28,DRDAConnThread_3,5,main] Cleanup action starting
+java.sql.SQLException: Database 'collegedb' not found.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:115)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:141)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:225)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:220)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(EmbedConnection.java:3208)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(EmbedConnection.java:767)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:437)
+	at org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:295)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:922)
+	at org.apache.derby.jdbc.EmbeddedDriver.connect(EmbeddedDriver.java:125)
+	at org.apache.derby.impl.drda.Database.makeConnection(Database.java:253)
+	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(DRDAConnThread.java:1474)
+	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(DRDAConnThread.java:1424)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(DRDAConnThread.java:3378)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(DRDAConnThread.java:1208)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(DRDAConnThread.java:1008)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(DRDAConnThread.java:298)
+Caused by: ERROR XJ004: Database 'collegedb' not found.
+	at org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(SQLExceptionFactory.java:170)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:75)
+	... 17 more
+============= begin nested exception, level (1) ===========
+ERROR XJ004: Database 'collegedb' not found.
+	at org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(SQLExceptionFactory.java:170)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:75)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:141)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:225)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:220)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(EmbedConnection.java:3208)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(EmbedConnection.java:767)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:437)
+	at org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:295)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:922)
+	at org.apache.derby.jdbc.EmbeddedDriver.connect(EmbeddedDriver.java:125)
+	at org.apache.derby.impl.drda.Database.makeConnection(Database.java:253)
+	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(DRDAConnThread.java:1474)
+	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(DRDAConnThread.java:1424)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(DRDAConnThread.java:3378)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(DRDAConnThread.java:1208)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(DRDAConnThread.java:1008)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(DRDAConnThread.java:298)
+============= end nested exception, level (1) ===========
+Cleanup action completed
+Tue Mar 18 14:43:21 MYT 2025 Thread[#28,DRDAConnThread_3,5,main] (DATABASE = collegedb), (DRDAID = {7}), Database 'collegedb' not found.
+Tue Mar 18 14:43:24 MYT 2025 Thread[#28,DRDAConnThread_3,5,main] Cleanup action starting
+java.sql.SQLException: Database 'collegedb' not found.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:115)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:141)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:225)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:220)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(EmbedConnection.java:3208)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(EmbedConnection.java:767)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:437)
+	at org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:295)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:922)
+	at org.apache.derby.jdbc.EmbeddedDriver.connect(EmbeddedDriver.java:125)
+	at org.apache.derby.impl.drda.Database.makeConnection(Database.java:253)
+	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(DRDAConnThread.java:1474)
+	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(DRDAConnThread.java:1424)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(DRDAConnThread.java:3378)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(DRDAConnThread.java:1208)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(DRDAConnThread.java:1008)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(DRDAConnThread.java:298)
+Caused by: ERROR XJ004: Database 'collegedb' not found.
+	at org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(SQLExceptionFactory.java:170)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:75)
+	... 17 more
+============= begin nested exception, level (1) ===========
+ERROR XJ004: Database 'collegedb' not found.
+	at org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(SQLExceptionFactory.java:170)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:75)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(SQLExceptionFactory.java:141)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:225)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Util.java:220)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(EmbedConnection.java:3208)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(EmbedConnection.java:767)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:437)
+	at org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:295)
+	at org.apache.derby.iapi.jdbc.InternalDriver.connect(InternalDriver.java:922)
+	at org.apache.derby.jdbc.EmbeddedDriver.connect(EmbeddedDriver.java:125)
+	at org.apache.derby.impl.drda.Database.makeConnection(Database.java:253)
+	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(DRDAConnThread.java:1474)
+	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(DRDAConnThread.java:1424)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(DRDAConnThread.java:3378)
+	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(DRDAConnThread.java:1208)
+	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(DRDAConnThread.java:1008)
+	at org.apache.derby.impl.drda.DRDAConnThread.run(DRDAConnThread.java:298)
+============= end nested exception, level (1) ===========
+Cleanup action completed
+Tue Mar 18 14:43:24 MYT 2025 Thread[#28,DRDAConnThread_3,5,main] (DATABASE = collegedb), (DRDAID = {8}), Database 'collegedb' not found.
+----------------------------------------------------------------
+Tue Mar 18 14:45:17 MYT 2025: Shutting down Derby engine
+----------------------------------------------------------------
+Tue Mar 18 14:45:17 MYT 2025:
+Shutting down instance 97e00100-0195-a7fc-3553-ffffed357feb on database directory C:\Users\tanan\OneDrive\Documents\GitHub\GUI-assignment\GUI assignment\bookLoomDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e 
+----------------------------------------------------------------
