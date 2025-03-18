@@ -5,7 +5,6 @@
 package domain;
 
 import java.io.Serializable;
-import java.util.Objects;
 import java.sql.Blob;
 
 public class Book implements Serializable {
