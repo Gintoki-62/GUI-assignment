@@ -20,5 +20,6 @@
         <%="Hello angel, haha today forget have a classhahahha!"%>
         <%="Hello angel, haha today forget have a classhahahha!"%>
         <%="Hello angel, haha today forget have a classhahahha!"%>
+        <%="test"%>
     </body>
 </html>
