@@ -39,7 +39,7 @@ public class bookDB {
                     rs.getDouble("BOOK_PRICE"),
                     rs.getString("AUTHOR_NAME"),
                     rs.getString("PUBLISHER"),
-                    rs.getInt("NO_OF_PAGE"),
+                    rs.getInt("NO_OF_PAGES"),
                     rs.getString("BOOK_DESC"),
                     rs.getInt("BOOK_QUANTITY"),
                     rs.getBlob("BOOK_IMAGE"),

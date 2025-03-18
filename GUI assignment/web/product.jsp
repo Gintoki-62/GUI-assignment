@@ -311,14 +311,14 @@
                 </div>
                 <div class="block2-txt flex-w flex-t p-t-14">
                     <div class="block2-txt-child1 flex-col-l ">
-                        <a href="product-detail.jsp?" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                        <a href="product-detail.jsp??BOOK_ID=<%= book.getBOOK_ID() %>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                             <%= book.getBOOK_NAME() %></a>
                         <span class="stext-105 cl3">RM <%= book.getBOOK_PRICE() %></span>
                         <span class="stext-105 cl3">AUTHOR: <%= book.getAUTHOR_NAME() %></span>
-                        <span class="stext-105 cl3">AUTHOR: <%= book.getPUBLISHER() %></span>
-                        <span class="stext-105 cl3">AUTHOR: <%= book.getNO_OF_PAGE() %></span>
-                        <span class="stext-105 cl3">AUTHOR: <%= book.getBOOK_DESC() %></span>
-                        <span class="stext-105 cl3">AUTHOR: <%= book.getBOOK_TYPE() %></span>
+                        <span class="stext-105 cl3">PUBLISHER: <%= book.getPUBLISHER() %></span>
+                        <span class="stext-105 cl3">PAGES: <%= book.getNO_OF_PAGES() %></span>
+                        <span class="stext-105 cl3">DESCRIPTION: <%= book.getBOOK_DESC() %></span>
+                        <span class="stext-105 cl3">GENRE: <%= book.getBOOK_TYPE() %></span>
                     </div>
                 </div>
             </div>

@@ -13,7 +13,7 @@ public class Book implements Serializable {
     private Double BOOK_PRICE;
     private String AUTHOR_NAME;
     private String PUBLISHER;
-    private int NO_OF_PAGE;
+    private int NO_OF_PAGES;
     private String BOOK_DESC;
     private int BOOK_QUANTITY;
     private Blob BOOK_IMAGE;
@@ -23,13 +23,13 @@ public class Book implements Serializable {
         this(" "," ",0.0," "," ",0," ",0,null," ");
     }
 
-    public Book(String BOOK_ID, String BOOK_NAME, Double BOOK_PRICE, String AUTHOR_NAME, String PUBLISHER, int NO_OF_PAGE, String BOOK_DESC, int BOOK_QUANTITY, Blob BOOK_IMAGE, String BOOK_TYPE) {
+    public Book(String BOOK_ID, String BOOK_NAME, Double BOOK_PRICE, String AUTHOR_NAME, String PUBLISHER, int NO_OF_PAGES, String BOOK_DESC, int BOOK_QUANTITY, Blob BOOK_IMAGE, String BOOK_TYPE) {
         this.BOOK_ID = BOOK_ID;
         this.BOOK_NAME = BOOK_NAME;
         this.BOOK_PRICE = BOOK_PRICE;
         this.AUTHOR_NAME = AUTHOR_NAME;
         this.PUBLISHER = PUBLISHER;
-        this.NO_OF_PAGE = NO_OF_PAGE;
+        this.NO_OF_PAGES = NO_OF_PAGES;
         this.BOOK_DESC = BOOK_DESC;
         this.BOOK_QUANTITY = BOOK_QUANTITY;
         this.BOOK_IMAGE = BOOK_IMAGE;
@@ -71,11 +71,11 @@ public class Book implements Serializable {
         this.PUBLISHER = PUBLISHER;
     }
     
-    public int getNO_OF_PAGE() {
-        return NO_OF_PAGE;
+    public int getNO_OF_PAGES() {
+        return NO_OF_PAGES;
     }
-    public void setNO_OF_PAGE(int NO_OF_PAGE) {
-        this.NO_OF_PAGE = NO_OF_PAGE;
+    public void setNO_OF_PAGES(int NO_OF_PAGES) {
+        this.NO_OF_PAGES = NO_OF_PAGES;
     }
     
     public String getBOOK_DESC() {
@@ -112,7 +112,7 @@ public class Book implements Serializable {
                 "\nPrice: " + BOOK_PRICE +
                 "\nAuthor Name: " + AUTHOR_NAME +
                 "\nPublisher: " + PUBLISHER +
-                "\nNo.of Page: " + NO_OF_PAGE +
+                "\nNo.of Page: " + NO_OF_PAGES +
                 "\nDescption: " + BOOK_DESC +
                 "\nQuantity: " + BOOK_QUANTITY +
                 "\nImage: " + BOOK_IMAGE +
