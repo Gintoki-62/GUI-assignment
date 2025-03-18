@@ -5,7 +5,6 @@
 package domain;
 
 import java.io.Serializable;
-import java.sql.Blob;
 
 public class Book implements Serializable {
     private String BOOK_ID;
@@ -16,14 +15,14 @@ public class Book implements Serializable {
     private int NO_OF_PAGES;
     private String BOOK_DESC;
     private int BOOK_QUANTITY;
-    private Blob BOOK_IMAGE;
     private String BOOK_TYPE;
+    private String BOOK_IMAGE;
 
     public Book() {
-        this(" "," ",0.0," "," ",0," ",0,null," ");
+        this(" "," ",0.0," "," ",0," ",0," "," ");
     }
 
-    public Book(String BOOK_ID, String BOOK_NAME, Double BOOK_PRICE, String AUTHOR_NAME, String PUBLISHER, int NO_OF_PAGES, String BOOK_DESC, int BOOK_QUANTITY, Blob BOOK_IMAGE, String BOOK_TYPE) {
+    public Book(String BOOK_ID, String BOOK_NAME, Double BOOK_PRICE, String AUTHOR_NAME, String PUBLISHER, int NO_OF_PAGES, String BOOK_DESC, int BOOK_QUANTITY, String BOOK_TYPE, String BOOK_IMAGE) {
         this.BOOK_ID = BOOK_ID;
         this.BOOK_NAME = BOOK_NAME;
         this.BOOK_PRICE = BOOK_PRICE;
@@ -32,8 +31,8 @@ public class Book implements Serializable {
         this.NO_OF_PAGES = NO_OF_PAGES;
         this.BOOK_DESC = BOOK_DESC;
         this.BOOK_QUANTITY = BOOK_QUANTITY;
-        this.BOOK_IMAGE = BOOK_IMAGE;
         this.BOOK_TYPE = BOOK_TYPE;
+        this.BOOK_IMAGE = BOOK_IMAGE;
     }
     
     public String getBOOK_ID() {
@@ -92,10 +91,10 @@ public class Book implements Serializable {
         this.BOOK_QUANTITY = BOOK_QUANTITY;
     }
     
-    public Blob getBOOK_IMAGE() {
+    public String getBOOK_IMAGE() {
         return BOOK_IMAGE;
     }
-    public void setBOOK_IMAGE(Blob BOOK_IMAGE) {
+    public void setBOOK_IMAGE(String BOOK_IMAGE) {
         this.BOOK_IMAGE = BOOK_IMAGE;
     }
     
