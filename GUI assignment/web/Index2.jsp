@@ -47,13 +47,13 @@
       <div class="sidebar" data-background-color="dark">
         <div class="sidebar-logo">
           <!-- Logo Header -->
-          <div class="logo-header" data-background-color="dark">
+          <div class="logo-header" data-background-color="white" >
             <a href="Index2.jsp" class="logo">
               <img
-                src="assets/img/kaiadmin/logo_light.svg"
+                src="Logo.png"
                 alt="navbar brand"
                 class="navbar-brand"
-                height="20"
+                height="90" weight="50"
               />
             </a>
             <div class="nav-toggle">
