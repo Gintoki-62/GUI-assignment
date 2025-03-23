@@ -42,13 +42,13 @@
     <link rel="stylesheet" href="assets/css/demo.css" />
   </head>
   <body>
-    <div class="wrapper sidebar_minimize">
+    <div class="wrapper">
       <!-- Sidebar -->
-      <div class="sidebar" data-background-color="dark">
+      <div class="sidebar sidebar-style-2" data-background-color="dark">
         <div class="sidebar-logo">
           <!-- Logo Header -->
           <div class="logo-header" data-background-color="dark">
-            <a href="index.html" class="logo">
+            <a href="Index2.jsp" class="logo">
               <img
                 src="assets/img/kaiadmin/logo_light.svg"
                 alt="navbar brand"
@@ -164,13 +164,13 @@
                 </a>
                 <div class="collapse show" id="sidebarLayouts">
                   <ul class="nav nav-collapse">
-                    <li>
-                      <a href="sidebar-style-2.html">
+                    <li class="active">
+                      <a href="sidebar-style-2.jsp">
                         <span class="sub-item">Sidebar Style 2</span>
                       </a>
                     </li>
-                    <li class="active">
-                      <a href="icon-menu.html">
+                    <li>
+                      <a href="icon-menu.jsp">
                         <span class="sub-item">Icon Menu</span>
                       </a>
                     </li>
@@ -257,7 +257,7 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a href="widgets.html">
+                <a href="widgets.jsp">
                   <i class="fas fa-desktop"></i>
                   <p>Widgets</p>
                   <span class="badge badge-success">4</span>
@@ -332,7 +332,7 @@
           <div class="main-header-logo">
             <!-- Logo Header -->
             <div class="logo-header" data-background-color="dark">
-              <a href="index.html" class="logo">
+              <a href="Index2.jsp" class="logo">
                 <img
                   src="assets/img/kaiadmin/logo_light.svg"
                   alt="navbar brand"
