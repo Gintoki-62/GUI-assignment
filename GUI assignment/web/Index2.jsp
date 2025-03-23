@@ -44,16 +44,17 @@
   <body>
     <div class="wrapper">
       <!-- Sidebar -->
-      <div class="sidebar" data-background-color="dark">
+      <div class="sidebar" data-background-color="dark" >
         <div class="sidebar-logo">
           <!-- Logo Header -->
-          <div class="logo-header" data-background-color="white" >
+          <div class="logo-header" data-background-color="white">
             <a href="Index2.jsp" class="logo">
               <img
                 src="Logo.png"
                 alt="navbar brand"
                 class="navbar-brand"
-                height="90" weight="50"
+                height="90" weight="30"
+                margin-left="-50px !important"
               />
             </a>
             <div class="nav-toggle">

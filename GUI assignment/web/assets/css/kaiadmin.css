@@ -851,6 +851,7 @@ body {
   z-index: 1001;
   display: flex;
   align-items: center;
+  padding: 0px 0px 0px 0px;
   position: relative;
   transition: all .3s; }
   .logo-header .big-logo {
@@ -865,6 +866,7 @@ body {
     opacity: 1;
     position: relative;
     height: 100%;
+    margin-left: -50px;
     display: flex;
     align-items: center; }
     .logo-header .logo:hover {
@@ -881,7 +883,9 @@ body {
     position: absolute;
     top: 0;
     right: 18px;
-    z-index: 5; }
+    z-index: 5; 
+    width: 30%;}
+  
   .logo-header .navbar-toggler {
     padding-left: 0px;
     padding-right: 0px;
@@ -1064,7 +1068,7 @@ body {
     position: fixed;
     height: 100vh;
     top: 0; }
-    .sidebar_minimize.sidebar_minimize_hover .sidebar .logo-header {
+    .sidebar_minimize.sidebar_minimize_hover .sidebar {
       width: 265px;
       padding-left: 25px;
       padding-right: 25px;
@@ -1214,6 +1218,10 @@ body[data-background-color="dark"] .border-top {
 
 .btn-toggle {
   color: #fff !important; }
+
+div.logo-header{
+    padding-left: 0px !important;
+}
 
 .logo-header .navbar-toggler .navbar-toggler-icon,
 .logo-header .more,
@@ -5870,10 +5878,13 @@ label.error {
     position: relative;
     padding-left: 15px;
     padding-right: 15px; }
+  
     .logo-header .logo {
       position: absolute;
       left: 50%;
-      transform: translateX(-50%); }
+      transform: translateX(-50%); 
+      width: 70%;}
+    
     .logo-header .navbar-toggler {
       height: 100%;
       margin-left: 0px !important;
