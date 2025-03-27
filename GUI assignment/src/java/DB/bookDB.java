@@ -43,7 +43,8 @@ public class bookDB {
                     rs.getString("BOOK_DESC"),
                     rs.getInt("BOOK_QUANTITY"),
                     rs.getString("BOOK_TYPE"),
-                    rs.getString("BOOK_IMAGE")
+                    rs.getString("BOOK_IMAGE"),
+                    rs.getString("BOOK_CATEGORY")
                 );
                 bookList.add(book);
             }

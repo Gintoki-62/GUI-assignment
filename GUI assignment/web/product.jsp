@@ -36,7 +36,7 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 </head>
-<body class="animsition">
+<body class="animsition" style="transition: none !important;">
     <!-- Header -->
     <header class="header-v4">
         <div class="container-menu-desktop">
@@ -199,20 +199,20 @@
     // Fetch all books from the database
     bookDB db = new bookDB();
     List<Book> books = db.getRecord();
-    
-%>
+    %>
     
     <!-- Product -->
     <div class="bg0 m-t-23 p-b-140">
+
         <div class="container">
             <div class="flex-w flex-sb-m p-b-52">
                 <div class="flex-w flex-l-m filter-tope-group m-tb-10">
                     <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">All Book</button>
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".EngBook">English Book</button>
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">Buku Bahasa Melayu</button>
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">Chinese Book</button>
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">Revision Book</button>
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">Stationery</button>
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".English Book">English Book</button>
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Buku Bahasa Melayu">Buku Bahasa Melayu</button>
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Chinese Book">Chinese Book</button>
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Revision Book">Revision Book</button>
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Stationery">Stationery</button>
                 </div>
 
                 <div class="flex-w flex-c-m m-tb-10">
@@ -251,11 +251,11 @@
                             <div class="mtext-102 cl2 p-b-15">English Book</div>
                                 <ul>    
                                     <li class="p-b-6"><button class="filter-link stext-106 trans-04 filter-link-active">New Arrivals</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".comics">Comics</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".comics">Cook Book</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".comics">Hobby & Interest</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".comics">Travel</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".comics">Young Adult</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Comics">Comics</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Cook Book">Cook Book</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Hobby & Interest">Hobby & Interest</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Travel">Travel</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Young Adult">Young Adult</button></li>
                                 </ul>
                         </div>
                         <div class="filter-col2 p-r-15 p-b-27">
@@ -296,22 +296,22 @@
                         </div>
                     </div>
                 </div>
+  
                 
     <div class="row isotope-grid">
-            <%
-        if (books != null && !books.isEmpty()) {
+    <% if (books != null && !books.isEmpty()) {
             for (Book book : books) {
     %>
-    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item EngBook comics">
+    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item <%= book.getBOOK_CATEGORY() %> <%= book.getBOOK_TYPE() %>">
             <!-- Block2 -->
             <div class="block2">
                 <div class="block2-pic hov-img0"> <img src="<%= book.getBOOK_IMAGE() %>" alt="IMG-PRODUCT">
-                    <a href="product-detail.jsp??BOOK_ID=<%= book.getBOOK_ID() %>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                    <a href="product-popup.jsp?BOOK_ID=<%= book.getBOOK_ID() %>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
                         Quick View</a>
                 </div>
                 <div class="block2-txt flex-w flex-t p-t-14">
                     <div class="block2-txt-child1 flex-col-l ">
-                        <a href="product-detail.jsp??BOOK_ID=<%= book.getBOOK_ID() %>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                        <a href="product-detail.jsp?BOOK_ID=<%= book.getBOOK_ID() %>&CATEGORY=<%= book.getBOOK_CATEGORY() %>&TYPE=<%= book.getBOOK_TYPE() %>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                             <%= book.getBOOK_NAME() %></a>
                         <span class="stext-105 cl3">RM <%= String.format("%.2f", book.getBOOK_PRICE()) %></span>
   
@@ -319,128 +319,12 @@
                 </div>
             </div>
         </div>
-                     <%
-            }
-        } else {
+    <%  }
+         } else {
     %>
         <p>No books available in the database.</p>
-    <%
-        }
-    %>
-<!--    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-         Block2 
-        <div class="block2">
-            <div class="block2-pic hov-img0"> <img src="images/product-02.jpg" alt="IMG-PRODUCT">
-                <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                    Quick View</a>
-                </div>
-            <div class="block2-txt flex-w flex-t p-t-14">
-                <div class="block2-txt-child1 flex-col-l ">
-                    <a href="product-detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                        Herschel supply</a>
-                    <span class="stext-105 cl3"> $35.31</span>
-                </div>
-                <div class="block2-txt-child2 flex-r p-t-3">
-                    <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                        <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                        <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-         Block2 
-        <div class="block2">
-            <div class="block2-pic hov-img0"><img src="images/product-03.jpg" alt="IMG-PRODUCT">
-                <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                    Quick View</a>
-            </div>
-            <div class="block2-txt flex-w flex-t p-t-14">
-                <div class="block2-txt-child1 flex-col-l ">
-                    <a href="product-detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                        Only Check Trouser</a>
-                    <span class="stext-105 cl3">$25.50</span>
-                </div>
-                <div class="block2-txt-child2 flex-r p-t-3">
-                    <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                        <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                        <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches">
-         Block2 
-        <div class="block2">
-            <div class="block2-pic hov-img0"><img src="images/product-06.jpg" alt="IMG-PRODUCT">
-                <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                    Quick View</a>
-            </div>
-            <div class="block2-txt flex-w flex-t p-t-14">
-                <div class="block2-txt-child1 flex-col-l ">
-                    <a href="product-detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                        Vintage Inspired Classic </a>
-                    <span class="stext-105 cl3">$93.20</span>
-                </div>
-                <div class="block2-txt-child2 flex-r p-t-3">
-                    <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                        <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                        <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item shoes">
-         Block2 
-        <div class="block2">
-        <div class="block2-pic hov-img0">
-            <img src="images/product-09.jpg" alt="IMG-PRODUCT">
-                <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                    Quick View</a>
-                </div>
-                <div class="block2-txt flex-w flex-t p-t-14">
-                    <div class="block2-txt-child1 flex-col-l ">
-                        <a href="product-detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                            Converse All Star Hi Plimsolls
-                        </a>
-                        <span class="stext-105 cl3">$75.00</span>
-                    </div>
-                    <div class="block2-txt-child2 flex-r p-t-3">
-                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                            <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                            <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-             Block2 
-            <div class="block2">
-                <div class="block2-pic hov-img0"><img src="images/product-12.jpg" alt="IMG-PRODUCT">
-                    <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                        Quick View
-                    </a>
-                </div>
-                <div class="block2-txt flex-w flex-t p-t-14">
-                    <div class="block2-txt-child1 flex-col-l ">
-                        <a href="product-detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                            Herschel supply
-                        </a>
-                        <span class="stext-105 cl3">$63.15</span>
-                    </div>
-                    <div class="block2-txt-child2 flex-r p-t-3">
-                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                            <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                            <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>-->
+    <%  } %>
+
     </div>
         </div>
     </div>
@@ -518,78 +402,6 @@
     <span class="symbol-btn-back-to-top"><i class="zmdi zmdi-chevron-up"></i></span>
 </div>
 
-<!-- Modal1 -->
-<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
-    <div class="overlay-modal1 js-hide-modal1"></div>
-        <div class="container">
-            <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
-                <button class="how-pos3 hov3 trans-04 js-hide-modal1"><img src="images/icons/icon-close.png" alt="CLOSE"></button>
-                    <div class="row">
-                                    <%
-        if (books != null && !books.isEmpty()) {
-            for (Book book : books) {
-    %>
-                        <div class="col-md-6 col-lg-7 p-b-30">
-                            <div class="p-l-25 p-r-30 p-lr-0-lg">
-                                <div class="wrap-slick3 flex-sb flex-w">
-                                    <div class="wrap-slick3-dots"></div>
-                                    <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-                                    <div class="slick3 gallery-lb">
-                                    <div class="item-slick3" data-thumb="<%= book.getBOOK_IMAGE() %>">
-                                        <div class="wrap-pic-w pos-relative">
-                                            <img src="<%= book.getBOOK_IMAGE() %>" alt="IMG-PRODUCT">
-                                                <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="<%= book.getBOOK_IMAGE() %>">
-                                                <i class="fa fa-expand"></i></a>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-lg-5 p-b-30">
-                            <div class="p-r-50 p-t-5 p-lr-0-lg">
-                                <h4 class="mtext-105 cl2 js-name-detail p-b-14"><%= book.getBOOK_NAME() %></h4>
-                                <span class="mtext-106 cl2">RM <%= String.format("%.2f", book.getBOOK_PRICE()) %></span>
-                                <ul>
-                                    <li>Description: <%= book.getBOOK_DESC() %></li>
-                                    <li>Author Name: <%= book.getAUTHOR_NAME() %></li>
-                                    <li>Publisher: <%= book.getPUBLISHER() %></li>
-                                    <li>No.of Pages: <%= book.getNO_OF_PAGES() %></li>
-                                    <li>Category: <%= book.getBOOK_TYPE() %></li>
-                                </ul>
-
-                            <!--  -->
-                            <div class="p-t-33">
-                            <div class="flex-w flex-r-m p-b-10">
-                               <div class="size-204 flex-w flex-m respon6-next">
-                                    <div class="wrap-num-product flex-w m-r-20 m-tb-10">
-                                        <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                            <i class="fs-16 zmdi zmdi-minus"></i>
-                                        </div>
-                                        <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
-                                        <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                            <i class="fs-16 zmdi zmdi-plus"></i>
-                                        </div>
-                                    </div>
-                                    <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">Add to cart</button>
-                                </div>
-                            </div>	
-                            </div>
-                            </div>
-                        </div>
-                                <%
-            }
-        } else {
-    %>
-        <p>No books available in the database.</p>
-    <%
-        }
-    %>
-                    </div>
-             </div>
-        </div>
-</div>
 
 <!--===============================================================================================-->	
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -692,3 +504,4 @@
 
 </body>
 </html>
+
