@@ -3209,10 +3209,10 @@ iframe {border: none;}
     transition: all 0.3s;
 }
 .trans-04 {
-	-webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
+	-webkit-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s;
 }
 .trans-05 {
 	-webkit-transition: all 0.5s;

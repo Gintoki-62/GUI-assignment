@@ -17,12 +17,13 @@ public class Book implements Serializable {
     private int BOOK_QUANTITY;
     private String BOOK_TYPE;
     private String BOOK_IMAGE;
+    private String BOOK_CATEGORY;
 
     public Book() {
-        this(" "," ",0.0," "," ",0," ",0," "," ");
+        this(" "," ",0.0," "," ",0," ",0," "," "," ");
     }
 
-    public Book(String BOOK_ID, String BOOK_NAME, Double BOOK_PRICE, String AUTHOR_NAME, String PUBLISHER, int NO_OF_PAGES, String BOOK_DESC, int BOOK_QUANTITY, String BOOK_TYPE, String BOOK_IMAGE) {
+    public Book(String BOOK_ID, String BOOK_NAME, Double BOOK_PRICE, String AUTHOR_NAME, String PUBLISHER, int NO_OF_PAGES, String BOOK_DESC, int BOOK_QUANTITY, String BOOK_TYPE, String BOOK_IMAGE, String BOOK_CATEGORY) {
         this.BOOK_ID = BOOK_ID;
         this.BOOK_NAME = BOOK_NAME;
         this.BOOK_PRICE = BOOK_PRICE;
@@ -33,6 +34,7 @@ public class Book implements Serializable {
         this.BOOK_QUANTITY = BOOK_QUANTITY;
         this.BOOK_TYPE = BOOK_TYPE;
         this.BOOK_IMAGE = BOOK_IMAGE;
+        this.BOOK_CATEGORY = BOOK_CATEGORY;
     }
     
     public String getBOOK_ID() {
@@ -105,6 +107,13 @@ public class Book implements Serializable {
         this.BOOK_TYPE = BOOK_TYPE;
     }
     
+    public String getBOOK_CATEGORY() {
+        return BOOK_CATEGORY;
+    }
+    public void setBOOK_CATEGORY(String BOOK_CATEGORY) {
+        this.BOOK_TYPE = BOOK_CATEGORY;
+    }
+    
     public String toString() {
         return  "\nBook ID: " + BOOK_ID +
                 "\nBook Name: " + BOOK_NAME +
@@ -115,7 +124,8 @@ public class Book implements Serializable {
                 "\nDescption: " + BOOK_DESC +
                 "\nQuantity: " + BOOK_QUANTITY +
                 "\nImage: " + BOOK_IMAGE +
-                "\nType: " + BOOK_TYPE;
+                "\nType: " + BOOK_TYPE +
+                "\nCategory: " + BOOK_CATEGORY;
     }
     
 }
