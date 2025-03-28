@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@page import="java.util.List, DB.bookDB, domain.Book"%>
 <html lang="en">
 <head>
@@ -329,6 +329,7 @@
 	</div>
 
     <%
+        request.setCharacterEncoding("UTF-8");
         String category = request.getParameter("CATEGORY");  
         String type = request.getParameter("TYPE");   
     %>
@@ -374,7 +375,7 @@
 	<!-- Product Detail -->
 <section class="sec-product-detail bg0 p-t-65 p-b-60">
     <div class="container">
-                    <div class="row">
+        <div class="row">
     <% if (selectedBook != null) { %>
                         <div class="col-md-6 col-lg-7 p-b-30">
                             <div class="p-l-25 p-r-30 p-lr-0-lg">
@@ -398,12 +399,14 @@
                             <div class="p-r-50 p-t-5 p-lr-0-lg">
                                 <h4 class="mtext-105 cl2 js-name-detail p-b-14"><%= selectedBook.getBOOK_NAME() %></h4>
                                 <span class="mtext-106 cl2">RM <%= String.format("%.2f", selectedBook.getBOOK_PRICE()) %></span>
+                                <br/><br/><hr/>
                                 <ul>
-                                    <li>Description: <%= selectedBook.getBOOK_DESC() %></li>
                                     <li>Author Name: <%= selectedBook.getAUTHOR_NAME() %></li>
-                                    <li>Publisher: <%= selectedBook.getPUBLISHER() %></li>
+                                    <li>Publisher  : <%= selectedBook.getPUBLISHER() %></li>
                                     <li>No.of Pages: <%= selectedBook.getNO_OF_PAGES() %></li>
-                                    <li>Category: <%= selectedBook.getBOOK_TYPE() %></li>
+                                    <br/>
+                                    <li>Description: </li>
+                                    <li><%= selectedBook.getBOOK_DESC() %></li>
                                 </ul>
 
                             <!--  -->
@@ -425,10 +428,10 @@
                             </div>
                             </div>
                         </div>
+                    </div>
     <%  } else { %>
         <p>No books available in the database.</p>
     <%  } %>
-                    </div>
     </div>
 </section>
 

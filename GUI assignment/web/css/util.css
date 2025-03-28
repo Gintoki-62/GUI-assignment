@@ -3370,8 +3370,9 @@ iframe {border: none;}
 
 /* ------------------------------------ */
 .flex-t {
-	-ms-align-items: flex-start;
-	align-items: flex-start;
+	/*-ms-align-items: flex-start;*/
+	/*align-items: flex-start;*/
+        text-align: center;
 }
 
 .flex-b {

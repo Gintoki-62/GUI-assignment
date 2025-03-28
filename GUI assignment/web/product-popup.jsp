@@ -95,10 +95,10 @@
                             <div class="p-r-50 p-t-5 p-lr-0-lg">
                                 <h4 class="mtext-105 cl2 js-name-detail p-b-14"><%= selectedBook.getBOOK_NAME() %></h4>
                                 <span class="mtext-106 cl2">RM <%= String.format("%.2f", selectedBook.getBOOK_PRICE()) %></span>
+                                <br/><br/><hr/>
                                 <ul>
-                                    <li>Description: <%= selectedBook.getBOOK_DESC() %></li>
-                                    <li>Author Name: <%= selectedBook.getAUTHOR_NAME() %></li>
-                                    <li>Publisher: <%= selectedBook.getPUBLISHER() %></li>
+                                    <li>Description: </li><br/>
+                                    <li><%= selectedBook.getBOOK_DESC() %></li>
                                 </ul>
 
                             <!--  -->

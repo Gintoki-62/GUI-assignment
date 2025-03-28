@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<title>Product</title>
+        <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
         <%@page import="java.util.List, DB.bookDB, domain.Book"%>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -208,10 +209,10 @@
             <div class="flex-w flex-sb-m p-b-52">
                 <div class="flex-w flex-l-m filter-tope-group m-tb-10">
                     <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">All Book</button>
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".English Book">English Book</button>
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Buku Bahasa Melayu">Buku Bahasa Melayu</button>
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Chinese Book">Chinese Book</button>
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Revision Book">Revision Book</button>
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".English">English Book</button>
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Bahasa_Melayu">Bahasa Melayu</button>
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".中文图书">中文图书</button>
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Revision">Revision Book</button>
                     <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Stationery">Stationery</button>
                 </div>
 
@@ -250,48 +251,45 @@
                         <div class="filter-col1 p-r-15 p-b-27">
                             <div class="mtext-102 cl2 p-b-15">English Book</div>
                                 <ul>    
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04 filter-link-active">New Arrivals</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Comics">Comics</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Cook Book">Cook Book</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Hobby & Interest">Hobby & Interest</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04 filter-link-active" data-filter=".Comics">Comics</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Cook">Cook</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Hobby&Interest">Hobby & Interest</button></li>
                                     <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Travel">Travel</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Young Adult">Young Adult</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Young_Adult">Young Adult</button></li>
                                 </ul>
                         </div>
                         <div class="filter-col2 p-r-15 p-b-27">
-                            <div class="mtext-102 cl2 p-b-15">Buku Bahasa Melayu</div>
+                            <div class="mtext-102 cl2 p-b-15">Bahasa Melayu</div>
                                 <ul>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04 filter-link-active">New Arrivals</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04">Kanak-kanak</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04">Kesihatan</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04">Remaja</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04">Seni & Kraf(DIY)</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04 filter-link-active" data-filter=".Children">Children</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Health">Health</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Adult">Adult</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Arts">Arts</button></li>
                                 </ul>
                             </div>
                         <div class="filter-col3 p-r-15 p-b-27">
-                            <div class="mtext-102 cl2 p-b-15">Chinese Book</div>
+                            <div class="mtext-102 cl2 p-b-15">中文图书</div>
                                 <ul>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04 filter-link-active">New Arravals</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04">Novel</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04">Magazine</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04">Children Books</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04 filter-link-active" data-filter=".轻小说">轻小说</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".图文漫画">图文漫画</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".地理旅游">地理旅游</button></li>
                                 </ul>
                             </div>
                         <div class="filter-col4 p-b-27">
                             <div class="mtext-102 cl2 p-b-15">Revision Book</div>
                                 <ul>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04 filter-link-active">SPM</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04">STPM /Pre-U</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04">Secondary SMK</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04">Primary SJK</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04">Primary SK</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04 filter-link-active" data-filter=".SPM">SPM</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".STPM/Pre-U">STPM /Pre-U</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Secondary_SMK">Secondary SMK</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Primary_SJK">Primary SJK</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Primary_SJ">Primary SK</button></li>
                                 </ul>
                         </div>
                         <div class="filter-col4 p-b-27">
-                            <div class="mtext-102 cl2 p-b-15">Revision Book</div>
+                            <div class="mtext-102 cl2 p-b-15">Stationery</div>
                                 <ul>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04 filter-link-active">Art & Craft</button></li>
-                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04">Bag & Accessories</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04 filter-link-active" data-filter=".Bag&Accessories">Bag & Accessories</button></li>
+                                    <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Paper">Paper</button></li>
                                 </ul>
                         </div>
                     </div>
@@ -309,7 +307,7 @@
                     <a href="product-popup.jsp?BOOK_ID=<%= book.getBOOK_ID() %>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
                         Quick View</a>
                 </div>
-                <div class="block2-txt flex-w flex-t p-t-14">
+                        <div class="block2-txt flex-w flex-t p-t-14">
                     <div class="block2-txt-child1 flex-col-l ">
                         <a href="product-detail.jsp?BOOK_ID=<%= book.getBOOK_ID() %>&CATEGORY=<%= book.getBOOK_CATEGORY() %>&TYPE=<%= book.getBOOK_TYPE() %>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                             <%= book.getBOOK_NAME() %></a>
