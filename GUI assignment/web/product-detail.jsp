@@ -3,7 +3,7 @@
 <%@page import="java.util.List, DB.bookDB, domain.Book"%>
 <html lang="en">
 <head>
-	<title>Product Detail</title>
+	<title>Product Details</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
