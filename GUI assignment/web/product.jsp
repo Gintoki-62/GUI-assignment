@@ -86,17 +86,17 @@
                     <div class="filter-col1 p-r-15 p-b-27">
                         <div class="mtext-102 cl2 p-b-15">English Book</div>
                             <ul>    
-                                <li class="p-b-6"><button class="filter-link stext-106 trans-04 filter-link-active" data-filter=".Comics">Comics</button></li>
+                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Comics">Comics</button></li>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Cook">Cook</button></li>
-                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Hobby&Interest">Hobby & Interest</button></li>
+                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Hobby">Hobby</button></li>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Travel">Travel</button></li>
-                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Business&Management">Business & Management</button></li>
+                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Business">Business</button></li>
                             </ul>
                     </div>
                     <div class="filter-col2 p-r-15 p-b-27">
                         <div class="mtext-102 cl2 p-b-15">Bahasa Melayu</div>
                             <ul>
-                                <li class="p-b-6"><button class="filter-link stext-106 trans-04 filter-link-active" data-filter=".Children">Children</button></li>
+                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Children">Children</button></li>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Health">Health</button></li>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Adult">Adult</button></li>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Arts">Arts</button></li>
@@ -105,7 +105,7 @@
                     <div class="filter-col3 p-r-15 p-b-27">
                         <div class="mtext-102 cl2 p-b-15">中文图书</div>
                             <ul>
-                                <li class="p-b-6"><button class="filter-link stext-106 trans-04 filter-link-active" data-filter=".轻小说">轻小说</button></li>
+                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".轻小说">轻小说</button></li>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".图文漫画">图文漫画</button></li>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".地理旅游">地理旅游</button></li>
                             </ul>
@@ -113,7 +113,7 @@
                     <div class="filter-col4 p-b-27">
                         <div class="mtext-102 cl2 p-b-15">Revision Book</div>
                             <ul>
-                                <li class="p-b-6"><button class="filter-link stext-106 trans-04 filter-link-active" data-filter=".SPM">SPM</button></li>
+                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".SPM">SPM</button></li>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".STPM/Pre-U">STPM /Pre-U</button></li>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Secondary_SMK">Secondary SMK</button></li>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Primary_SJK">Primary SJK</button></li>
@@ -123,7 +123,7 @@
                     <div class="filter-col4 p-b-27">
                         <div class="mtext-102 cl2 p-b-15">Stationery</div>
                             <ul>
-                                <li class="p-b-6"><button class="filter-link stext-106 trans-04 filter-link-active" data-filter=".Bag&Accessories">Bag & Accessories</button></li>
+                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Bag&Accessories">Bag & Accessories</button></li>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Paper">Paper</button></li>
                             </ul>
                     </div>
@@ -143,7 +143,7 @@
                             <a href="product-popup.jsp?BOOK_ID=<%= book.getBOOK_ID() %>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
                                 Quick View</a>
                         </div>
-                                <div class="block2-txt flex-w flex-t p-t-14">
+                        <div class="block2-txt flex-w p-t-14">
                             <div class="block2-txt-child1 flex-col-l ">
                                 <a href="product-detail.jsp?BOOK_ID=<%= book.getBOOK_ID() %>&CATEGORY=<%= book.getBOOK_CATEGORY() %>&TYPE=<%= book.getBOOK_TYPE() %>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                     <%= book.getBOOK_NAME() %></a>

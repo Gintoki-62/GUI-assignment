@@ -405,8 +405,6 @@
                                     <li>Publisher  : <%= selectedBook.getPUBLISHER() %></li>
                                     <li>No.of Pages: <%= selectedBook.getNO_OF_PAGES() %></li>
                                     <br/>
-                                    <li>Description: </li>
-                                    <li><%= selectedBook.getBOOK_DESC() %></li>
                                 </ul>
 
                             <!--  -->
@@ -429,6 +427,9 @@
                             </div>
                         </div>
                     </div>
+                        <h4>Description: </h4>
+                        <br/>
+                        <p><%= selectedBook.getBOOK_DESC() %></p>
     <%  } else { %>
         <p>No books available in the database.</p>
     <%  } %>

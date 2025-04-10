@@ -97,10 +97,12 @@
                                 <span class="mtext-106 cl2">RM <%= String.format("%.2f", selectedBook.getBOOK_PRICE()) %></span>
                                 <br/><br/><hr/>
                                 <ul>
-                                    <li>Description: </li><br/>
-                                    <li><%= selectedBook.getBOOK_DESC() %></li>
+                                    <li>Author Name: <%= selectedBook.getAUTHOR_NAME() %></li><br/>
+                                    <li>Publisher  : <%= selectedBook.getPUBLISHER() %></li><br/>
+                                    <li>No.of Pages: <%= selectedBook.getNO_OF_PAGES() %></li>
+                                    <br/>
                                 </ul>
-
+                                    
                             <!--  -->
                             <div class="p-t-33">
                             <div class="flex-w flex-r-m p-b-10">
