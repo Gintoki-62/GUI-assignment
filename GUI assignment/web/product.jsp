@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Book Loom</title>
         <%@ page contentType="text/html" pageEncoding="UTF-8" %>
         <%@ include file="header.jsp"%>
         <%@page import="java.util.List, DB.bookDB, domain.Book"%>
@@ -96,10 +95,10 @@
                     <div class="filter-col2 p-r-15 p-b-27">
                         <div class="mtext-102 cl2 p-b-15">Bahasa Melayu</div>
                             <ul>
-                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Children">Children</button></li>
-                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Health">Health</button></li>
-                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Adult">Adult</button></li>
-                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Arts">Arts</button></li>
+                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Komik">Komik</button></li>
+                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Kesihatan">Kesihatan</button></li>
+                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Remaja">Remaja</button></li>
+                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Seni">Seni</button></li>
                             </ul>
                         </div>
                     <div class="filter-col3 p-r-15 p-b-27">
@@ -117,7 +116,7 @@
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".STPM/Pre-U">STPM /Pre-U</button></li>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Secondary_SMK">Secondary SMK</button></li>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Primary_SJK">Primary SJK</button></li>
-                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Primary_SJ">Primary SK</button></li>
+                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Primary_SK">Primary SK</button></li>
                             </ul>
                     </div>
                     <div class="filter-col4 p-b-27">

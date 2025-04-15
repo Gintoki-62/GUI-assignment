@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <!--================== Book Table ============================ -->
+        CREATE TABLE BOOK (
+        BOOK_ID VARCHAR(10) NOT NULL, 
+        BOOK_NAME VARCHAR(100) NOT NULL, 
+        BOOK_PRICE DECIMAL(10, 2) NOT NULL, 
+        AUTHOR_NAME VARCHAR(100) NOT NULL, 
+        PUBLISHER VARCHAR(100) NOT NULL, 
+        NO_OF_PAGES INTEGER, 
+        BOOK_DESC VARCHAR(10000) NOT NULL, 
+        BOOK_QUANTITY INTEGER, 
+        BOOK_TYPE VARCHAR(100), 
+        BOOK_IMAGE VARCHAR(1000), 
+        BOOK_CATEGORY VARCHAR(100)
+        PRIMARY KEY (BOOK_ID));
+        <!--================== End Book Table ============================ -->
+        
+        CREATE TABLE CART (
+        CART_ID VARCHAR(10) NOT NULL, 
+        BOOK_ID VARCHAR(10) NOT NULL, 
+        USER_ID VARCHAR(10) NOT NULL, 
+        BOOK_NAME VARCHAR(100) NOT NULL, 
+        BOOK_PRICE DECIMAL(10, 2) NOT NULL, 
+        BOOK_IMAGE VARCHAR(1000) NOT NULL, 
+        QUANTITY INTEGER NOT NULL, 
+        PRIMARY KEY (CART_ID, BOOK_ID));
+
+
+    </body>
+</html>
