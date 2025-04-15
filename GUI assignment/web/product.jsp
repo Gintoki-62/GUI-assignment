@@ -106,7 +106,7 @@
                             <ul>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".轻小说">轻小说</button></li>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".图文漫画">图文漫画</button></li>
-                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".地理旅游">地理旅游</button></li>
+                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".休闲生活">休闲生活</button></li>
                             </ul>
                         </div>
                     <div class="filter-col4 p-b-27">
@@ -114,9 +114,8 @@
                             <ul>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".SPM">SPM</button></li>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".STPM/Pre-U">STPM /Pre-U</button></li>
-                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Secondary_SMK">Secondary SMK</button></li>
-                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Primary_SJK">Primary SJK</button></li>
-                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Primary_SK">Primary SK</button></li>
+                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Secondary_School">Secondary School</button></li>
+                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Primary_School">Primary School</button></li>
                             </ul>
                     </div>
                     <div class="filter-col4 p-b-27">
