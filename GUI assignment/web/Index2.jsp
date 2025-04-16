@@ -53,7 +53,7 @@
                 src="Logo.png"
                 alt="navbar brand"
                 class="navbar-brand"
-                height="90" weight="30"
+                height="70" weight="20"
               />
             </a>
             <div class="nav-toggle">
@@ -87,7 +87,7 @@
                 <div class="collapse" id="dashboard">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="../demo1/index.html">
+                      <a href="Index2.jsp">
                         <span class="sub-item">Dashboard 1</span>
                       </a>
                     </li>
@@ -165,12 +165,12 @@
                 <div class="collapse" id="sidebarLayouts">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="sidebar-style-2.html.jsp">
+                      <a href="sidebar-style-2.jsp">
                         <span class="sub-item">Sidebar Style 2</span>
                       </a>
                     </li>
                     <li>
-                      <a href="icon-menu,jsp">
+                      <a href="icon-menu.jsp">
                         <span class="sub-item">Icon Menu</span>
                       </a>
                     </li>
