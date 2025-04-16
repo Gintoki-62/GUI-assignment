@@ -334,7 +334,7 @@
         <div class="main-header">
           <div class="main-header-logo">
             <!-- Logo Header -->
-            <div class="logo-header" data-background-color="dark">
+            <div class="logo-header" data-background-color="white">
               <a href="Index2.jsp" class="logo">
                 <img
                   src="assets/img/kaiadmin/logo_light.svg"
