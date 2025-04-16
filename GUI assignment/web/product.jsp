@@ -113,7 +113,7 @@
                         <div class="mtext-102 cl2 p-b-15">Revision Book</div>
                             <ul>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".SPM">SPM</button></li>
-                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".STPM/Pre-U">STPM /Pre-U</button></li>
+                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".STPM">STPM</button></li>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Secondary_School">Secondary School</button></li>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Primary_School">Primary School</button></li>
                             </ul>
@@ -121,7 +121,7 @@
                     <div class="filter-col4 p-b-27">
                         <div class="mtext-102 cl2 p-b-15">Stationery</div>
                             <ul>
-                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Bag&Accessories">Bag & Accessories</button></li>
+                                <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Accessories">Accessories</button></li>
                                 <li class="p-b-6"><button class="filter-link stext-106 trans-04" data-filter=".Paper">Paper</button></li>
                             </ul>
                     </div>
