@@ -70,6 +70,7 @@
               <i class="gg-more-vertical-alt"></i>
             </button>
           </div>
+          
           <!-- End Logo Header -->
         </div>
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
@@ -356,6 +357,7 @@
             </div>
             <!-- End Logo Header -->
           </div>
+          
           <!-- Navbar Header -->
           <nav
             class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
