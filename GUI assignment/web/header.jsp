@@ -55,7 +55,7 @@
 
             <div class="wrap-menu-desktop how-shadow1">
                 <nav class="limiter-menu-desktop container">		
-                    <a href="#" class="logo"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+                    <a href="#" class="logo"><img src="Logo.png" alt="IMG-LOGO"></a>
                     <div class="menu-desktop">
                         <ul class="main-menu">
                             <li><a href="index.jsp">Home</a></li>

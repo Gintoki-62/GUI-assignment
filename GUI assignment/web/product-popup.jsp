@@ -43,6 +43,7 @@
     <%
     // Get the BOOK_ID from the URL
     String bookID = request.getParameter("BOOK_ID");
+    String userID = "user123";
     
     // Fetch all books from the database
     bookDB db = new bookDB();
@@ -61,12 +62,12 @@
     %>
     
 <body style="transition: none !important;">
-<div class="overlay-modal1 js-hide-modal1"></div>
     <div class="wrap-modal1 js-modal1 p-t-60 p-b-20 show-modal1">
-    <div class="overlay-modal1 js-hide-modal1"></div>
+        <div class="overlay-modal1"></div>
         <div class="container">
             <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
-                <button class="how-pos3 hov3 trans-04 js-hide-modal1"><img src="images/icons/icon-close.png" alt="CLOSE"></button>
+                <button class="how-pos3 hov3 trans-04 js-hide-modal1" onclick="window.location.href = 'product.jsp'">
+                    <img src="images/icons/icon-close.png" alt="CLOSE"></button>
                     <div class="row">
     <% if (selectedBook != null) { %>
                         <div class="col-md-6 col-lg-7 p-b-30">
@@ -102,16 +103,26 @@
                             <div class="p-t-33">
                             <div class="flex-w flex-r-m p-b-10">
                                <div class="size-204 flex-w flex-m respon6-next">
-                                    <div class="wrap-num-product flex-w m-r-20 m-tb-10">
-                                        <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                            <i class="fs-16 zmdi zmdi-minus"></i>
+                                   <form action="AddToCartServlet" method="post">
+                                        <div class="wrap-num-product flex-w m-r-20 m-tb-10">
+                                            <div class="btn-num-down cl8 hov-btn3 trans-04 flex-c-m" style="width: 45px;height: 100%; cursor: pointer;">
+                                                <i class="fs-16 zmdi zmdi-minus"></i>
+                                            </div>
+                                            <input class="mtext-104 cl3 txt-center num-product" type="number" id="displayQuantity"
+                                                   name="num-product" value="1" min="1" max="100">
+                                            <div class="btn-num-up cl8 hov-btn3 trans-04 flex-c-m" style="width: 45px;height: 100%; cursor: pointer;">
+                                                <i class="fs-16 zmdi zmdi-plus"></i>
+                                            </div>
                                         </div>
-                                        <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
-                                        <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                            <i class="fs-16 zmdi zmdi-plus"></i>
-                                        </div>
-                                    </div>
-                                    <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">Add to cart</button>
+                               
+                                        <input type="hidden" name="bookId" value="<%= bookID %>">
+                                        <input type="hidden" name="userId" value="<%= userID %>">
+                                        <input type="hidden" name="name" value="<%= selectedBook.getBOOK_NAME() %>">
+                                        <input type="hidden" name="quantity" id="hiddenQuantity" value="1" min="1">
+                                        <button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                            Add to Cart</button>
+                                    </form>
+                                   
                                 </div>
                             </div>	
                             </div>
@@ -225,6 +236,52 @@
 		});
 	</script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
+	
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Loop through all quantity blocks
+        document.querySelectorAll('.wrap-num-product').forEach(wrapper => {
+            const input = wrapper.querySelector('.num-product');
+            const btnMinus = wrapper.querySelector('.btn-num-down');
+            const btnPlus = wrapper.querySelector('.btn-num-up');
+
+            const min = parseInt(input.min) || 1;
+            const max = parseInt(input.max) || 100;
+
+            // - button
+            btnMinus.addEventListener("click", function () {
+                let val = parseInt(input.value) || min;
+                if (val > min) {
+                    input.value = val - 1;
+                }
+            });
+
+            // + button
+            btnPlus.addEventListener("click", function () {
+                let val = parseInt(input.value) || min;
+                if (val < max) {
+                    input.value = val + 1;
+                }
+            });
+
+            // Manual input
+            input.addEventListener("input", function () {
+                let val = parseInt(this.value);
+                if (isNaN(val) || val < min) this.value = min;
+                if (val > max) this.value = max;
+            });
+        });
+    });
+    </script>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function () {
+            var quantity = document.getElementById("displayQuantity").value;
+            document.getElementById("hiddenQuantity").value = quantity;
+        });
+    </script>
+
+
+        <script src="js/main.js"></script>
     </body>
 </html>

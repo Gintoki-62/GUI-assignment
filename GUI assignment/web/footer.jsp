@@ -177,5 +177,65 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+ <!--===============================================================================================-->       
+            <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Loop through all quantity blocks
+        document.querySelectorAll('.wrap-num-product').forEach(wrapper => {
+            const input = wrapper.querySelector('.num-product');
+            const btnMinus = wrapper.querySelector('.btn-num-down');
+            const btnPlus = wrapper.querySelector('.btn-num-up');
+
+            const min = parseInt(input.min) || 1;
+            const max = parseInt(input.max) || 100;
+
+            // - button
+            btnMinus.addEventListener("click", function () {
+                let val = parseInt(input.value) || min;
+                if (val > min) {
+                    input.value = val - 1;
+                }
+            });
+
+            // + button
+            btnPlus.addEventListener("click", function () {
+                let val = parseInt(input.value) || min;
+                if (val < max) {
+                    input.value = val + 1;
+                }
+            });
+
+            // Manual input
+            input.addEventListener("input", function () {
+                let val = parseInt(this.value);
+                if (isNaN(val) || val < min) this.value = min;
+                if (val > max) this.value = max;
+            });
+        });
+    });
+    </script>
+<!--===============================================================================================-->
+    <script>
+        document.querySelector("form").addEventListener("submit", function () {
+            var quantity = document.getElementById("displayQuantity").value;
+            document.getElementById("hiddenQuantity").value = quantity;
+        });
+    </script>
+<!--===============================================================================================-->    
+        
+        <%
+            String added = request.getParameter("added");
+            String bookname = request.getParameter("bookname");
+            if ("true".equals(added) && bookname != null) {
+        %>
+            <script>
+                window.onload = function() {
+                    swal("<%= bookname %>", "is added to cart!", "success");
+                };
+            </script>
+        <%
+            }
+        %>
+        
     </body>
 </html>

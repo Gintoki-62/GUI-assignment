@@ -8,7 +8,8 @@
 
 <body class="animsition" style="transition: none !important;">
     <% request.setCharacterEncoding("UTF-8"); %>
-
+    
+    
     <%
     // Get search term from request parameter
     String searchTerm = request.getParameter("search-product");
@@ -36,7 +37,7 @@
                     <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".Stationery">Stationery</button>
                 </div>
 
-                <div class="flex-w flex-c-m m-tb-10">
+                <div class="flex-w m-tb-10">
                     <div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
                         <i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
                         <i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>

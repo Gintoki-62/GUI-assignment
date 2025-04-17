@@ -20,6 +20,25 @@ public class bookDB {
     public bookDB() {
         createConnection();
     }
+    
+    private void createConnection() {
+        try {
+            conn = DriverManager.getConnection(host, user, password);
+            System.out.println("***TRACE: Connection established.");
+        } catch (SQLException ex) {
+            System.err.println("Connection error: " + ex.getMessage());
+        }
+    }
+
+    private void shutDown() {
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                System.err.println("Shutdown error: " + ex.getMessage());
+            }
+        }
+    }
 
     public List<Book> getRecord() {
         List<Book> bookList = new ArrayList<>();
@@ -49,25 +68,6 @@ public class bookDB {
             System.err.println("Error fetching records: " + ex.getMessage());
         }
         return bookList;
-    }
-
-    private void createConnection() {
-        try {
-            conn = DriverManager.getConnection(host, user, password);
-            System.out.println("***TRACE: Connection established.");
-        } catch (SQLException ex) {
-            System.err.println("Connection error: " + ex.getMessage());
-        }
-    }
-
-    private void shutDown() {
-        if (conn != null) {
-            try {
-                conn.close();
-            } catch (SQLException ex) {
-                System.err.println("Shutdown error: " + ex.getMessage());
-            }
-        }
     }
 
     public List<Book> searchBooks(String searchTerm) {
@@ -102,12 +102,146 @@ public class bookDB {
         }
         return books;
     }
+    
+    public ResultSet getCart(String userId) {
+        ResultSet rs = null;
+        try {
+            String sql = "SELECT c.BOOK_ID, b.BOOK_NAME, b.BOOK_PRICE, b.BOOK_IMAGE, c.QUANTITY, b.BOOK_TYPE, b.BOOK_CATEGORY " +
+                        "FROM CART c " +
+                        "JOIN BOOK b ON c.BOOK_ID = b.BOOK_ID " +
+                        "WHERE c.user_id = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, userId);
+            rs = stmt.executeQuery();
+            
+        } catch (SQLException ex) {
+            System.err.println("Error fetching records: " + ex.getMessage());
+        }
+        return rs;
+    }
+    
+    public void addToCart(String userId, String bookId, String cartId, int quantity) throws Exception {
+        ResultSet rs = null;
+        try {
+            String bookName="", bookImage="";
+            Double bookPrice;
+            
+            String bookQuery = "SELECT book_name, book_image, book_price FROM book WHERE book_id = ?";
+            stmt = conn.prepareStatement(bookQuery);
+            stmt.setString(1, bookId);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                bookName = rs.getString("book_name");
+                bookImage = rs.getString("book_image");
+                bookPrice = rs.getDouble("book_price");
+            } else {
+                throw new Exception("Book not found");
+            }
+
+            rs.close();
+            stmt.close();
+
+            // 3. Check if book already in user's cart
+            String checkCartSql = "SELECT quantity FROM cart WHERE user_id = ? AND book_id = ?";
+            stmt = conn.prepareStatement(checkCartSql);
+            stmt.setString(1, userId);
+            stmt.setString(2, bookId);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                // Book already in cart → update quantity
+                int existingQty = rs.getInt("quantity");
+                rs.close();
+                stmt.close();
+
+                String updateSql = "UPDATE cart SET quantity = ? WHERE user_id = ? AND book_id = ?";
+                stmt = conn.prepareStatement(updateSql);
+                stmt.setInt(1, existingQty + quantity);
+                stmt.setString(2, userId);
+                stmt.setString(3, bookId);
+                stmt.executeUpdate();
+            } else {
+                // Not in cart → insert new row
+                rs.close();
+                stmt.close();
+
+                String insertSql = "INSERT INTO cart (cart_id, user_id, book_id, book_name, book_image, book_price, quantity) " +
+                                   "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                stmt = conn.prepareStatement(insertSql);
+                stmt.setString(1, cartId);
+                stmt.setString(2, userId);
+                stmt.setString(3, bookId);
+                stmt.setString(4, bookName);
+                stmt.setString(5, bookImage);
+                stmt.setDouble(6, bookPrice);
+                stmt.setInt(7, quantity);
+                stmt.executeUpdate();
+            }
+
+        } finally {
+            if (rs != null) try { rs.close(); } catch (Exception ignored) {}
+            if (stmt != null) try { stmt.close(); } catch (Exception ignored) {}
+            if (conn != null) try { conn.close(); } catch (Exception ignored) {}
+        }
+    }
+
+    public String CreateCartId(String userId) {
+        String cartId = null;
+        String prefix = "25CART";
+        int nextNumber = 1;
+        ResultSet rs = null;
+
+        try {
+            // 1. Check if user already has a cart
+            String checkSql = "SELECT cart_id FROM cart WHERE user_id = ?";
+            stmt = conn.prepareStatement(checkSql);
+            stmt.setString(1, userId);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("cart_id"); // Return existing
+            }
+            rs.close();
+            stmt.close();
+
+            // 2. Generate new cartId
+            String getLastSql = "SELECT cart_id FROM cart ORDER BY cart_id DESC LIMIT 1";
+            stmt = conn.prepareStatement(getLastSql);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                String lastId = rs.getString("cart_id");
+                String numPart = lastId.substring(prefix.length()); // e.g., 00001
+                nextNumber = Integer.parseInt(numPart) + 1;
+            }
+            rs.close();
+            stmt.close();
+
+            // 3. Format new ID
+            cartId = String.format("%s%05d", prefix, nextNumber); // e.g., 25CART00002
+
+            // 4. Insert new cart record
+            String insertSql = "INSERT INTO cart (cart_id, user_id) VALUES (?, ?)";
+            stmt = conn.prepareStatement(insertSql);
+            stmt.setString(1, cartId);
+            stmt.setString(2, userId);
+            stmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.err.println("Error creating cart ID: " + ex.getMessage());
+        } finally {
+            try { if (rs != null) rs.close(); } catch (Exception ignored) {}
+            try { if (stmt != null) stmt.close(); } catch (Exception ignored) {}
+        }
+
+        return cartId;
+    }
+
+
 
 
     public static void main(String[] args) {
         bookDB book = new bookDB();
         List<Book> books = book.getRecord();
-
     }
     
 }//end bookdb
