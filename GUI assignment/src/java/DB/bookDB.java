@@ -120,6 +120,55 @@ public class bookDB {
         return rs;
     }
     
+    public String CreateCartId(String userId) {
+        String prefix = "25CART";
+        int nextNumber = 1;
+        ResultSet rs = null;
+        String cartId = null;
+        
+        try {
+            // 1. Check if user already has a cart
+            String checkSql = "SELECT CART_ID FROM CART WHERE user_id = ?";
+            stmt = conn.prepareStatement(checkSql);
+            stmt.setString(1, userId);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("CART_ID"); // Return existing
+            }
+            rs.close();
+            stmt.close();
+
+            // 2. Generate new cartId
+            String getLastSql = "SELECT CART_ID FROM CART ORDER BY CART_ID DESC LIMIT 1";
+            stmt = conn.prepareStatement(getLastSql);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                String lastId = rs.getString("CART_ID");
+                String numPart = lastId.substring(prefix.length()); // e.g., 00001
+                nextNumber = Integer.parseInt(numPart) + 1;
+            }
+
+            // 3. Format new ID
+            cartId = String.format("%04d", nextNumber); // e.g., 25CART00002
+
+            // 4. Insert new cart record
+            String insertSql = "INSERT INTO cart (CART_ID, user_id) VALUES (?, ?)";
+            stmt = conn.prepareStatement(insertSql);
+            stmt.setString(1, cartId);
+            stmt.setString(2, userId);
+            stmt.executeUpdate();
+            conn.commit();
+
+        } catch (SQLException ex) {
+            System.err.println("Error creating cart ID: " + ex.getMessage());
+        } finally {
+            try { if (rs != null) rs.close(); } catch (Exception ignored) {}
+            try { if (stmt != null) stmt.close(); } catch (Exception ignored) {}
+        }
+
+        return cartId;
+    }
+
     public void addToCart(String userId, String bookId, String cartId, int quantity) throws Exception {
         ResultSet rs = null;
         try {
@@ -185,57 +234,6 @@ public class bookDB {
             if (conn != null) try { conn.close(); } catch (Exception ignored) {}
         }
     }
-
-    public String CreateCartId(String userId) {
-        String cartId = null;
-        String prefix = "25CART";
-        int nextNumber = 1;
-        ResultSet rs = null;
-
-        try {
-            // 1. Check if user already has a cart
-            String checkSql = "SELECT cart_id FROM cart WHERE user_id = ?";
-            stmt = conn.prepareStatement(checkSql);
-            stmt.setString(1, userId);
-            rs = stmt.executeQuery();
-            if (rs.next()) {
-                return rs.getString("cart_id"); // Return existing
-            }
-            rs.close();
-            stmt.close();
-
-            // 2. Generate new cartId
-            String getLastSql = "SELECT cart_id FROM cart ORDER BY cart_id DESC LIMIT 1";
-            stmt = conn.prepareStatement(getLastSql);
-            rs = stmt.executeQuery();
-            if (rs.next()) {
-                String lastId = rs.getString("cart_id");
-                String numPart = lastId.substring(prefix.length()); // e.g., 00001
-                nextNumber = Integer.parseInt(numPart) + 1;
-            }
-            rs.close();
-            stmt.close();
-
-            // 3. Format new ID
-            cartId = String.format("%s%05d", prefix, nextNumber); // e.g., 25CART00002
-
-            // 4. Insert new cart record
-            String insertSql = "INSERT INTO cart (cart_id, user_id) VALUES (?, ?)";
-            stmt = conn.prepareStatement(insertSql);
-            stmt.setString(1, cartId);
-            stmt.setString(2, userId);
-            stmt.executeUpdate();
-
-        } catch (SQLException ex) {
-            System.err.println("Error creating cart ID: " + ex.getMessage());
-        } finally {
-            try { if (rs != null) rs.close(); } catch (Exception ignored) {}
-            try { if (stmt != null) stmt.close(); } catch (Exception ignored) {}
-        }
-
-        return cartId;
-    }
-
 
 
 
