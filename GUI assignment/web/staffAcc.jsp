@@ -1,3 +1,10 @@
+<%-- 
+    Document   : staffAcc
+    Created on : 17 Apr 2025, 11:22:29 pm
+    Author     : User
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -43,34 +50,25 @@
   </head>
   <body>
       <%@ include file="adminHeader.jsp" %>
+      
         <div class="container">
           <div class="page-inner">
-            <div class="page-header">
-              <h4 class="page-title">Dashboard</h4>
-              <ul class="breadcrumbs">
-                <li class="nav-home">
-                  <a href="#">
-                    <i class="icon-home"></i>
-                  </a>
-                </li>
-                <li class="separator">
-                  <i class="icon-arrow-right"></i>
-                </li>
-                <li class="nav-item">
-                  <a href="#">Pages</a>
-                </li>
-                <li class="separator">
-                  <i class="icon-arrow-right"></i>
-                </li>
-                <li class="nav-item">
-                  <a href="#">Starter Page</a>
-                </li>
-              </ul>
+              <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+              <div>
+                <h3 class="fw-bold mb-3">Dashboard</h3>
+                <h6 class="op-7 mb-2">Free Bootstrap 5 Admin Dashboard</h6>
+              </div>
+              <div class="ms-md-auto py-2 py-md-0">
+                <a href="#" class="btn btn-label-info btn-round me-2">Manage</a>
+                <a href="#" class="btn btn-primary btn-round">Create Staff Account</a>
+              </div>
             </div>
+             
             <div class="page-category">Inner page content goes here</div>
           </div>
         </div>
 
+      
         <footer class="footer">
           <div class="container-fluid d-flex justify-content-between">
             <nav class="pull-left">
@@ -139,5 +137,38 @@
 
     <!-- Kaiadmin JS -->
     <script src="assets/js/kaiadmin.min.js"></script>
+    
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="assets/js/setting-demo.js"></script>
+    <script src="assets/js/demo.js"></script>
+    <script>
+      $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#177dff",
+        fillColor: "rgba(23, 125, 255, 0.14)",
+      });
+
+      $("#lineChart2").sparkline([99, 125, 122, 105, 110, 124, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#f3545d",
+        fillColor: "rgba(243, 84, 93, .14)",
+      });
+
+      $("#lineChart3").sparkline([105, 103, 123, 100, 95, 105, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#ffa534",
+        fillColor: "rgba(255, 165, 52, .14)",
+      });
+    </script>
   </body>
 </html>
+
