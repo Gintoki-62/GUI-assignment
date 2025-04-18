@@ -1,6 +1,6 @@
 <%-- 
-    Document   : staffAcc
-    Created on : 17 Apr 2025, 11:22:29 pm
+    Document   : AddStaff
+    Created on : 18 Apr 2025, 10:24:20 pm
     Author     : User
 --%>
 
@@ -49,9 +49,75 @@
     <link rel="stylesheet" href="assets/css/demo.css" />
   </head>
   <style>
-      td{
-          padding:13px 21px;
-      }
+      .container1{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            min-height: 100vh;
+            background-color: whitesmoke;
+            padding-bottom: 70px;
+         }
+
+         .container1 form{
+            padding: 20px;
+            width: 700px;
+            background-color: #1A2035;
+            box-shadow: 0 5px 10px rgba(0,0,0,.1);
+            border-radius: 20px;
+            box-shadow: 0px 2px 3px 3px grey;
+         }
+
+         .container1 form .row1 .col1 .title{
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+            padding-bottom: 5px;
+            text-transform: uppercase;
+            text-align: center;
+         }
+
+         .container1 form .row1 .inputBox{
+            margin: 15px 0;
+         }
+
+         .container1 form .row1 .inputBox input{
+            width: 100px;
+            border: 2px solid #ffffff;width: 625px;
+            padding: 10px 15px;
+            font-size: 15px;
+            text-transform: none;
+            border-radius: 20px;
+         }
+
+         .container1 form .row1 .inputBox span{
+            margin: 15px 0;
+            font-size: 16px;
+            color: white;
+         }
+
+         .button {
+            font-weight: bold;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #212529;
+            cursor: pointer;
+            font-size: 16px;
+            padding:9px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            float: right;
+	    margin: 10px;
+         }
+
+         .button:hover {
+            color: black;
+            background-color: #9BB0C1;
+            transition-duration: 0.6s;
+         }
   </style>
   <body>
       <%@ include file="adminHeader.jsp" %>
@@ -89,88 +155,57 @@
             <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    
                   <div class="card-header">
                     <div class="d-flex align-items-center">
-                      <h4 class="card-title">Staff Accounts</h4>
-                      
-                      <!-------------------------------------------- Button------------------------------------------------------ -->
-                      <button
-                        onclick="window.location.href='AddStaff.jsp';"
-                        class="btn btn-primary btn-round ms-auto" style="font-weight:bold"
-                      >
-                        <i class="fa fa-plus"></i>
-                         Create a new account
-                      </button>
+                      <h4 class="card-title">Create New Staff Account</h4>
                     </div>
                   </div>
                     
                   <div class="card-body">
-                    
-                    
-                    <!------------------------------------------------- Data Table ------------------------------------------------------->
-                    <div class="table-responsive">
-                      <table
-                        id="add-row"
-                        class="display table table-striped table-hover"
-                      >
-                        <thead>
-                          <tr>
-                            <th>Profile</th>
-                            <th>UserID</th>
-                            <th>UserName</th>
-                            <th>E-mail</th>
-                            <th>Password</th>
-                            <th>Gender</th>
-                            <th style="width: 10%">Action</th>
-                          </tr>
-                        </thead>
-                        <tfoot>
-                          <tr>
-                            <th>Profile</th>
-                            <th>UserID</th>
-                            <th>UserName</th>
-                            <th>E-mail</th>
-                            <th>Password</th>
-                            <th>Gender</th>
-                            <th>Action</th>
-                          </tr>
-                        </tfoot>
-                        <tbody>
-                          <tr>
-                            <td>T</td>
-                            <td>ST001</td>
-                            <td>Alice Lee</td>
-                            <td>alicelee001@gmail.com</td>
-                            <td>al001</td>
-                            <td>G</td>
-                            <td>
-                              <div class="form-button-action">
-                                <button
-                                  type="button"
-                                  data-bs-toggle="tooltip"
-                                  title=""
-                                  class="btn btn-link btn-primary btn-lg"
-                                  data-original-title="Edit Task"
-                                >
-                                  <i class="fa fa-edit"></i>
-                                </button>
-                                <button
-                                  type="button"
-                                  data-bs-toggle="tooltip"
-                                  title=""
-                                  class="btn btn-link btn-danger"
-                                  data-original-title="Remove"
-                                >
-                                  <i class="fa fa-times"></i>
-                                </button>
+                 <!------------------------------------------------ Form------------------------------------------------------------>        
+                      <div class="container1">
+                        <form action="" method="POST" class="">
+                           <div class="row1">
+                              <div class="col1">
+                                 <p class="title">New Staff Account</p>
+
+                                    <div class="inputBox">
+                                       <label><span>Profile :</span></label>
+                                       <input style="color: gray" type="file" name="image" value="" required/>
+                                    </div>
+                  
+                                    <div class="inputBox">
+                                       <label><span>User ID :</span></label>
+                                       <input type="text" name="id" value="" required />
+                                    </div>
+
+                                    <div class="inputBox">
+                                       <label><span>User Name :</span></label>
+                                       <input type="text" name="name" value="" required />
+                                    </div>
+
+                                    <div class="inputBox">
+                                       <label><span>Email :</span></label>
+                                       <input type="text" name="email" value="" required />
+                                    </div>
+                                 
+                                    <div class="inputBox">
+                                       <label><span>Password :</span></label>
+                                       <input type="text" name="email" value="" required />
+                                    </div>
+                                 
+                                    <div class="inputBox">
+                                       <label><span>Gender :</span></label>
+                                       <input type="text" name="email" value="" required />
+                                    </div>
+
+                                    <input type="reset" value="Cancel" name="cancel" class="button"/>
+                                    <input type="submit" value="Insert" name="Confirm" class="button"/>
                               </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                <!------------------------------------------------End Table------------------------------------------------------------>   
+                           </div>
+                        </form>
+                     </div>   
+                <!------------------------------------------------End Form------------------------------------------------------------>   
                   </div>
                 </div>
               </div>
@@ -278,4 +313,3 @@
     </script>
   </body>
 </html>
-

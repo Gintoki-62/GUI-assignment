@@ -9,8 +9,12 @@
         <servlet-class>loginServlet</servlet-class>
     </servlet>
     <servlet>
-    <servlet-name>registerServlet</servlet-name>
-    <servlet-class>controller.registerServlet</servlet-class> 
+        <servlet-name>registerServlet</servlet-name>
+        <servlet-class>controller.registerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddStaff</servlet-name>
+        <servlet-class>AddStaff</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddToCartServlet</servlet-name>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>registerServlet</servlet-name>
         <url-pattern>/registerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddStaff</servlet-name>
+        <url-pattern>/AddStaff</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -46,9 +46,6 @@
             content:"\f007";
         }
         
-        .fa-product:before{
-            content:"\f247";
-        }
     </style>
     
   </head>
@@ -126,7 +123,7 @@
             
             <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#products">
-                  <i class="fas fa-product"></i>
+                  <i class="fas fa-book"></i>
                   <p>Products</p>
                   <span class="caret"></span>
                 </a>

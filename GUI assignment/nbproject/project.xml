@@ -10,6 +10,7 @@
                 <library dirs="200">
                     <file>${file.reference.derbyclient.jar-1}</file>
                 </library>
+<<<<<<< Updated upstream
                 <library dirs="200">
                     <file>${file.reference.derbyclient.jar}</file>
                 </library>
@@ -17,6 +18,8 @@
                     <file>${file.reference.derbyclient.jar-2}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
+=======
+>>>>>>> Stashed changes
             </web-module-libraries>
             <web-module-additional-libraries/>
             <source-roots>

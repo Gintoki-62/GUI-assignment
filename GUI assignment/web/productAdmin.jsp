@@ -166,30 +166,54 @@
                 
             <!-------------------------------------------------------------button---------------------------------------------------------->    
               <div class="ms-md-auto py-2 py-md-0">
-                <a href="#" class="btn btn-label-info btn-round me-2">Manage</a>
                 <a href="#" class="create_button">Create New Products</a>
               </div>
             </div>
             
             <!--------------------------------------------------------Content------------------------------------------------------->
-            <div class="gallery_container">
-                <div class="gallery_item">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                          <h4 class="card-title">Products</h4>
+
+                          <!-------------------------------------------- Button------------------------------------------------------ -->
+                          <button
+                            onclick="window.location.href='AddStaff.jsp';"
+                            class="btn btn-primary btn-round ms-auto" style="font-weight:bold"
+                          >
+                            <i class="fa fa-plus"></i>
+                             Create New Product
+                          </button>
+                        </div>
+                    </div> 
                     
-                    <a data-fancybox="gallery" href="images/layout_img/%s">
-                      <img class="img-responsive" src="images/layout_img/%s" alt="#" />
-                    </a>
-                    <div class="heading_section">
-                      <a href="productedit.php?name=%s"><button type="submit" class="edit_button">Edit</button></a>
-                      <a href="productdelete.php?name=%s"><button type="submit" class="edit_button">Delete</button></a>
-                      <p>Current Stock: %d</p>
-                      <h6>Price: RM %s</h6>
-                      <h6>%s</h6>
+                 <div class="card-body">
+                     <!------------------------------------------------- Data Table ------------------------------------------------------->
+                    <div class="gallery_container">
+                        <div class="gallery_item">
+
+                            <a data-fancybox="gallery" href="images/layout_img/%s">
+                              <img class="img-responsive" src="images/layout_img/%s" alt="#" />
+                            </a>
+                            <div class="heading_section">
+                              <a href="productedit.php?name=%s"><button type="submit" class="edit_button">Edit</button></a>
+                              <a href="productdelete.php?name=%s"><button type="submit" class="edit_button">Delete</button></a>
+                              <p>Current Stock: %d</p>
+                              <h6>Price: RM %s</h6>
+                              <h6>%s</h6>
+                            </div>
+                        </div>
                     </div>
-                    
-                </div>
+                <!-------------------------------------------------End of Data Table ---------------------------------->
+            
+            
             </div>
-             
-            <div class="page-category">Inner page content goes here</div>
+            </div>
+            </div>
+            </div>
           </div>
         </div>
         
