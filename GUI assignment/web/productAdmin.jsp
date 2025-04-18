@@ -139,16 +139,39 @@
         <div class="container">
           <div class="page-inner">
             <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
-              <div>
-                <h3 class="fw-bold mb-3">Dashboard</h3>
-                <h6 class="op-7 mb-2">Free Bootstrap 5 Admin Dashboard</h6>
-              </div>
+                
+                <!--------------------------------------------------------Page Header------------------------------------------------------->    
+                <div class="page-header">
+                    <h3 class="fw-bold mb-3">Products</h3>
+                    <ul class="breadcrumbs mb-3">
+                      <li class="nav-home">
+                        <a href="#">
+                          <i class="icon-home"></i>
+                        </a>
+                      </li>
+                      <li class="separator">
+                        <i class="icon-arrow-right"></i>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#">Products</a>
+                      </li>
+                      <li class="separator">
+                        <i class="icon-arrow-right"></i>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#">Products Management</a>
+                      </li>
+                    </ul>
+                </div>
+                
+            <!-------------------------------------------------------------button---------------------------------------------------------->    
               <div class="ms-md-auto py-2 py-md-0">
                 <a href="#" class="btn btn-label-info btn-round me-2">Manage</a>
                 <a href="#" class="create_button">Create New Products</a>
               </div>
             </div>
-              
+            
+            <!--------------------------------------------------------Content------------------------------------------------------->
             <div class="gallery_container">
                 <div class="gallery_item">
                     
@@ -169,7 +192,8 @@
             <div class="page-category">Inner page content goes here</div>
           </div>
         </div>
-
+        
+        <!--------------------------------------------------------Footer---------------------------------------------------------->
         <footer class="footer">
           <div class="container-fluid d-flex justify-content-between">
             <nav class="pull-left">

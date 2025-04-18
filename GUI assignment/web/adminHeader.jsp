@@ -54,10 +54,10 @@
   </head>
   <body>
     <div class="wrapper">
-      <!-- Sidebar -->
+      <!----------------------------------------------------------- Sidebar ------------------------------------------------------------>
       <div class="sidebar" data-background-color="dark">
         <div class="sidebar-logo">
-          <!-- Logo Header -->
+          <!----------------------------------------------------- Logo Header ---------------------------------------------------------->
           <div class="logo-header" data-background-color="white" style= "padding-left:0px">
             <a href="Index2.jsp" class="logo" >
               <img
@@ -79,7 +79,7 @@
               <i class="gg-more-vertical-alt"></i>
             </button>
           </div>
-          <!-- End Logo Header -->
+          <!-------------------------------------------------------- End Logo Header ----------------------------------------------->
         </div>
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
           <div class="sidebar-content">
@@ -110,14 +110,14 @@
             <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#staff">
                   <i class="fas fa-user"></i>
-                  <p>Staff Account</p>
+                  <p>Staff Accounts</p>
                   <span class="caret"></span>
                 </a>
                 <div class="collapse" id="staff">
                   <ul class="nav nav-collapse">
                     <li>
                       <a href="staffAcc.jsp">
-                        <span class="sub-item">Staff Account Management</span>
+                        <span class="sub-item">Staff Accounts Management</span>
                       </a>
                     </li>
                   </ul>
@@ -127,14 +127,14 @@
             <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#products">
                   <i class="fas fa-product"></i>
-                  <p>Product</p>
+                  <p>Products</p>
                   <span class="caret"></span>
                 </a>
                 <div class="collapse" id="products">
                   <ul class="nav nav-collapse">
                     <li>
                       <a href="productAdmin.jsp">
-                        <span class="sub-item">Product Management</span>
+                        <span class="sub-item">Products Management</span>
                       </a>
                     </li>
                   </ul>
@@ -380,7 +380,7 @@
           </div>
         </div>
       </div>
-      <!-------------------------------------------------------- End Sidebar ---------------------------------------------------------------->
+      <!--------------------------------------------------------- End Sidebar ---------------------------------------------------------------->
 
       <div class="main-panel">
         <div class="main-header">
@@ -407,10 +407,10 @@
                 <i class="gg-more-vertical-alt"></i>
               </button>
             </div>
-            <!------------------------------------------ End Logo Header ---------------------------------------------->
+            <!--------------------------------------------------------- End Logo Header ------------------------------------------------->
           </div>
             
-          <!----------------------------------------- Navbar Header ---------------------------------------------->
+          <!------------------------------------------------------- Navbar Header ---------------------------------------------->
           <nav
             class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
           >
@@ -763,10 +763,10 @@
               </ul>
             </div>
           </nav>
-          <!-- End Navbar -->
+          <!---------------------------------------------------------- End Navbar ------------------------------------------------------------>
         </div>
 
-        <!---------------------------------------------- content right here  ------------------------------------------------->
+        <!---------------------------------------------------------- content right here  ---------------------------------------------------->
         
   </body>
 </html>
