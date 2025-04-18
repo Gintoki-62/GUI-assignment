@@ -8,6 +8,8 @@ import domain.Book;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class bookDB {
     private String host = "jdbc:derby://localhost:1527/bookLoomDB";
@@ -73,14 +75,13 @@ public class bookDB {
     public List<Book> searchBooks(String searchTerm) {
         List<Book> books = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM BOOK WHERE LOWER(BOOK_NAME) LIKE ? OR LOWER(BOOK_DESC) LIKE ? OR LOWER(AUTHOR_NAME) LIKE ?";
-            PreparedStatement ps = conn.prepareStatement(sql);
+            String sql = "SELECT * FROM BOOK WHERE LOWER(BOOK_NAME) LIKE ? OR LOWER(AUTHOR_NAME) LIKE ?";
+            stmt = conn.prepareStatement(sql);
             String likeTerm = "%" + searchTerm.toLowerCase() + "%";
-            ps.setString(1, likeTerm);
-            ps.setString(2, likeTerm);
-            ps.setString(3, likeTerm);
+            stmt.setString(1, likeTerm);
+            stmt.setString(2, likeTerm);
 
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Book book = new Book(
                     rs.getString("BOOK_ID"),
@@ -123,9 +124,9 @@ public class bookDB {
     public String CreateCartId(String userId) {
         String prefix = "25CART";
         int nextNumber = 1;
-        ResultSet rs = null;
         String cartId = null;
-        
+        ResultSet rs = null;
+
         try {
             // 1. Check if user already has a cart
             String checkSql = "SELECT CART_ID FROM CART WHERE user_id = ?";
@@ -133,34 +134,37 @@ public class bookDB {
             stmt.setString(1, userId);
             rs = stmt.executeQuery();
             if (rs.next()) {
-                return rs.getString("CART_ID"); // Return existing
+                return rs.getString("CART_ID"); // Already exists
             }
             rs.close();
             stmt.close();
 
-            // 2. Generate new cartId
-            String getLastSql = "SELECT CART_ID FROM CART ORDER BY CART_ID DESC LIMIT 1";
-            stmt = conn.prepareStatement(getLastSql);
+            // 2. Find the latest CART_ID (descending order)
+            String lastIdSql = "SELECT CART_ID FROM CART WHERE CART_ID LIKE ? ORDER BY CART_ID DESC FETCH FIRST 1 ROWS ONLY";
+            stmt = conn.prepareStatement(lastIdSql);
+            stmt.setString(1, prefix + "%");
             rs = stmt.executeQuery();
+
             if (rs.next()) {
                 String lastId = rs.getString("CART_ID");
-                String numPart = lastId.substring(prefix.length()); // e.g., 00001
+                String numPart = lastId.substring(prefix.length()); // Get the numeric part
                 nextNumber = Integer.parseInt(numPart) + 1;
             }
+            rs.close();
+            stmt.close();
 
-            // 3. Format new ID
-            cartId = String.format("%04d", nextNumber); // e.g., 25CART00002
+            // 3. Format new CART_ID (e.g., 25CART0001)
+            cartId = prefix + String.format("%04d", nextNumber);
 
-            // 4. Insert new cart record
-            String insertSql = "INSERT INTO cart (CART_ID, user_id) VALUES (?, ?)";
+            // 4. Insert new cart
+            String insertSql = "INSERT INTO CART (CART_ID, user_id) VALUES (?, ?)";
             stmt = conn.prepareStatement(insertSql);
             stmt.setString(1, cartId);
             stmt.setString(2, userId);
             stmt.executeUpdate();
-            conn.commit();
 
-        } catch (SQLException ex) {
-            System.err.println("Error creating cart ID: " + ex.getMessage());
+        } catch (SQLException e) {
+            System.err.println("SQL Error: " + e.getMessage());
         } finally {
             try { if (rs != null) rs.close(); } catch (Exception ignored) {}
             try { if (stmt != null) stmt.close(); } catch (Exception ignored) {}
@@ -231,7 +235,31 @@ public class bookDB {
         } finally {
             if (rs != null) try { rs.close(); } catch (Exception ignored) {}
             if (stmt != null) try { stmt.close(); } catch (Exception ignored) {}
-            if (conn != null) try { conn.close(); } catch (Exception ignored) {}
+        }
+    }
+
+    public void updateQuantity(String userId, String bookId, int quantity){
+        String sql = "UPDATE CART SET QUANTITY = ? WHERE USER_ID = ? AND BOOK_ID = ?";
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, quantity);
+            stmt.setString(2, userId);
+            stmt.setString(3, bookId);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(bookDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void removeFromCart(String userId, String bookId){
+        String sql = "DELETE FROM cart WHERE user_id = ? AND book_id = ?";
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, userId);
+            stmt.setString(2, bookId);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+             System.err.println("Error remove Cart: " + ex.getMessage());
         }
     }
 

@@ -13,7 +13,7 @@
             <a href="MainPage.jsp" class="stext-109 cl8 hov-cl1 trans-04">
                 Home <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
-            <span class="stext-109 cl4">Shoping Cart</span>
+            <span class="stext-109 cl4">Shopping Cart</span>
         </div>
     </div>
 		
@@ -26,8 +26,8 @@
     %>
     
     <!-- Shoping Cart -->
-    <form class="bg0 p-b-85" style="padding-top: 20px">
-        <div class="container">
+   <form action="UpdateQuantityServlet" method="post">
+        <div class="container" style="padding-top: 20px">
             <div class="row">
                 <div class="m-l-25 m-r--38 m-lr-0-xl">
                     <div class="wrap-table-shopping-cart">
@@ -43,7 +43,11 @@
                             </tr>
 
     <%
+        boolean hasItem = false;
+        double subtotal = 0.0, grandtotal=0.0;
+        
         while (rs.next()) {
+            hasItem = true;
             String id = rs.getString("BOOK_ID");
             String name = rs.getString("BOOK_NAME");
             double price = rs.getDouble("BOOK_PRICE");
@@ -51,39 +55,74 @@
             String type = rs.getString("BOOK_TYPE");
             String category = rs.getString("BOOK_CATEGORY");
             int qty = rs.getInt("QUANTITY");
-            double subtotal = price * qty;
+            double ttotal = price * qty;
+            subtotal += ttotal;
+            grandtotal = subtotal + 5.90;
     %>
-                            
+                        
+                        <!--====== show Form ======-->    
                             <tr class="table_row">
-                                <td class="column-1">
-                                    <div ><img src="<%= image %>" alt="IMG" width="100px" height="100px"></div>
-                                </td>
-                                <td class="column-2" style="padding-left: 15px; width: 250px">
-                                    <a href="product-detail.jsp?BOOK_ID=<%= id %>&CATEGORY=<%= category %>&TYPE=<%= type %>">
-                                       <%= name %>
-                                    </a> 
-                                </td>
-                                <td class="column-4" style="text-align: center">RM <%= price %></td>
-
-                                <td class="column-5">
-                                    <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                            <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+                                <form action="UpdateQuantityServlet" method="post">
+                                    <input type="hidden" name="id" value="<%= id %>" />
+                        <!--===== show image ======-->
+                                    <td class="column-1">
+                                        <div><img src="<%= image %>" alt="IMG" width="100px" height="100px"></div>
+                                    </td>
+                        <!--===== show name ======-->
+                                    <td class="column-2" style="padding-left: 15px; width: 250px">
+                                        <a href="product-detail.jsp?BOOK_ID=<%= id %>&CATEGORY=<%= category %>&TYPE=<%= type %>" 
+                                           style="color: #5B65F3;">
+                                           <%= name %>
+                                        </a> 
+                                    </td>
+                        <!--===== show price ======-->
+                                    <td class="column-4" style="text-align: center">RM <%= String.format("%.2f", price) %></td>
+                        <!--===== show quantity ======-->
+                                    <td class="column-5">
+                                        <div class="quantity-display" style="text-align: center">
+                                            <span class="quantity-text"><%= qty %></span>
+                                        </div>
+                                        <div class="wrap-num-product quantity-edit d-none flex-w m-l-auto m-r-0">
+                                            <div class="btn-num-product-down btn-num-down cl8 hov-btn3 trans-04 flex-c-m" >
                                                     <i class="fs-16 zmdi zmdi-minus"></i>
                                             </div>
-
-                                            <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="1">
-
-                                            <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                                            <input class="mtext-104 cl3 txt-center num-product qty-input" type="number" name="quantity"  
+                                                   value="<%= qty %>" data-price="<%= price %>" readonly>
+                                            <div class="btn-num-product-up btn-num-up cl8 hov-btn3 trans-04 flex-c-m">
                                                     <i class="fs-16 zmdi zmdi-plus"></i>
                                             </div>
-                                    </div>
-                                </td>
-                                <td class="column-3" style="text-align: center">RM <%= subtotal %></td>
-                                
-                                <td class="column-3" style="text-align: center"><img src="images/icons/edit.png" alt="Edit" title="Edit"/></td>
-                                <td class="column-3" style="text-align: center"><img src="images/icons/delete.png" alt="Delete" title="Delete"/></td>
+                                        </div>
+                                    </td>
+                        <!--===== show total ======-->
+                                    <td class="column-3" style="text-align: center">RM <%= String.format("%.2f", ttotal) %></td>
+                        <!--===== show edit & save button ======-->
+                                    <td class="column-3" style="text-align: center">
+                                        <img src="images/icons/edit.png" title="Edit" style="cursor: pointer;" class="update-btn" />
+                                        
+                                        <button class="save-btn d-none" data-id="<%= id %>" type="submit" name="action" value="update">
+                                            <img src="images/icons/yes.png" title="Save" />
+                                        </button>
+                                    </td>
+                        <!--===== show delete button ======-->
+                                    <td class="column-3" style="text-align: center">
+                                        <button type="submit" name="action" value="delete">
+                                            <img src="images/icons/delete.png" alt="Delete" title="Delete"/>
+                                        </button>
+                                    </td>
+                                </form>
+                         <!--===== end Form ======-->
                             </tr>
-                            <%}%>
+        <%}
+            if (!hasItem) { 
+        %>
+                            <tr>
+                                <td colspan="7" style="text-align:center; padding: 40px 0;">
+                                    <strong>Your cart is looking lonely… &nbsp; Start shopping to fill it up !</strong>
+                                </td>
+                            </tr>
+        <%
+            }
+        %>
                         </table>
                     </div>
                 </div>
@@ -92,34 +131,34 @@
        
         
         <div style="display: flex; justify-content: flex-end;">
-            <div class="col-sm-10 col-lg-7 col-xl-5 m-b-50" style="margin-top: 50px; margin-right: 75px">
-                <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+            <div class="col-sm-10 col-lg-7 col-xl-5 m-b-50" style="margin-top: 50px;">
+                <div class="bor10 p-lr-40 p-t-30 p-b-40 m-r-40 m-lr-0-xl p-lr-15-sm">
 
-                    <h4 class="mtext-109 cl2 p-b-30">Cart Totals</h4>
-                        <div class="flex-w flex-t bor12 p-b-13">
-                            <div class="size-208">
-                                <span class="stext-110 cl2">Subtotal:</span>
+<!--                    <h4 class="mtext-109 cl2 p-b-30">Cart Totals</h4>-->
+                        <div class="flex-w flex-t bor12 p-b-13"  style="text-align: left">
+                            <div style="width: 55.5%;">
+                                <span class="stext-110 cl2">SUBTOTAL:</span>
                             </div>
-                            <div class="size-209">
-                                <span class="mtext-110 cl2">$79.65</span>
+                            <div style="width: 44.5%;">
+                                <span class="mtext-110 cl2">RM &nbsp;<%= String.format("%.2f", subtotal) %></span>
                             </div>
                         </div>
 
-                        <div class="flex-w flex-t bor12 p-t-15 p-b-30">
-                            <div class="size-208 w-full-ssm">
-                                <span class="stext-110 cl2">Shipping:</span>
+                        <div class="flex-w flex-t bor12 p-t-15 p-b-30"  style="text-align: left">
+                            <div class="w-full-ssm" style="width: 55.5%;">
+                                <span class="stext-110 cl2">SHIPPING:</span>
                             </div>
-                            <div class="size-209">
-                                <span class="mtext-110 cl2">$79.65</span>
+                            <div style="width: 44.5%;">
+                                <span class="mtext-110 cl2">RM &nbsp;5.90</span>
                             </div>
                         </div>
 
-                        <div class="flex-w flex-t p-t-27 p-b-33">
-                            <div class="size-208">
-                                <span class="mtext-101 cl2">Total:</span>
+                        <div class="flex-w flex-t"  style="text-align: left; padding-top: 35px">
+                            <div style="width: 55.5%;">
+                                <h4 class="mtext-109 cl2 p-b-30">GRAND TOTAL :</h4>
                             </div>
-                            <div class="size-209 p-t-1">
-                                <span class="mtext-110 cl2">$79.65</span>
+                            <div class="p-t-1" style="width: 44.5%;">
+                                <span class="mtext-110 cl2"><b>RM &nbsp;<%= String.format("%.2f", grandtotal) %></b></span>
                             </div>
                         </div>
 
@@ -129,8 +168,50 @@
                     </div>
             </div>
         </div>
-    </form>
+
 		 
 	<%@ include file="footer.jsp"%>
+     
+            <script>
+   document.addEventListener('DOMContentLoaded', function() {
+	// Edit button click
+	document.addEventListener('click', function(e) {
+		if (e.target.closest('.update-btn')) {
+			const row = e.target.closest('tr');
+			row.querySelector('.quantity-display').classList.add('d-none');
+			row.querySelector('.quantity-edit').classList.remove('d-none');
+			row.querySelector('.update-btn').classList.add('d-none');
+			row.querySelector('.save-btn').classList.remove('d-none');
+		}
+	});
+
+	// Save button click
+	document.addEventListener('click', function(e) {
+		if (e.target.closest('.save-btn')) {
+			const row = e.target.closest('tr');
+			const prodId = e.target.dataset.id;
+			const input = row.querySelector('.qty-input');
+			const newQty = parseInt(input.value);
+			const price = parseFloat(input.dataset.price);
+
+			// Update UI immediately
+			row.querySelector('.quantity-text').textContent = newQty;
+			row.querySelector('.product-total').textContent = 'RM ' + (price * newQty).toFixed(2);
+
+			// Switch back to view mode
+			row.querySelector('.quantity-display').classList.remove('d-none');
+			row.querySelector('.quantity-edit').classList.add('d-none');
+			row.querySelector('.update-btn').classList.remove('d-none');
+			row.querySelector('.save-btn').classList.add('d-none');
+		}
+	});
+});
+
+
+</script>
+
+
+
+
 </body>
 </html>

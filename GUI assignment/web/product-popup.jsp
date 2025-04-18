@@ -109,7 +109,7 @@
                                                 <i class="fs-16 zmdi zmdi-minus"></i>
                                             </div>
                                             <input class="mtext-104 cl3 txt-center num-product" type="number" id="displayQuantity"
-                                                   name="num-product" value="1" min="1" max="100">
+                                                   name="quantity" value="1" min="1" max="100">
                                             <div class="btn-num-up cl8 hov-btn3 trans-04 flex-c-m" style="width: 45px;height: 100%; cursor: pointer;">
                                                 <i class="fs-16 zmdi zmdi-plus"></i>
                                             </div>
@@ -118,7 +118,6 @@
                                         <input type="hidden" name="bookId" value="<%= bookID %>">
                                         <input type="hidden" name="userId" value="<%= userID %>">
                                         <input type="hidden" name="name" value="<%= selectedBook.getBOOK_NAME() %>">
-                                        <input type="hidden" name="quantity" id="hiddenQuantity" value="1" min="1">
                                         <button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                             Add to Cart</button>
                                     </form>
@@ -274,12 +273,6 @@
     });
     </script>
 
-    <script>
-        document.querySelector("form").addEventListener("submit", function () {
-            var quantity = document.getElementById("displayQuantity").value;
-            document.getElementById("hiddenQuantity").value = quantity;
-        });
-    </script>
 
 
         <script src="js/main.js"></script>

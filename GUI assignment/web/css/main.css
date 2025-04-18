@@ -1978,6 +1978,10 @@ input.num-product::-webkit-inner-spin-button {
   line-height: 1.6;
 }
 
+.d-none {
+    display: none !important;
+}
+
 
 
 /*//////////////////////////////////////////////////////////////////
@@ -2578,11 +2582,11 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .size-208 {
-  width: 34.5%;
+  width: 44.5%;
 }
 
 .size-209 {
-  width: 65.5%;
+  width: 55.5%;
 }
 
 .size-210 {
