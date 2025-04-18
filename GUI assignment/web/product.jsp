@@ -13,14 +13,14 @@
     <%
     // Get search term from request parameter
     String searchTerm = request.getParameter("search-product");
-    bookDB db = new bookDB();
     List<Book> books;
     
+    bookDB dob = new bookDB();
     // If search term exists, perform search; otherwise get all books
     if (searchTerm != null && !searchTerm.trim().isEmpty()) {
-        books = db.searchBooks(searchTerm);
+        books = dob.searchBooks(searchTerm);
     } else {
-        books = db.getRecord();
+        books = dob.getRecord();
     }
     %>
     

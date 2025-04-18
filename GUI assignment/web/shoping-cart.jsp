@@ -18,11 +18,8 @@
     </div>
 		
     <% 
-        String userId = "user123";
-
-        bookDB db = new bookDB();
-        ResultSet rs = db.getCart("user123");
-    
+        bookDB book = new bookDB();
+        ResultSet rs = book.getCart("user123");
     %>
     
     <!-- Shoping Cart -->
@@ -57,7 +54,6 @@
             int qty = rs.getInt("QUANTITY");
             double ttotal = price * qty;
             subtotal += ttotal;
-            grandtotal = subtotal + 5.90;
     %>
                         
                         <!--====== show Form ======-->    
@@ -129,12 +125,16 @@
             </div>
         </div>
        
-        
+        <%
+        // Calculate shipping (example: free over RM1000)
+        double shipping = (subtotal >= 1000) ? 0.00 : 25.00;
+        double sst = subtotal * 0.06;
+        grandtotal = subtotal + shipping + sst;
+        %>
+
         <div style="display: flex; justify-content: flex-end;">
             <div class="col-sm-10 col-lg-7 col-xl-5 m-b-50" style="margin-top: 50px;">
                 <div class="bor10 p-lr-40 p-t-30 p-b-40 m-r-40 m-lr-0-xl p-lr-15-sm">
-
-<!--                    <h4 class="mtext-109 cl2 p-b-30">Cart Totals</h4>-->
                         <div class="flex-w flex-t bor12 p-b-13"  style="text-align: left">
                             <div style="width: 55.5%;">
                                 <span class="stext-110 cl2">SUBTOTAL:</span>
@@ -143,13 +143,22 @@
                                 <span class="mtext-110 cl2">RM &nbsp;<%= String.format("%.2f", subtotal) %></span>
                             </div>
                         </div>
+                            
+                        <div class="flex-w flex-t bor12 p-t-15 p-b-30"  style="text-align: left">
+                            <div class="w-full-ssm" style="width: 55.5%;">
+                                <span class="stext-110 cl2">DELIVERY FEES:</span>
+                            </div>
+                            <div style="width: 44.5%;">
+                                <span class="mtext-110 cl2">RM &nbsp;<%= String.format("%.2f", shipping) %></span>
+                            </div>
+                        </div>
 
                         <div class="flex-w flex-t bor12 p-t-15 p-b-30"  style="text-align: left">
                             <div class="w-full-ssm" style="width: 55.5%;">
-                                <span class="stext-110 cl2">SHIPPING:</span>
+                                <span class="stext-110 cl2">SST (6%):</span>
                             </div>
                             <div style="width: 44.5%;">
-                                <span class="mtext-110 cl2">RM &nbsp;5.90</span>
+                                <span class="mtext-110 cl2">RM &nbsp;<%= String.format("%.2f", sst) %></span>
                             </div>
                         </div>
 
