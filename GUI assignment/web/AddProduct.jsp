@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AddStaff
-    Created on : 18 Apr 2025, 10:24:20 pm
+    Document   : AddProduct
+    Created on : 19 Apr 2025, 3:27:47 pm
     Author     : User
 --%>
 
@@ -47,8 +47,8 @@
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="assets/css/demo.css" />
-  </head>
-  <style>
+    
+    <style>
       .container1{
             display: flex;
             justify-content: center;
@@ -119,85 +119,116 @@
             transition-duration: 0.6s;
          }
   </style>
+  </head>
   <body>
       <%@ include file="adminHeader.jsp" %>
       
         <div class="container">
           <div class="page-inner">
-              
             <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
-            <!--------------------------------------------------------Page Header------------------------------------------------------->
-              <div class="page-header">
-                <h3 class="fw-bold mb-3">Staff Accounts</h3>
-                <ul class="breadcrumbs mb-3">
-                  <li class="nav-home">
-                    <a href="#">
-                      <i class="icon-home"></i>
-                    </a>
-                  </li>
-                  <li class="separator">
-                    <i class="icon-arrow-right"></i>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#">Staff Accounts</a>
-                  </li>
-                  <li class="separator">
-                    <i class="icon-arrow-right"></i>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#">Staff Account Management</a>
-                  </li>
-                </ul>
-              </div>
+                
+                <!--------------------------------------------------------Page Header------------------------------------------------------->    
+                <div class="page-header">
+                    <h3 class="fw-bold mb-3">Products</h3>
+                    <ul class="breadcrumbs mb-3">
+                      <li class="nav-home">
+                        <a href="#">
+                          <i class="icon-home"></i>
+                        </a>
+                      </li>
+                      <li class="separator">
+                        <i class="icon-arrow-right"></i>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#">Products</a>
+                      </li>
+                      <li class="separator">
+                        <i class="icon-arrow-right"></i>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#">Products Management</a>
+                      </li>
+                    </ul>
+                </div>
+                
+            <!-------------------------------------------------------------button---------------------------------------------------------->    
+    
             </div>
             
-            <!-------------------------------------------------------------Content---------------------------------------------------------->  
+            <!--------------------------------------------------------Content------------------------------------------------------->
             <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                  <div class="card-header">
-                    <div class="d-flex align-items-center">
-                      <h4 class="card-title">Create New Staff Account</h4>
-                    </div>
-                  </div>
+                <div class="col-md-12">
+                    <div class="card">
+                        
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h4 class="card-title">Create New Product</h4>
+                        </div>
+                    </div> 
                     
-                  <div class="card-body">
-                 <!------------------------------------------------ Form------------------------------------------------------------>        
-                      <div class="container1">
+                 <div class="card-body">
+                     <!------------------------------------------------- Data Table ------------------------------------------------------->
+                       <div class="container1">
                         <form action="" method="POST" class="">
                            <div class="row1">
                               <div class="col1">
-                                 <p class="title">New Staff Account</p>
-
-                                    <div class="inputBox">
-                                       <label><span>Profile :</span></label>
-                                       <input style="color: gray" type="file" name="image" value="" required/>
-                                    </div>
+                                 <p class="title">New Product</p>
                   
                                     <div class="inputBox">
-                                       <label><span>User ID :</span></label>
+                                       <label><span>Book ID :</span></label>
                                        <input type="text" name="id" value="" required />
                                     </div>
 
                                     <div class="inputBox">
-                                       <label><span>User Name :</span></label>
+                                       <label><span>Book Name :</span></label>
                                        <input type="text" name="name" value="" required />
                                     </div>
 
                                     <div class="inputBox">
-                                       <label><span>Email :</span></label>
-                                       <input type="text" name="email" value="" required />
+                                       <label><span>Book Price :</span></label>
+                                       <input type="text" name="price" value="" required />
                                     </div>
                                  
                                     <div class="inputBox">
-                                       <label><span>Password :</span></label>
-                                       <input type="text" name="email" value="" required />
+                                       <label><span>Author Name :</span></label>
+                                       <input type="text" name="a_name" value="" required />
                                     </div>
                                  
                                     <div class="inputBox">
-                                       <label><span>Gender :</span></label>
-                                       <input type="text" name="email" value="" required />
+                                       <label><span>Publisher :</span></label>
+                                       <input type="text" name="pb" value="" required />
                                     </div>
+                                 
+                                    <div class="inputBox">
+                                       <label><span>No of Pages :</span></label>
+                                       <input type="text" name="no_pages" value="" required />
+                                    </div>
+                                 
+                                    <div class="inputBox">
+                                       <label><span>Book Descriptions :</span></label>
+                                       <input type="text" name="desc" value="" required />
+                                    </div>
+                                 
+                                    <div class="inputBox">
+                                       <label><span>Book Quantity :</span></label>
+                                       <input type="text" name="quantity" value="" required />
+                                    </div>
+                                 
+                                    <div class="inputBox">
+                                       <label><span>Book Type :</span></label>
+                                       <input type="text" name="type" value="" required />
+                                    </div>
+                                 
+                                    <div class="inputBox">
+                                       <label><span>Book Image :</span></label>
+                                       <input style="color: gray" type="file" name="image" value="" required/>
+                                    </div>
+                                 
+                                    <div class="inputBox">
+                                       <label><span>Book Category :</span></label>
+                                       <input type="text" name="category" value="" required />
+                                    </div>
+                        
 
                                     <input type="reset" value="Cancel" name="cancel" class="button"/>
                                     <input type="submit" value="Insert" name="Confirm" class="button"/>
@@ -205,15 +236,17 @@
                            </div>
                         </form>
                      </div>   
-                <!------------------------------------------------End Form------------------------------------------------------------>   
-                  </div>
-                </div>
-              </div>
+                <!-------------------------------------------------End of Data Table ---------------------------------->
+            
+            
+            </div>
+            </div>
+            </div>
             </div>
           </div>
         </div>
-
-        <!--------------------------------------------------------Footer------------------------------------------------------->
+        
+        <!--------------------------------------------------------Footer---------------------------------------------------------->
         <footer class="footer">
           <div class="container-fluid d-flex justify-content-between">
             <nav class="pull-left">
@@ -243,7 +276,10 @@
         </footer>
       </div>
     </div>
+      
+      
    
+      
     <!--   Core JS Files   -->
     <script src="assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="assets/js/core/popper.min.js"></script>
@@ -313,3 +349,4 @@
     </script>
   </body>
 </html>
+
