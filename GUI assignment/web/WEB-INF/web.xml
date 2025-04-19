@@ -20,6 +20,14 @@
         <servlet-name>AddStaff</servlet-name>
         <servlet-class>AddStaff</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewServlet</servlet-name>
+        <servlet-class>controller.NewServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editStaff</servlet-name>
+        <servlet-class>controller.editStaff</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/AddToCartServlet</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>AddStaff</servlet-name>
         <url-pattern>/AddStaff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewServlet</servlet-name>
+        <url-pattern>/NewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editStaff</servlet-name>
+        <url-pattern>/editStaff</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
