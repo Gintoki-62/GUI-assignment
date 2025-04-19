@@ -28,13 +28,13 @@
                                 <tr>
                                     <td>
                                         <label>Name:</label>
-                                        <div class="bor19 m-b-20" style="padding: 10px">
+                                        <div id="nmadd" class="m-b-20" style="padding: 10px">
                                             <input type="text" name="userName" value="you" style="width:550px" required readonly>
                                         </div>
                                     </td>
                                     <td>
                                         <label style="margin-left: 25px">Phone Number:</label>
-                                        <div class="bor19 m-b-20" style="margin-left: 25px; padding: 10px">
+                                        <div id="phadd" class="m-b-20" style="margin-left: 25px; padding: 10px">
                                             <input type="text" name="phone" value="0123456789" required readonly>
                                         </div>
                                     </td>
@@ -42,7 +42,7 @@
                                 <tr>
                                     <td>
                                         <label>Address:</label>   
-                                        <div class="bor19 m-b-20" style="padding: 10px">
+                                        <div id="adradd" class="m-b-20" style="padding: 10px">
                                             <input type="textarea" name="address" value="sddssdsdssfdfsf" style="width:550px" required readonly>
                                         </div>
                                     </td>
@@ -209,16 +209,29 @@
         const form = document.getElementById("userForm");
         let isEditing = false;
 
+        // Toggle between Edit and Save
         editBtn.addEventListener("click", function () {
             const inputs = form.querySelectorAll("input");
 
             if (!isEditing) {
-                // Make fields editable
-                inputs.forEach(input => input.removeAttribute("readonly"));
+                // Enable editing and add border
+                inputs.forEach(input => {
+                    input.removeAttribute("readonly");
+                    input.classList.add("editable"); // Optional class for styling
+                });
+
+                // Add bor19 class dynamically to divs
+                document.getElementById("nmadd").classList.add("bor19");
+                document.getElementById("phadd").classList.add("bor19");
+                document.getElementById("adradd").classList.add("bor19");
+
+                // Change button text to "Save"
                 editBtn.textContent = "Save";
                 isEditing = true;
+                
+                document.getElementById("userName").focus();
             } else {
-                // Submit form
+                // Submit the form when the user clicks Save
                 form.submit();
             }
         });
