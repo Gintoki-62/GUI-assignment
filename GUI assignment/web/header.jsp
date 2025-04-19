@@ -52,8 +52,8 @@
                 <div class="content-topbar flex-sb-m h-full container">
 
                     <div class="right-top-bar flex-w h-full">
-                        <a href="#" class="flex-c-m trans-04 p-lr-25">Help & FAQs</a>
-                        <a href="#" class="flex-c-m trans-04 p-lr-25">My Account</a>
+                        <a href="login.jsp" class="flex-c-m trans-04 p-lr-25">LogIn</a>
+                        <a href="profile.jsp" class="flex-c-m trans-04 p-lr-25">User Profile</a>
                     </div>
                 </div>
             </div>
@@ -101,8 +101,8 @@
     <div class="menu-mobile">
         <ul class="topbar-mobile">
             <li><div class="right-top-bar flex-w h-full">
-                <a href="#" class="flex-c-m p-lr-10 trans-04">Help & FAQs</a>
-                <a href="#" class="flex-c-m p-lr-10 trans-04">My Account</a>
+                <a href="login.jsp" class="flex-c-m p-lr-10 trans-04">LogIn</a>
+                <a href="profile.jsp" class="flex-c-m p-lr-10 trans-04">User Profile</a>
             </li>
         </ul>
 
