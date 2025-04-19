@@ -60,11 +60,11 @@
 
             <div class="wrap-menu-desktop how-shadow1">
                 <nav class="limiter-menu-desktop container">		
-                    <a href="#" class="logo"><img src="Logo.png" alt="IMG-LOGO"></a>
+                    <a href="#" class="logo"><img src="images/icons/Logo.png" alt="IMG-LOGO"></a>
                     <div class="menu-desktop">
                         <ul class="main-menu">
                             <li class="active-menu"><a href="product.jsp">Book</a></li>
-                            <li class="label1" data-label1="hot"><a href="shoping-cart.jsp">Shoping Cart</a></li>
+                            <li class="label1" data-label1="hot"><a href="shoping-cart.jsp">Shopping Cart</a></li>
                             <li><a href="blog.jsp">Blog</a></li>
                             <li><a href="about.jsp">About</a></li>
                             <li><a href="contact.jsp">Contact</a></li>
@@ -83,12 +83,10 @@
 
     <!-- Header Mobile -->
     <div class="wrap-header-mobile">		
-        <div class="logo-mobile"><a href="index.jsp"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a></div>
+        <div class="logo-mobile"><a href="index.jsp"><img src="images/icons/Logo.png" alt="IMG-LOGO"></a></div>
             <!-- Icon header -->
             <div class="wrap-icon-header flex-w flex-r-m m-r-15">
-                
-                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2"><i class="zmdi zmdi-shopping-cart"></i></div>
-                <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0"><i class="zmdi zmdi-favorite-outline"></i></a>
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="<%= totalBooks%>"><i class="zmdi zmdi-shopping-cart"></i></div>
             </div>
 
             <!-- Button show menu -->
@@ -110,7 +108,7 @@
 
         <ul class="main-menu-m">
             <li><a href="product.jsp">Book</a></li>
-            <li><a href="shoping-cart.jsp" class="label1 rs1" data-label1="hot"> Shoping Cart</a></li>
+            <li><a href="shoping-cart.jsp" class="label1 rs1" data-label1="hot"> Shopping Cart</a></li>
             <li><a href="blog.jsp">Blog</a></li>
             <li><a href="about.jsp">About</a></li>
             <li><a href="contact.jsp">Contact</a></li>
