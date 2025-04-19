@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*, DB.StfAccDB"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -104,7 +105,14 @@
                       </button>
                     </div>
                   </div>
-                    
+                  
+                 <%
+                    StfAccDB staffDB = new StfAccDB();
+                    ResultSet rs = null;
+                    try {
+                        rs = staffDB.getAllRecords();
+                  %>
+
                   <div class="card-body">
                     
                     
@@ -137,37 +145,55 @@
                           </tr>
                         </tfoot>
                         <tbody>
-                          <tr>
-                            <td>T</td>
-                            <td>ST001</td>
-                            <td>Alice Lee</td>
-                            <td>alicelee001@gmail.com</td>
-                            <td>al001</td>
-                            <td>G</td>
-                            <td>
-                              <div class="form-button-action">
-                                <button
-                                  type="button"
-                                  data-bs-toggle="tooltip"
-                                  title=""
-                                  class="btn btn-link btn-primary btn-lg"
-                                  data-original-title="Edit Task"
-                                >
-                                  <i class="fa fa-edit"></i>
-                                </button>
-                                <button
-                                  type="button"
-                                  data-bs-toggle="tooltip"
-                                  title=""
-                                  class="btn btn-link btn-danger"
-                                  data-original-title="Remove"
-                                >
-                                  <i class="fa fa-times"></i>
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
+                             <% while (rs != null && rs.next()) { %>
+                            <tr>
+                                <td><img src="images/<%= rs.getString("Profile") %>"
+                                         alt="Profile Image" 
+                                        style="width:50px; height:50px; border-radius:50%; object-fit:cover;"></td>
+                                <td><%= rs.getString("UserId") %></td>
+                                <td><%= rs.getString("UserName") %></td>
+                                <td><%= rs.getString("Email") %></td>
+                                <td><%= rs.getString("Password") %></td>
+                                <td><%= rs.getString("Gender") %></td>
+                                <td>
+                                    <div class="form-button-action">
+                                        <button
+                                            type="button"
+                                            data-bs-toggle="tooltip"
+                                            title=""
+                                            class="btn btn-link btn-primary btn-lg"
+                                            data-original-title="Edit Task"
+                                            onclick="window.location.href='editStaffAccount.jsp?id=<%= rs.getString("UserId") %>';"
+                                        >
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button
+                                            type="button"
+                                            data-bs-toggle="tooltip"
+                                            title=""
+                                            class="btn btn-link btn-danger"
+                                            data-original-title="Remove"
+                                            onclick="if(confirm('Are you sure you want to delete this account?')) { window.location.href='deleteStaffAccount.jsp?id=<%= rs.getString("UserId") %>'; }"
+                                        >
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <% } %>
                         </tbody>
+                        <%
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            } finally {
+                                if (rs != null) {
+                                    try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+                                }
+                                if (staffDB != null) {
+                                    try { staffDB.shutDown(); } catch (SQLException e) { e.printStackTrace(); }
+                                }
+                            }
+                        %>
                       </table>
                     </div>
                 <!------------------------------------------------End Table------------------------------------------------------------>   

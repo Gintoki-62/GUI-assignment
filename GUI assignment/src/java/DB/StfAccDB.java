@@ -42,6 +42,12 @@ public class StfAccDB {
         }
     }
     
+    public ResultSet getAllRecords() throws SQLException {
+        String queryStr = "SELECT * FROM " + tableName;
+        stmt = conn.prepareStatement(queryStr);
+        return stmt.executeQuery();
+    }
+    
    public void updateRecord(StaffAccount stf)throws SQLException {
         try {
             String updateStr = "UPDATE " + tableName + 
@@ -78,7 +84,7 @@ public class StfAccDB {
         }
     }
     
-    private void shutDown() throws SQLException{
+    public void shutDown() throws SQLException{
         if (conn != null) {
             try {
                 conn.close();

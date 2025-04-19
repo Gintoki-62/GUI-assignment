@@ -215,7 +215,7 @@
                                     </div>
                                  
                                     <div class="inputBox">
-                                       <label><span>Book Type :</span></label>
+                                       <label><span>Book Category :</span></label>
                                        <input type="text" name="type" value="" required />
                                     </div>
                                  
@@ -225,7 +225,7 @@
                                     </div>
                                  
                                     <div class="inputBox">
-                                       <label><span>Book Category :</span></label>
+                                       <label><span>Book Title :</span></label>
                                        <input type="text" name="category" value="" required />
                                     </div>
                         
