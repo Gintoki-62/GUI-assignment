@@ -12,9 +12,7 @@ public class registerServlet extends HttpServlet {
         String email = request.getParameter("email");
 
         try {
-            // Load Derby JDBC driver (optional but good practice)
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-
+           
             // Fixed typo in JDBC URL (jjdbc -> jdbc)
             Connection conn = DriverManager.getConnection(
                 "jdbc:derby://localhost:1527/userdb", "nbuser", "nbuser");

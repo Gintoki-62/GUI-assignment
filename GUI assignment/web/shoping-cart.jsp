@@ -23,7 +23,6 @@
     %>
     
     <!-- Shoping Cart -->
-   <form action="UpdateQuantityServlet" method="post">
         <div class="container" style="padding-top: 20px">
             <div class="row">
                 <div class="m-l-25 m-r--38 m-lr-0-xl">
