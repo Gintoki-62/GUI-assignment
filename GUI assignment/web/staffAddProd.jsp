@@ -3,8 +3,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>BOOKLOOM - Staff</title>
+        <title>BOOKLOOM(STAFF) -ADD PRODUCTS</title>
     </head>
     <body>
+        <%@ include file="staffSidebar.jsp" %>
     </body>
 </html>
