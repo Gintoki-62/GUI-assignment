@@ -25,9 +25,10 @@ public class bookDB {
     
     private void createConnection() {
         try {
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
             conn = DriverManager.getConnection(host, user, password);
             System.out.println("***TRACE: Connection established.");
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             System.err.println("Connection error: " + ex.getMessage());
         }
     }
