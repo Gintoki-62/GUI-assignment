@@ -4,7 +4,7 @@ import javax.servlet.http.*;
 import java.sql.*;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(urlPatterns= {"/loginServlet"})
+@WebServlet(urlPatterns = {"/loginServlet"})
 public class loginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         String username = request.getParameter("username");
@@ -20,7 +20,6 @@ public class loginServlet extends HttpServlet {
 
             // SQL query to check user
             String sql = "SELECT * FROM NBUSER.REGISTER WHERE username = ? AND password = ?";
-
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, username);
             pst.setString(2, password);
@@ -28,24 +27,37 @@ public class loginServlet extends HttpServlet {
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                // Login success - set session
+                // Get user details from DB
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String gender = rs.getString("gender");
+                String phone = rs.getString("phone");
+                String address = rs.getString("address");
+
+                // Login success - set session attributes
                 HttpSession session = request.getSession();
                 session.setAttribute("username", username);
+                session.setAttribute("name", name);
+                session.setAttribute("email", email);
+                session.setAttribute("gender", gender);
+                session.setAttribute("phone", phone);
+                session.setAttribute("address", address);
 
-                // Redirect to homepage (or welcome.jsp if you prefer)
+                // Redirect to homepage
                 response.sendRedirect("about.jsp");
             } else {
-                // Login failed - show error message
+                // Login failed
                 response.sendRedirect("login.jsp?error=invalid");
             }
 
-            // Close database resources
+            // Clean up
             rs.close();
             pst.close();
             conn.close();
 
         } catch (Exception e) {
             e.printStackTrace();
+            response.sendRedirect("login.jsp?error=exception");
         }
     }
 }
