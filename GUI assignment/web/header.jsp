@@ -51,10 +51,7 @@
             <div class="top-bar">
                 <div class="content-topbar flex-sb-m h-full container">
 
-                    <div class="right-top-bar flex-w h-full">
-                        <a href="login.jsp" class="flex-c-m trans-04 p-lr-25">LogIn</a>
-                        <a href="profile.jsp" class="flex-c-m trans-04 p-lr-25">User Profile</a>
-                    </div>
+                    
                 </div>
             </div>
 
@@ -76,7 +73,13 @@
                         <div class="icon-header-item trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="<%= totalBooks%>">
                             <a href="shoping-cart.jsp" style="color:black; "><i class="zmdi zmdi-shopping-cart"></i></a>
                         </div>
+                          <div class="right-top-bar flex-w h-full">
+                        <a href="profile.jsp" class="flex-c-m trans-04 p-lr-25">User Profile</a>
+                        <a href="login.jsp" class="flex-c-m trans-04 p-lr-25">LogIn</a>
+                        
+                    </div>  
                     </div>
+                    
                 </nav>
             </div>	
         </div>

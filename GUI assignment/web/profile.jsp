@@ -29,11 +29,30 @@
             font-weight: bold;
             color: #333;
         }
+        .logout-btn {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .logout-btn input {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
 <%
+    // Session protection
+    if (session.getAttribute("username") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+
     String name = (String) session.getAttribute("name");
     String username = (String) session.getAttribute("username");
     String email = (String) session.getAttribute("email");
@@ -51,6 +70,12 @@
     <div class="profile-item"><span class="label">Phone:</span> <%= phone %></div>
     <div class="profile-item"><span class="label">Address:</span> <%= address %></div>
     <div class="profile-item"><span class="label">Gender:</span> <%= gender %></div>
+
+    <div class="logout-btn">
+        <form action="LogoutServlet" method="post">
+            <input type="submit" value="Logout" />
+        </form>
+    </div>
 </div>
 
 </body>
