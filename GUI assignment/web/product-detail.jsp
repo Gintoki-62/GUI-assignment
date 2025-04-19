@@ -38,8 +38,8 @@
     String userID = "user123";
     
     // Fetch all books from the database
-    bookDB db = new bookDB();
-    List<Book> books = db.getRecord();
+    bookDB dbl = new bookDB();
+    List<Book> books = dbl.getRecord();
 
     // Check if BOOK_ID exists and matches a book in the list
     Book selectedBook = null;

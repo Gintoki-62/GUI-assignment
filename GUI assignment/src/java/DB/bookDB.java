@@ -104,6 +104,22 @@ public class bookDB {
         return books;
     }
     
+    public int getTotalBooksInCart(String userId) {
+        int total = 0;
+        ResultSet rs;
+        try {
+            stmt = conn.prepareStatement("SELECT COUNT(*) FROM cart WHERE user_id = ?");
+            stmt.setString(1, userId);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                total = rs.getInt(1);
+            }   
+        } catch (SQLException ex) {
+            System.err.println("Error count total book in Cart: " + ex.getMessage());
+        }
+        return total;
+    }
+    
     public ResultSet getCart(String userId) {
         ResultSet rs = null;
         try {
