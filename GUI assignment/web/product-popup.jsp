@@ -43,7 +43,7 @@
     <%
     // Get the BOOK_ID from the URL
     String bookID = request.getParameter("BOOK_ID");
-    String userID = "user123";
+    String userId = (String) request.getSession().getAttribute("username");
     
     // Fetch all books from the database
     bookDB db = new bookDB();
@@ -116,7 +116,7 @@
                                         </div>
                                
                                         <input type="hidden" name="bookId" value="<%= bookID %>">
-                                        <input type="hidden" name="userId" value="<%= userID %>">
+                                        <input type="hidden" name="userId" value="<%= userId %>">
                                         <input type="hidden" name="name" value="<%= selectedBook.getBOOK_NAME() %>">
                                         <button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                             Add to Cart</button>

@@ -27,7 +27,8 @@ public class UpdateQuantityServlet extends HttpServlet {
 
         String bookId = request.getParameter("id");
         String action = request.getParameter("action"); // "update" or "delete"
-        String userId = "user123"; // Replace with session-based user ID if needed
+//        String userId = "user123"; // Replace with session-based user ID if needed
+        String userId = (String) request.getSession().getAttribute("username");
 
         try {
             bookDB db = new bookDB();

@@ -19,7 +19,7 @@
 		
     <% 
         bookDB book = new bookDB();
-        ResultSet rs = book.getCart("user123");
+        ResultSet rs = book.getCart(userId);
     %>
     
     <!-- Shoping Cart -->
@@ -170,9 +170,9 @@
                             </div>
                         </div>
 
-                        <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                                Proceed to Checkout
-                        </button>
+                        <a href="payCheckOut.jsp"><button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                             Proceed to Checkout 
+                        </button></a>
                     </div>
             </div>
         </div>

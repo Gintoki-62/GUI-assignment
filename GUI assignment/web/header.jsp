@@ -39,7 +39,8 @@
     </head>
     <%
         //String userId = (String) session.getAttribute("userId"); 
-        String userId = "user123"; 
+//        String userId = "user123"; 
+        String userId = (String) request.getSession().getAttribute("username");
         bookDB db = new bookDB();
         int totalBooks = db.getTotalBooksInCart(userId);
     %>

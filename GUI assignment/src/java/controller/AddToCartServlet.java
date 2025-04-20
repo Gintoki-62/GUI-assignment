@@ -27,8 +27,8 @@ public class AddToCartServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         
         // Get user ID from session
-//        String userId = (String) request.getSession().getAttribute("username");
-          String userId = "user123";
+        String userId = (String) request.getSession().getAttribute("username");
+//          String userId = "user123";
 
         // Make sure user is logged in
         if (userId == null) {
