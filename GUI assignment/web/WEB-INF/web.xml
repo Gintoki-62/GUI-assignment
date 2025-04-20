@@ -33,10 +33,6 @@
         <servlet-class>controller.ProcessPaymentServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SelectPaymentServlet</servlet-name>
-        <servlet-class>controller.SelectPaymentServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>deleteStaff</servlet-name>
         <servlet-class>controller.deleteStaff</servlet-class>
     </servlet>
@@ -71,10 +67,6 @@
     <servlet-mapping>
         <servlet-name>ProcessPaymentServlet</servlet-name>
         <url-pattern>/ProcessPaymentServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SelectPaymentServlet</servlet-name>
-        <url-pattern>/SelectPaymentServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>deleteStaff</servlet-name>

@@ -8,6 +8,7 @@ import domain.Book;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -280,7 +281,37 @@ public class bookDB {
         }
     }
 
+    public static boolean insertPayment(String userId, String method, String bank, String wallet, String amount) {
+        boolean success = false;
 
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/bookLoomDB", "book", "book");
+
+            // Generate UUID for payment_id
+            String transactionId = UUID.randomUUID().toString();
+            String orderId = UUID.randomUUID().toString();
+
+            String sql = "INSERT INTO payment (transaction_id, order_id, user_id, method, bank, wallet, amount) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, transactionId);       // UUID
+            stmt.setString(2, orderId);
+            stmt.setString(3, userId);
+            stmt.setString(4, method);
+            stmt.setString(5, bank);
+            stmt.setString(6, wallet);
+            stmt.setString(7, amount);
+
+            int rows = stmt.executeUpdate();
+            if (rows > 0) success = true;
+
+            stmt.close();
+            conn.close();
+        } catch (Exception ex) {
+            System.err.println("Error insert payment: " + ex.getMessage());
+        }
+
+        return success;
+    }
 
     public static void main(String[] args) {
         bookDB book = new bookDB();
