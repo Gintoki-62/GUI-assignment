@@ -94,18 +94,19 @@ public class StfAccDB {
         return staff;
     }
    
-   public void deleteRecord(String id)throws SQLException {
+   public boolean deleteRecord(String id)throws SQLException {
         try {
             String deleteStr = "DELETE FROM " + tableName + " WHERE UserId = ?";
             stmt = conn.prepareStatement(deleteStr);
             stmt.setString(1, id);
-            stmt.executeUpdate();
-
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
         } catch (SQLException ex) {
          //   JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
           throw ex;
         
         }
+   
     }
     
     public void shutDown() throws SQLException{

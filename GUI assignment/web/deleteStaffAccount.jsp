@@ -75,14 +75,13 @@
     table {
         width: 80%;
         margin: 20px auto;
+        border: 2px solid #272c30;
         border-collapse: collapse;
         box-shadow: 0 5px 10px grey;
     }
-
+    
     th, td {
-        border: 2px outset #272c30;
         padding: 10px;
-        text-align: center;
     }
 
     th {
@@ -91,8 +90,9 @@
     }
 
     td {
-       background-color: #C7C8CC;
-       color: black;
+        background-color: #C7C8CC;
+        color: black;
+        text-align: center;
     }
     .button {
        font-weight: bold;
@@ -177,22 +177,22 @@
                     <td><img src="images/<%= staff.getProfile() %>" alt="Current Profile" style="width:50px; height:50px; display:block; margin-bottom:10px;"></td>
                     </tr>
 
-                    <tr>
+                    <tr style="border: 2px solid #272c30;">
                     <th>User Id :</th>
                     <td><%= staff.getId() %></td>
                     </tr>
 
-                    <tr>
+                    <tr style="border: 2px solid #272c30;">
                     <th>User Name :</th>
                     <td><%= staff.getName() %></td>
                     </tr>
 
-                    <tr>
+                    <tr style="border: 2px solid #272c30;">
                     <th>Email :</th>
                     <td><%= staff.getEmail() %></td>
                     </tr>
                     
-                    <tr>
+                    <tr style="border: 2px solid #272c30;">
                     <th>Password :</th>
                     <td><%= staff.getPsw() %></td>
                     </tr>
@@ -203,9 +203,10 @@
                     </tr>
                 </table>
 
-                <form action="" method="POST">
-                <input type="hidden" name="image" value="%s" />
-                <input type="hidden" name="name" value="%s" />
+                <form action="deleteStaff" method="POST">
+                <input type="hidden" name="id" value="<%= staff.getId() %>" />
+                <input type="hidden" name="image" value="<%= staff.getProfile() %>" />
+                <input type="hidden" name="name" value="<%= staff.getName() %>" />
                 <a href="staffAcc.jsp" "><input type="button" class="button" value="Cancel" name="cancel" /></a>
                 <input type="submit" class="button" value="Yes" name="yes" />
                 </form>
