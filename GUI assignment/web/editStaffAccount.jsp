@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AddStaff
-    Created on : 18 Apr 2025, 10:24:20 pm
+    Document   : editStaffAccount
+    Created on : 19 Apr 2025, 11:03:48 pm
     Author     : User
 --%>
 
@@ -167,7 +167,7 @@
                         <form action="AddStaff" method="POST" class="">
                            <div class="row1">
                               <div class="col1">
-                                 <p class="title">New Staff Account</p>
+                                 <p class="title">Edit Staff Account</p>
 
                                     <div class="inputBox">
                                        <label><span>Profile :</span></label>

@@ -15,7 +15,7 @@ public class StaffAccount implements Serializable{
     private String id;
     private String name;
     private String email;
-    private String psw;
+    private String password;
     private char gender;
     
     public StaffAccount(){
@@ -26,7 +26,7 @@ public class StaffAccount implements Serializable{
         this.id = id;
         this.name = name;
         this.email = email;
-        this.psw = psw;
+        this.password = psw;
         this.gender = gender;        
     }
     
@@ -63,11 +63,11 @@ public class StaffAccount implements Serializable{
     }
     
     public String getPsw(){
-        return profile;
+        return password;
     }
     
     public void setPsw(String psw){
-        this.psw = psw;
+        this.password = psw;
     }
     
     public char getGender(){

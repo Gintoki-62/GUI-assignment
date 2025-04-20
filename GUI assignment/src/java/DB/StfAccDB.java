@@ -42,6 +42,12 @@ public class StfAccDB {
         }
     }
     
+    public ResultSet getAllRecords() throws SQLException {
+        String queryStr = "SELECT * FROM " + tableName;
+        stmt = conn.prepareStatement(queryStr);
+        return stmt.executeQuery();
+    }
+    
    public void updateRecord(StaffAccount stf)throws SQLException {
         try {
             String updateStr = "UPDATE " + tableName + 
@@ -64,6 +70,51 @@ public class StfAccDB {
         }
     }
    
+   public boolean updateStaffAccount(StaffAccount staff) throws SQLException {
+        String updateStr = "UPDATE " + tableName + " SET Profile = ?, UserName = ?, " +
+                          "Email = ?, Password = ?, Gender = ? WHERE UserId = ?";
+
+        try {
+            stmt = conn.prepareStatement(updateStr);
+            stmt.setString(1, staff.getProfile());
+            stmt.setString(2, staff.getName());
+            stmt.setString(3, staff.getEmail());
+            stmt.setString(4, staff.getPsw());
+            stmt.setString(5, String.valueOf(staff.getGender()));
+            stmt.setString(7, staff.getId());
+
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException ex) {
+            throw ex;
+        }
+    }
+
+    public StaffAccount getStaffById(String id) throws SQLException {
+        String queryStr = "SELECT * FROM " + tableName + " WHERE UserId = ?";
+        StaffAccount staff = null;
+
+        try {
+            stmt = conn.prepareStatement(queryStr);
+            stmt.setString(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                staff = new StaffAccount();
+                staff.setProfile(rs.getString("Profile"));
+                staff.setId(rs.getString("UserId"));
+                staff.setName(rs.getString("UserName"));
+                staff.setEmail(rs.getString("Email"));
+                staff.setPsw(rs.getString("Password"));
+                staff.setGender(rs.getString("Gender").charAt(0));
+            }
+        } catch (SQLException ex) {
+            throw ex;
+        }
+
+        return staff;
+    }
+   
    public void deleteRecord(String id)throws SQLException {
         try {
             String deleteStr = "DELETE FROM " + tableName + " WHERE UserId = ?";
@@ -78,7 +129,7 @@ public class StfAccDB {
         }
     }
     
-    private void shutDown() throws SQLException{
+    public void shutDown() throws SQLException{
         if (conn != null) {
             try {
                 conn.close();

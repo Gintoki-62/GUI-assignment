@@ -16,6 +16,26 @@
         <servlet-name>logoutServlet</servlet-name>
         <servlet-class>logoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddStaff</servlet-name>
+        <servlet-class>AddStaff</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewServlet</servlet-name>
+        <servlet-class>controller.NewServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editStaff</servlet-name>
+        <servlet-class>controller.editStaff</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProcessPaymentServlet</servlet-name>
+        <servlet-class>controller.ProcessPaymentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SelectPaymentServlet</servlet-name>
+        <servlet-class>controller.SelectPaymentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/AddToCartServlet</url-pattern>
@@ -31,6 +51,26 @@
     <servlet-mapping>
         <servlet-name>logoutServlet</servlet-name>
         <url-pattern>/logoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddStaff</servlet-name>
+        <url-pattern>/AddStaff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewServlet</servlet-name>
+        <url-pattern>/NewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editStaff</servlet-name>
+        <url-pattern>/editStaff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcessPaymentServlet</servlet-name>
+        <url-pattern>/ProcessPaymentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SelectPaymentServlet</servlet-name>
+        <url-pattern>/SelectPaymentServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
