@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="DB.StfAccDB, domain.StaffAccount" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -160,47 +161,54 @@
                       <h4 class="card-title">Staff Account Management</h4>
                     </div>
                   </div>
-                    
+                  <%
+                    String userId = request.getParameter("id");
+                    StaffAccount staff = null;
+                    try {
+                        StfAccDB db = new StfAccDB();
+                        staff = db.getStaffById(userId);
+                    } catch (Exception e) {
+                        out.println("Error: " + e.getMessage());
+                    }
+                %>  
                   <div class="card-body">
                  <!------------------------------------------------ Form------------------------------------------------------------>        
                       <div class="container1">
-                        <form action="AddStaff" method="POST" class="">
+                        <form action="editStaff" method="POST" class="">
                            <div class="row1">
                               <div class="col1">
                                  <p class="title">Edit Staff Account</p>
-
-                                    <div class="inputBox">
-                                       <label><span>Profile :</span></label>
-                                       <input style="color: gray" type="file" name="profile" value="" required/>
-                                    </div>
+                                    
+                                    <img src="images/<%= staff.getProfile() %>" alt="Current Profile" style="width:50px; height:50px; display:block; margin-bottom:10px;">
                   
                                     <div class="inputBox">
                                        <label><span>User ID :</span></label>
-                                       <input type="text" name="id" value="" required />
+                                       <input type="hidden" name="id" value="<%= staff.getId() %>" />
+                                       <input style="color: white" type="text" name="id" value="<%= staff.getId() %>" disabled />
                                     </div>
 
                                     <div class="inputBox">
                                        <label><span>User Name :</span></label>
-                                       <input type="text" name="name" value="" required />
+                                       <input type="text" name="name" value="<%= staff.getName() %>" required />
                                     </div>
 
                                     <div class="inputBox">
                                        <label><span>Email :</span></label>
-                                       <input type="text" name="email" value="" required />
+                                       <input type="text" name="email" value="<%= staff.getEmail() %>" required />
                                     </div>
                                  
                                     <div class="inputBox">
                                        <label><span>Password :</span></label>
-                                       <input type="text" name="psw" value="" required />
+                                       <input type="text" name="psw" value="<%= staff.getPsw() %>" required />
                                     </div>
                                  
                                     <div class="inputBox">
                                        <label><span>Gender(F/M) :</span></label>
-                                       <input type="text" name="gender" value="" required />
+                                       <input type="text" name="gender" value="<%= staff.getGender() %>" required />
                                     </div>
 
-                                    <input type="reset" value="Cancel" name="cancel" class="button"/>
-                                    <input type="submit" value="Insert" name="Confirm" class="button"/>
+                                    <input type="button" value="Cancel" onclick="window.location.href='staffAcc.jsp'" class="button"/>
+                                    <input type="submit" value="Update" name="Confirm" class="button"/>
                               </div>
                            </div>
                         </form>

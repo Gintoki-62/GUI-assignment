@@ -1,11 +1,11 @@
 <%-- 
-    Document   : staffAcc
-    Created on : 17 Apr 2025, 11:22:29 pm
+    Document   : deleteStaffAccount
+    Created on : 21 Apr 2025, 12:20:29 am
     Author     : User
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.sql.*, DB.StfAccDB"%>
+<%@ page import="DB.StfAccDB, domain.StaffAccount" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -50,9 +50,72 @@
     <link rel="stylesheet" href="assets/css/demo.css" />
   </head>
   <style>
-      td{
-          padding:13px 21px;
-      }
+    .button {
+        font-weight: bold;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #212529;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 6px 20px;
+        border: none;
+        border-radius: 50px;
+        margin: 10px;
+        float: right;
+    }
+
+    .button:hover {
+        color: black;
+        background-color: #9BB0C1;
+        transition-duration: 0.6s;
+    }
+
+    table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        box-shadow: 0 5px 10px grey;
+    }
+
+    th, td {
+        border: 2px outset #272c30;
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+       background-color: #484f54;
+       color: whitesmoke;
+    }
+
+    td {
+       background-color: #C7C8CC;
+       color: black;
+    }
+    .button {
+       font-weight: bold;
+       color: white;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       background-color: #212529;
+       cursor: pointer;
+       font-size: 16px;
+       padding:9px 25px;
+       border: none;
+       border-radius: 50px;
+       cursor: pointer;
+       float: right;
+       margin: 10px;
+    }
+
+    .button:hover {
+       color: black;
+       background-color: #9BB0C1;
+       transition-duration: 0.6s;
+    }
   </style>
   <body>
       <%@ include file="adminHeader.jsp" %>
@@ -90,112 +153,62 @@
             <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    
                   <div class="card-header">
                     <div class="d-flex align-items-center">
-                      <h4 class="card-title">Staff Accounts</h4>
-                      
-                      <!-------------------------------------------- Button------------------------------------------------------ -->
-                      <button
-                        onclick="window.location.href='AddStaffAccount.jsp';"
-                        class="btn btn-primary btn-round ms-auto" style="font-weight:bold"
-                      >
-                        <i class="fa fa-plus"></i>
-                         Create a new account
-                      </button>
+                      <h4 class="card-title">Staff Account Management</h4>
                     </div>
                   </div>
-                  
-                 <%
-                    StfAccDB staffDB = new StfAccDB();
-                    ResultSet rs = null;
+                  <%
+                    String userId = request.getParameter("id");
+                    StaffAccount staff = null;
                     try {
-                        rs = staffDB.getAllRecords();
-                  %>
-
+                        StfAccDB db = new StfAccDB();
+                        staff = db.getStaffById(userId);
+                    } catch (Exception e) {
+                        out.println("Error: " + e.getMessage());
+                    }
+                %>  
                   <div class="card-body">
+                 <!------------------------------------------------ Table------------------------------------------------------------>        
+                 <p>Are You Sure You Want To Delete The Following Product?</p>
+                <table border="1" cellpadding="10" cellspacing="10">
+                    <tr>
+                    <th>Profile Image :</th>
+                    <td><img src="images/<%= staff.getProfile() %>" alt="Current Profile" style="width:50px; height:50px; display:block; margin-bottom:10px;"></td>
+                    </tr>
+
+                    <tr>
+                    <th>User Id :</th>
+                    <td><%= staff.getId() %></td>
+                    </tr>
+
+                    <tr>
+                    <th>User Name :</th>
+                    <td><%= staff.getName() %></td>
+                    </tr>
+
+                    <tr>
+                    <th>Email :</th>
+                    <td><%= staff.getEmail() %></td>
+                    </tr>
                     
+                    <tr>
+                    <th>Password :</th>
+                    <td><%= staff.getPsw() %></td>
+                    </tr>
                     
-                    <!------------------------------------------------- Data Table ------------------------------------------------------->
-                    <div class="table-responsive">
-                      <table
-                        id="add-row"
-                        class="display table table-striped table-hover"
-                      >
-                        <thead>
-                          <tr>
-                            <th>Profile</th>
-                            <th>UserID</th>
-                            <th>UserName</th>
-                            <th>E-mail</th>
-                            <th>Password</th>
-                            <th>Gender</th>
-                            <th style="width: 10%">Action</th>
-                          </tr>
-                        </thead>
-                        <tfoot>
-                          <tr>
-                            <th>Profile</th>
-                            <th>UserID</th>
-                            <th>UserName</th>
-                            <th>E-mail</th>
-                            <th>Password</th>
-                            <th>Gender</th>
-                            <th>Action</th>
-                          </tr>
-                        </tfoot>
-                        <tbody>
-                             <% while (rs != null && rs.next()) { %>
-                            <tr>
-                                <td><img src="images/<%= rs.getString("Profile") %>"
-                                         alt="Profile Image" 
-                                        style="width:50px; height:50px; border-radius:50%; object-fit:cover;"></td>
-                                <td><%= rs.getString("UserId") %></td>
-                                <td><%= rs.getString("UserName") %></td>
-                                <td><%= rs.getString("Email") %></td>
-                                <td><%= rs.getString("Password") %></td>
-                                <td><%= rs.getString("Gender") %></td>
-                                <td>
-                                    <div class="form-button-action">
-                                        <button
-                                            type="button"
-                                            data-bs-toggle="tooltip"
-                                            title=""
-                                            class="btn btn-link btn-primary btn-lg"
-                                            data-original-title="Edit Task"
-                                            onclick="window.location.href='editStaffAccount.jsp?id=<%= rs.getString("UserId") %>';"
-                                        >
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button
-                                            type="button"
-                                            data-bs-toggle="tooltip"
-                                            title=""
-                                            class="btn btn-link btn-danger"
-                                            data-original-title="Remove"
-                                            onclick="window.location.href='deleteStaffAccount.jsp?id=<%= rs.getString("UserId") %>'; "
-                                        >
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <% } %>
-                        </tbody>
-                        <%
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            } finally {
-                                if (rs != null) {
-                                    try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
-                                }
-                                if (staffDB != null) {
-                                    try { staffDB.shutDown(); } catch (SQLException e) { e.printStackTrace(); }
-                                }
-                            }
-                        %>
-                      </table>
-                    </div>
+                    <tr>
+                    <th>Gender (F/M) :</th>
+                    <td><%= staff.getGender() %></td>
+                    </tr>
+                </table>
+
+                <form action="" method="POST">
+                <input type="hidden" name="image" value="%s" />
+                <input type="hidden" name="name" value="%s" />
+                <a href="staffAcc.jsp" "><input type="button" class="button" value="Cancel" name="cancel" /></a>
+                <input type="submit" class="button" value="Yes" name="yes" />
+                </form>
                 <!------------------------------------------------End Table------------------------------------------------------------>   
                   </div>
                 </div>

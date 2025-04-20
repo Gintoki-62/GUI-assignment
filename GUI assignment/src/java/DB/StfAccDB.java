@@ -51,18 +51,17 @@ public class StfAccDB {
    public void updateRecord(StaffAccount stf)throws SQLException {
         try {
             String updateStr = "UPDATE " + tableName + 
-                    " SET Profile = ?, UserName = ?, Email = ?, Password = ?, Gender = ? WHERE UserId = ?";
+                    " SET UserName = ?, Email = ?, Password = ?, Gender = ? WHERE UserId = ?";
             System.out.println("\n***TRACE Line 63: sql string: " + updateStr);
             stmt = conn.prepareStatement(updateStr);
             System.out.println("\n***TRACE Line 65: sql string: " + updateStr);
-            stmt.setString(1, stf.getProfile());
-            stmt.setString(2, stf.getName());
-            stmt.setString(3, stf.getEmail());
-            stmt.setString(4, stf.getPsw());
+            stmt.setString(1, stf.getName());
+            stmt.setString(2, stf.getEmail());
+            stmt.setString(3, stf.getPsw());
             System.out.println("\n***TRACE: sql string: " + updateStr);
-            stmt.setString(5, String.valueOf(stf.getGender()));
+            stmt.setString(4, String.valueOf(stf.getGender()));
             System.out.println("\n***TRACE: sql string: " + updateStr);
-            stmt.setString(6, stf.getId());
+            stmt.setString(5, stf.getId());
             stmt.executeUpdate();
         } catch (SQLException ex) {
             // JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -70,26 +69,6 @@ public class StfAccDB {
         }
     }
    
-   public boolean updateStaffAccount(StaffAccount staff) throws SQLException {
-        String updateStr = "UPDATE " + tableName + " SET Profile = ?, UserName = ?, " +
-                          "Email = ?, Password = ?, Gender = ? WHERE UserId = ?";
-
-        try {
-            stmt = conn.prepareStatement(updateStr);
-            stmt.setString(1, staff.getProfile());
-            stmt.setString(2, staff.getName());
-            stmt.setString(3, staff.getEmail());
-            stmt.setString(4, staff.getPsw());
-            stmt.setString(5, String.valueOf(staff.getGender()));
-            stmt.setString(7, staff.getId());
-
-            int rowsAffected = stmt.executeUpdate();
-            return rowsAffected > 0;
-        } catch (SQLException ex) {
-            throw ex;
-        }
-    }
-
     public StaffAccount getStaffById(String id) throws SQLException {
         String queryStr = "SELECT * FROM " + tableName + " WHERE UserId = ?";
         StaffAccount staff = null;
