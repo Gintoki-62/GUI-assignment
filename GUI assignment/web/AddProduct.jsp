@@ -173,20 +173,20 @@
                            <div class="row1">
                               <div class="col1">
                                  <p class="title">New Product</p>
-                  
+                                 
                                     <div class="inputBox">
-                                       <label><span>Book ID :</span></label>
-                                       <input type="text" name="id" value="" required />
+                                       <label><span>Book Image :</span></label>
+                                       <input style="color: gray" type="file" name="image" value="" required/>
+                                    </div>
+                                 
+                                    <div class="inputBox">
+                                       <label><span>Book ID (25BOK00000):</span></label>
+                                       <input type="text" name="id" value="25BOK" required />
                                     </div>
 
                                     <div class="inputBox">
                                        <label><span>Book Name :</span></label>
                                        <input type="text" name="name" value="" required />
-                                    </div>
-
-                                    <div class="inputBox">
-                                       <label><span>Book Price :</span></label>
-                                       <input type="text" name="price" value="" required />
                                     </div>
                                  
                                     <div class="inputBox">
@@ -198,37 +198,48 @@
                                        <label><span>Publisher :</span></label>
                                        <input type="text" name="pb" value="" required />
                                     </div>
-                                 
-                                    <div class="inputBox">
-                                       <label><span>No of Pages :</span></label>
-                                       <input type="text" name="no_pages" value="" required />
-                                    </div>
-                                 
+                                    
                                     <div class="inputBox">
                                        <label><span>Book Descriptions :</span></label>
                                        <input type="text" name="desc" value="" required />
                                     </div>
                                  
                                     <div class="inputBox">
+                                       <label><span>No of Pages :</span></label>
+                                       <input type="text" name="no_pages" value="" required />
+                                    </div>                                   
+                                    
+                                    <div class="inputBox">
+                                       <label><span>Book Category :</span></label>
+                                       <select name="catogory" id="category">
+                                           <option value="English">English</option>
+                                           <option value="Bahasa_Melayu">Bahasa Melayu</option>
+                                           <option value="中文图书">中文图书</option>
+                                           <option value="Revision">Revision</option>
+                                           <option value="Stationary">Stationary</option>
+                                       </select>
+                                    </div>
+                                 
+                                    <div class="inputBox">
+                                       <label><span>Book Type :</span></label>
+                                       <select name="type" id="type">
+                                           <option value=""></option>
+                                           <option value=""> </option>
+                                           <option value=""></option>
+                                           <option value=""></option>
+                                           <option value=""></option>
+                                       </select>
+                                    </div>
+                                    
+                                    <div class="inputBox">
+                                       <label><span>Book Price :</span></label>
+                                       <input type="text" name="price" value="RM " required />
+                                    </div>
+                                 
+                                    <div class="inputBox">
                                        <label><span>Book Quantity :</span></label>
                                        <input type="text" name="quantity" value="" required />
                                     </div>
-                                 
-                                    <div class="inputBox">
-                                       <label><span>Book Category :</span></label>
-                                       <input type="text" name="type" value="" required />
-                                    </div>
-                                 
-                                    <div class="inputBox">
-                                       <label><span>Book Image :</span></label>
-                                       <input style="color: gray" type="file" name="image" value="" required/>
-                                    </div>
-                                 
-                                    <div class="inputBox">
-                                       <label><span>Book Title :</span></label>
-                                       <input type="text" name="category" value="" required />
-                                    </div>
-                        
 
                                     <input type="reset" value="Cancel" name="cancel" class="button"/>
                                     <input type="submit" value="Insert" name="Confirm" class="button"/>

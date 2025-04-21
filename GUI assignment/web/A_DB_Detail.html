@@ -41,8 +41,18 @@
         AMOUNT DECIMAL(10, 2), 
         CART_ID VARCHAR(10), 
         PRIMARY KEY (TRANSACTION_ID));
-
-
+        
+        <!--================== Staff Table ============================ -->
+        CREATE TABLE ACCOUNT (
+        PROFILE VARCHAR(255), 
+        USERID VARCHAR(10) NOT NULL, 
+        USERNAME VARCHAR(50) NOT NULL, 
+        EMAIL VARCHAR(50), 
+        PASSWORD VARCHAR(50), 
+        GENDER CHAR(1), 
+        PRIMARY KEY (USERID, USERNAME));
+        <!--================== End Staff Table ============================ -->
+        
 
     </body>
 </html>
