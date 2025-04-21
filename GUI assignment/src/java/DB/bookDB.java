@@ -313,6 +313,38 @@ public class bookDB {
         return success;
     }
 
+    //Get Book by ID for edit products in staff
+    public Book getBookById(String bookId) {
+        Book book = null;
+        String queryStr = "SELECT * FROM " + tableName + " WHERE BOOK_ID = ?";
+
+        try {
+            stmt = conn.prepareStatement(queryStr);
+            stmt.setString(1, bookId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                book = new Book(
+                        rs.getString("BOOK_ID"),
+                        rs.getString("BOOK_NAME"),
+                        rs.getDouble("BOOK_PRICE"),
+                        rs.getString("AUTHOR_NAME"),
+                        rs.getString("PUBLISHER"),
+                        rs.getInt("NO_OF_PAGES"),
+                        rs.getString("BOOK_DESC"),
+                        rs.getInt("BOOK_QUANTITY"),
+                        rs.getString("BOOK_TYPE"),
+                        rs.getString("BOOK_IMAGE"),
+                        rs.getString("BOOK_CATEGORY")
+                );
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error fetching book with ID " + bookId + ": " + ex.getMessage());
+        }
+        return book;
+    }
+    
+    
     public static void main(String[] args) {
         bookDB book = new bookDB();
         List<Book> books = book.getRecord();

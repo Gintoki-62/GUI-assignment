@@ -19,19 +19,19 @@
                         <span>Dashboard</span>
                     </li>
                     <li class="sidebar-item">
-                        <a href="staffViewProd.jsp" class="sidebar-link" target="_blank">
+                        <a href="staffViewProd.jsp" class="sidebar-link">
                             <i class="bi bi-box-seam"></i>
                             <span>View Products</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="staffAddProd.jsp" class="sidebar-link" target="_blank">
+                        <a href="staffAddProd.jsp" class="sidebar-link">
                             <i class="bi bi-plus-circle"></i>
                             <span>Add Product</span>
                         </a>
                     </li>
                      <li class="sidebar-item">
-                        <a href="viewCustomers.jsp" class="sidebar-link" target="_blank">
+                        <a href="viewCustomers.jsp" class="sidebar-link">
                             <i class="bi bi-people"></i>
                             <span>View Customers</span>
                         </a>
@@ -43,13 +43,13 @@
                         <span>Account</span>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link" target="_blank">
+                        <a href="#" class="sidebar-link">
                             <i class="bi bi-person-circle"></i>
                             <span>Profile</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link" target="_blank">
+                        <a href="#" class="sidebar-link">
                             <i class="bi bi-box-arrow-left"></i>
                             <span>Logout</span>
                         </a>
