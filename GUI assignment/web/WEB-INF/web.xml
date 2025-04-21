@@ -18,7 +18,7 @@
     </servlet>
     <servlet>
         <servlet-name>AddStaff</servlet-name>
-        <servlet-class>AddStaff</servlet-class>
+        <servlet-class>controller.AddStaff</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>NewServlet</servlet-name>
