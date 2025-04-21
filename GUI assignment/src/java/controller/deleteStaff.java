@@ -17,13 +17,15 @@ public class deleteStaff extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id = request.getParameter("id");
+        String name = request.getParameter("name");
         
         try {
             StfAccDB db = new StfAccDB();
             boolean success = db.deleteRecord(id);
             
             if (success) {
-                response.sendRedirect("staffAcc.jsp?deleteSuccess=true");
+                request.setAttribute("staffName", name);
+                request.getRequestDispatcher("staffAcc.jsp").forward(request, response);
             } else {
                 response.sendRedirect("staffAcc.jsp?deleteError=true");
             }

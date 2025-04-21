@@ -80,6 +80,10 @@
         box-shadow: 0 5px 10px grey;
     }
     
+    .confirm{
+        color: red;
+        font-weight: bold;
+    }
     th, td {
         padding: 10px;
     }
@@ -93,6 +97,7 @@
         background-color: #C7C8CC;
         color: black;
         text-align: center;
+        font-weight: bold;
     }
     .button {
        font-weight: bold;
@@ -170,7 +175,7 @@
                 %>  
                   <div class="card-body">
                  <!------------------------------------------------ Table------------------------------------------------------------>        
-                 <p>Are You Sure You Want To Delete The Following Product?</p>
+                 <p class="confirm">Are You Sure You Want To Delete The Following Account?</p>
                 <table border="1" cellpadding="10" cellspacing="10">
                     <tr>
                     <th>Profile Image :</th>

@@ -171,14 +171,30 @@
                         out.println("Error: " + e.getMessage());
                     }
                 %>  
+                
                   <div class="card-body">
+                      <%
+                        String staffName = (String) request.getAttribute("staffName");
+                        boolean isSuccess = staffName != null;
+                        if (staffName != null) {
+                    %>
+                        <div class="success-msg" style="padding-left: 20px; padding-top: 20px; color: green; font-weight: bold; background-color: whitesmoke;">
+                            Staff "<%= staffName %>" has been updated successfully.
+                            <a href="staffAcc.jsp">[Back to List Staff]</a>
+                        </div>
+                    <%
+                            session.removeAttribute("staffName");
+                            
+                        }
+                    %>
                  <!------------------------------------------------ Form------------------------------------------------------------>        
                       <div class="container1">
-                        <form action="editStaff" method="POST" class="">
+                        <form id="editStaffForm" action="editStaff" method="POST" class="">
                            <div class="row1">
                               <div class="col1">
                                  <p class="title">Edit Staff Account</p>
-                                    
+                                    <input type="hidden" name="profile" value="<%= staff.getProfile() %>" />
+
                                     <img src="images/<%= staff.getProfile() %>" alt="Current Profile" style="width:50px; height:50px; display:block; margin-bottom:10px;">
                   
                                     <div class="inputBox">
@@ -189,22 +205,22 @@
 
                                     <div class="inputBox">
                                        <label><span>User Name :</span></label>
-                                       <input type="text" name="name" value="<%= staff.getName() %>" required />
+                                       <input type="text" name="name" value="<%= isSuccess ? "" : staff.getName() %>" required />
                                     </div>
 
                                     <div class="inputBox">
                                        <label><span>Email :</span></label>
-                                       <input type="text" name="email" value="<%= staff.getEmail() %>" required />
+                                       <input type="text" name="email" value="<%= isSuccess ? "" : staff.getEmail() %>" required />
                                     </div>
                                  
                                     <div class="inputBox">
                                        <label><span>Password :</span></label>
-                                       <input type="text" name="psw" value="<%= staff.getPsw() %>" required />
+                                       <input type="text" name="psw" value="<%= isSuccess ? "" : staff.getPsw() %>" required />
                                     </div>
                                  
                                     <div class="inputBox">
                                        <label><span>Gender(F/M) :</span></label>
-                                       <input type="text" name="gender" value="<%= staff.getGender() %>" required />
+                                       <input type="text" name="gender" value="<%= isSuccess ? "" : staff.getGender() %>" required />
                                     </div>
 
                                     <input type="button" value="Cancel" onclick="window.location.href='staffAcc.jsp'" class="button"/>
@@ -319,5 +335,22 @@
         fillColor: "rgba(255, 165, 52, .14)",
       });
     </script>
+    
+    <script>
+    // This runs only if the page loaded with staffName (successfully added)
+    window.onload = function() {
+        <% if (request.getAttribute("staffName") != null) { %>
+            // Clear form fields except profile
+            let form = document.getElementById("editStaffForm");
+            form.reset();
+
+            // Re-set the profile value manually if needed
+            let profile = "<%= request.getParameter("profile") %>";
+            if (profile) {
+                document.getElementById("profile").value = profile;
+            }
+        <% } %>
+    }
+</script>
   </body>
 </html>

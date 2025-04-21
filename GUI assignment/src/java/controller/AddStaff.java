@@ -37,8 +37,8 @@ public class AddStaff extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();
         
         String profile = request.getParameter("profile");
         String id = request.getParameter("id");
@@ -50,7 +50,11 @@ public class AddStaff extends HttpServlet {
         try{
             StaffAccount s = new StaffAccount(profile, id, name, email, psw ,gender);
             stf.addRecord(s);
-            response.sendRedirect("staffAcc.jsp");
+        
+            // response.sendRedirect("AddStaffAccount.jsp");
+            request.setAttribute("staffName", name);
+            request.getRequestDispatcher("AddStaffAccount.jsp").forward(request, response);
+
             
         }catch(Exception ex){
                 out.println(ex.getMessage());

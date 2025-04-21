@@ -162,6 +162,19 @@
                   </div>
                     
                   <div class="card-body">
+                    <%
+                        String staffName = (String) request.getAttribute("staffName");
+                        if (staffName != null) {
+                    %>
+                        <div style="padding-left: 20px; padding-top: 20px; color: green; font-weight: bold; background-color: whitesmoke;">
+                            Staff "<%= staffName %>" has been created successfully.
+                            <a href="staffAcc.jsp">[Back to List Staff]</a>
+                        </div>
+                    <%
+                        }
+                    %>
+
+
                  <!------------------------------------------------ Form------------------------------------------------------------>        
                       <div class="container1">
                         <form action="AddStaff" method="POST" class="">
