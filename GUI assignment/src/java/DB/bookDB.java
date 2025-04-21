@@ -304,8 +304,6 @@ public class bookDB {
             int rows = stmt.executeUpdate();
             if (rows > 0) success = true;
 
-            stmt.close();
-            conn.close();
         } catch (Exception ex) {
             System.err.println("Error insert payment: " + ex.getMessage());
         }
