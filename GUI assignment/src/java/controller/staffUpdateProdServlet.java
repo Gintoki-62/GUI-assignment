@@ -111,12 +111,12 @@ public class staffUpdateProdServlet extends HttpServlet {
 
         //See if a new image was uploaded
         if (fileName != null && !fileName.isEmpty() && fileContent.available() > 0) {
-            String uploadDirectory = getServletContext().getRealPath("images/book");
+            String uploadDirectory = getServletContext().getRealPath("images/book/");
             String newImagePath = uploadDirectory + "/" + fileName;
 
             try {
                 Files.copy(fileContent, Paths.get(newImagePath), StandardCopyOption.REPLACE_EXISTING);
-                bookImage = "images/book" + fileName;
+                bookImage = "images/book/" + fileName;
             } catch (IOException e) {
                 // Handle image upload error
                 e.printStackTrace();
