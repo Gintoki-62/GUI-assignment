@@ -17,7 +17,7 @@
     />
     <link
       rel="icon"
-      href="assets/img/kaiadmin/favicon.ico"
+      href="images/tablogo.png"
       type="image/x-icon"
     />
 

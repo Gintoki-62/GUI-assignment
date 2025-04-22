@@ -9,7 +9,7 @@
     />
     <link
       rel="icon"
-      href="assets/img/kaiadmin/favicon.ico"
+      href="images/tablogo.png"
       type="image/x-icon"
     />
 
@@ -58,7 +58,7 @@
           <div class="logo-header" data-background-color="white" style= "padding-left:0px">
             <a href="Index2.jsp" class="logo" >
               <img
-                src="Logo.png"
+                src="images/icons/Logo.png"
                 alt="navbar brand"
                 class="navbar-brand"
                 height="70" weight="20"

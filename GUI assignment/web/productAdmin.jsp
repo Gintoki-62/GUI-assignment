@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*, DB.ProductDB"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,7 +17,7 @@
     />
     <link
       rel="icon"
-      href="assets/img/kaiadmin/favicon.ico"
+      href="images/tablogo.png"
       type="image/x-icon"
     />
 
@@ -49,22 +50,31 @@
     <link rel="stylesheet" href="assets/css/demo.css" />
     
     <style>
+        .button_container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 10px;
+        
+        }
+        
         .edit_button {
             font-weight: bold;
-            color: white;
+            color: darkslategray;
             -webkit-box-flex: 0;
             -ms-flex: 0 0 100%;
-            flex: 0 0 100%;
+            flex: 1; /* Make buttons share space equally */
             max-width: 98%;
             margin: auto;
             justify-content: center;
             align-items: center;
-            background-color: #212529;
+            background-color: whitesmoke;
             cursor: pointer;
-            font-size: 16px;
-            width: 235px;
-            height: 50px;
-            border: 4px solid #1F2544;
+            font-size: 14px; /* Smaller font */
+            width: 105px; /* Remove fixed width */
+            height: 40px; /* Smaller height */
+            border: 2px solid whitesmoke;
+            box-shadow: 0px 1px 1px 1px grey;
             border-radius: 10px;
             transform: translate(1%, 0%);
         }
@@ -186,24 +196,46 @@
                           </button>
                         </div>
                     </div> 
-                    
+                    <%
+                    ProductDB productDB = new ProductDB();
+                    ResultSet rs = null;
+                    try {
+                        rs = productDB.getAllRecords();
+                  %>
+                  
                  <div class="card-body">
                      <!------------------------------------------------- Data Table ------------------------------------------------------->
                     <div class="gallery_container">
+                        <% while (rs != null && rs.next()) { %>
                         <div class="gallery_item">
-
-                            <a data-fancybox="gallery" href="images/layout_img/%s">
-                              <img class="img-responsive" src="images/layout_img/%s" alt="#" />
+                            <a data-fancybox="gallery" href="<%= rs.getString("BOOK_IMAGE") %>">
+                              <img class="img-responsive" width="250" height="250"src="<%= rs.getString("BOOK_IMAGE") %>" alt="#" />
                             </a>
+                          
                             <div class="heading_section">
-                              <a href="productedit.php?name=%s"><button type="submit" class="edit_button">Edit</button></a>
-                              <a href="productdelete.php?name=%s"><button type="submit" class="edit_button">Delete</button></a>
-                              <p>Current Stock: %d</p>
-                              <h6>Price: RM %s</h6>
-                              <h6>%s</h6>
+                              <div class="button_container" 
+                                <a href="editProduct.jsp?id=<%= rs.getString("BOOK_ID") %>"><button type="submit" class="edit_button">Edit</button></a>
+                                <a href="deleteProduct.jsp?id=<%= rs.getString("BOOK_ID") %>"><button type="submit" class="edit_button">Delete</button></a>
+                              </div>
+                              <p style="color: black">Current Stock: <%= rs.getInt("BOOK_QUANTITY") %></p>
+                              <h6 style="color: black">Price: RM <%= rs.getDouble("BOOK_PRICE") %></h6>
+                              <p style="color: black"><%= rs.getString("BOOK_NAME") %></p>
                             </div>
                         </div>
+                        <% } %>
                     </div>
+                     <%
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            } finally {
+                                if (rs != null) {
+                                    try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+                                }
+                                if (productDB != null) {
+                                    try { productDB.shutDown(); } catch (SQLException e) { e.printStackTrace(); }
+                                }
+                            }
+                        %>
                 <!-------------------------------------------------End of Data Table ---------------------------------->
             
             

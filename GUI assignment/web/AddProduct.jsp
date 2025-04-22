@@ -16,7 +16,7 @@
     />
     <link
       rel="icon"
-      href="assets/img/kaiadmin/favicon.ico"
+      href="images/tablogo.png"
       type="image/x-icon"
     />
 
@@ -118,6 +118,21 @@
             background-color: #9BB0C1;
             transition-duration: 0.6s;
          }
+         select {
+            width: 95%;
+            padding: 10px 15px;
+            font-size: 15px;
+            border: 2px solid #ffffff;
+            border-radius: 20px;
+            background-color: white;
+            color: #333;
+            margin-top: 5px;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #9BB0C1;
+        }
   </style>
   </head>
   <body>
@@ -167,9 +182,20 @@
                     </div> 
                     
                  <div class="card-body">
+                     <%
+                        String bookName = (String) request.getAttribute("bookName");
+                        if (bookName != null) {
+                    %>
+                        <div style="padding-left: 20px; padding-top: 20px; color: green; font-weight: bold; background-color: whitesmoke;">
+                            Staff "<%= bookName %>" has been created successfully.
+                            <a href="productAdmin.jsp">[Back to List Product]</a>
+                        </div>
+                    <%
+                        }
+                    %>
                      <!------------------------------------------------- Data Table ------------------------------------------------------->
                        <div class="container1">
-                        <form action="" method="POST" class="">
+                        <form action="AddProductServlet" method="POST" class="">
                            <div class="row1">
                               <div class="col1">
                                  <p class="title">New Product</p>
@@ -191,12 +217,12 @@
                                  
                                     <div class="inputBox">
                                        <label><span>Author Name :</span></label>
-                                       <input type="text" name="a_name" value="" required />
+                                       <input type="text" name="author" value="" required />
                                     </div>
                                  
                                     <div class="inputBox">
                                        <label><span>Publisher :</span></label>
-                                       <input type="text" name="pb" value="" required />
+                                       <input type="text" name="publisher" value="" required />
                                     </div>
                                     
                                     <div class="inputBox">
@@ -206,12 +232,12 @@
                                  
                                     <div class="inputBox">
                                        <label><span>No of Pages :</span></label>
-                                       <input type="text" name="no_pages" value="" required />
+                                       <input type="number" name="no_pages" value="" required />
                                     </div>                                   
                                     
                                     <div class="inputBox">
                                        <label><span>Book Category :</span></label>
-                                       <select name="catogory" id="category">
+                                       <select name="category" id="category" onchange="updateBookTypes()">
                                            <option value="English">English</option>
                                            <option value="Bahasa_Melayu">Bahasa Melayu</option>
                                            <option value="中文图书">中文图书</option>
@@ -224,10 +250,6 @@
                                        <label><span>Book Type :</span></label>
                                        <select name="type" id="type">
                                            <option value=""></option>
-                                           <option value=""> </option>
-                                           <option value=""></option>
-                                           <option value=""></option>
-                                           <option value=""></option>
                                        </select>
                                     </div>
                                     
@@ -238,7 +260,7 @@
                                  
                                     <div class="inputBox">
                                        <label><span>Book Quantity :</span></label>
-                                       <input type="text" name="quantity" value="" required />
+                                       <input type="number" name="quantity" value="" required />
                                     </div>
 
                                     <input type="reset" value="Cancel" name="cancel" class="button"/>
@@ -357,6 +379,41 @@
         lineColor: "#ffa534",
         fillColor: "rgba(255, 165, 52, .14)",
       });
+    </script>
+    <script>
+    function updateBookTypes() {
+        const category = document.getElementById('category').value;
+        const typeDropdown = document.getElementById('type');
+
+        // Clear existing options
+        typeDropdown.innerHTML = '<option value="">-- Select Type --</option>';
+
+        // Add options based on selected category
+        if (category === 'English') {
+            addOptions(typeDropdown, ['Comics', 'Cook', 'Hobby', 'Travel', 'Business']);
+        } 
+        else if (category === 'Bahasa_Melayu') {
+            addOptions(typeDropdown, ['Komik', 'Kesihatan', 'Remaja', 'Seni']);
+        }
+        else if (category === '中文图书') {
+            addOptions(typeDropdown, ['轻小说', '图文漫画', '休闲生活']);
+        }
+        else if (category === 'Revision') {
+            addOptions(typeDropdown, ['SPM', 'STPM/Pre-U', 'Secondary_SMK', 'Primary_SJK', 'Primary_SK']);
+        }
+        else if (category === 'Stationary') {
+            addOptions(typeDropdown, ['Bag&Accessories', 'Paper']);
+        }
+    }
+
+    function addOptions(selectElement, options) {
+        options.forEach(option => {
+            const opt = document.createElement('option');
+            opt.value = option;
+            opt.textContent = option;
+            selectElement.appendChild(opt);
+        });
+    }
     </script>
   </body>
 </html>
