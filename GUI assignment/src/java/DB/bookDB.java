@@ -342,6 +342,62 @@ public class bookDB {
         return book;
     }
     
+    //update book in staff edit prod
+    public boolean updateBook(Book book) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        boolean updated = false;
+
+        try {
+            String sql = "UPDATE BOOK SET " + // Changed to "BOOK" to match your tableName
+                         "BOOK_NAME = ?, " +
+                         "BOOK_PRICE = ?, " +
+                         "AUTHOR_NAME = ?, " +
+                         "PUBLISHER = ?, " +
+                         "NO_OF_PAGES = ?, " +
+                         "BOOK_DESC = ?, " +
+                         "BOOK_QUANTITY = ?, " +
+                         "BOOK_TYPE = ?, " +
+                         "BOOK_IMAGE = ?, " +
+                         "BOOK_CATEGORY = ? " +
+                         "WHERE BOOK_ID = ?";
+
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, book.getBOOK_NAME());
+            preparedStatement.setDouble(2, book.getBOOK_PRICE());
+            preparedStatement.setString(3, book.getAUTHOR_NAME());
+            preparedStatement.setString(4, book.getPUBLISHER());
+            preparedStatement.setInt(5, book.getNO_OF_PAGES());
+            preparedStatement.setString(6, book.getBOOK_DESC());
+            preparedStatement.setInt(7, book.getBOOK_QUANTITY());
+            preparedStatement.setString(8, book.getBOOK_TYPE());
+            preparedStatement.setString(9, book.getBOOK_IMAGE());
+            preparedStatement.setString(10, book.getBOOK_CATEGORY());
+            preparedStatement.setString(11, book.getBOOK_ID()); // Set the WHERE clause parameter
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected > 0) {
+                updated = true;
+            }
+
+        } catch (SQLException e) {
+            // Log the error properly
+            e.printStackTrace();
+            throw e; // Re-throw the exception to be caught by the servlet
+        } finally {
+            // Close the PreparedStatement in the finally block
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // Note: We are NOT closing the connection here, as it's managed by the bookDB instance.
+        }
+
+        return updated;
+    }
+    
     
     public static void main(String[] args) {
         bookDB book = new bookDB();
