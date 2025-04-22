@@ -14,7 +14,7 @@ import java.sql.*;
 import javax.swing.*;
 
 public class ProductDB {
-    private String host = "jdbc:derby://localhost:1527/bookloom";
+    private String host = "jdbc:derby://localhost:1527/bookloom;create=true";
     private String user = "ckj";
     private String password = "ckj";
     private String tableName = "Book";

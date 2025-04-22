@@ -213,11 +213,11 @@
                             </a>
                           
                             <div class="heading_section">
-                              <div class="button_container" 
+                            <div class="button_container"> 
                                 <a href="editProduct.jsp?id=<%= rs.getString("BOOK_ID") %>"><button type="submit" class="edit_button">Edit</button></a>
                                 <a href="deleteProduct.jsp?id=<%= rs.getString("BOOK_ID") %>"><button type="submit" class="edit_button">Delete</button></a>
                               </div>
-                              <p style="color: black">Current Stock: <%= rs.getInt("BOOK_QUANTITY") %></p>
+                              <h6 style="color: black">Current Stock: <%= rs.getInt("BOOK_QUANTITY") %></h6>
                               <h6 style="color: black">Price: RM <%= rs.getDouble("BOOK_PRICE") %></h6>
                               <p style="color: black"><%= rs.getString("BOOK_NAME") %></p>
                             </div>

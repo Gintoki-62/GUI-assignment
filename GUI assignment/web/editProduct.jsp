@@ -1,11 +1,11 @@
 <%-- 
-    Document   : AddProduct
-    Created on : 19 Apr 2025, 3:27:47 pm
+    Document   : editProduct
+    Created on : 22 Apr 2025, 4:09:32 pm
     Author     : User
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.net.URLEncoder, java.net.URLDecoder"%>
+<%@ page import="DB.ProductDB, domain.Product" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -82,7 +82,7 @@
             margin: 15px 0;
          }
 
-        .container1 form .row1 .inputBox input{
+         .container1 form .row1 .inputBox input{
             width: 100px;
             border: 2px solid #ffffff;width: 625px;
             padding: 10px 15px;
@@ -181,14 +181,24 @@
                             <h4 class="card-title">Create New Product</h4>
                         </div>
                     </div> 
-                    
+                   <%
+                    String bookId = request.getParameter("id");
+                    Product prd = null;
+                    try {
+                        ProductDB db = new ProductDB();
+                        prd = db.getProductById(bookId);
+                    } catch (Exception e) {
+                        out.println("Error: " + e.getMessage());
+                    }
+                %>   
                  <div class="card-body">
                      <%
                         String bookName = (String) request.getAttribute("bookName");
+                        boolean isSuccess = bookName != null;
                         if (bookName != null) {
                     %>
                         <div style="padding-left: 20px; padding-top: 20px; color: green; font-weight: bold; background-color: whitesmoke;">
-                            Staff "<%= bookName %>" has been created successfully.
+                            Staff "<%= bookName %>" has been updated successfully.
                             <a href="productAdmin.jsp">[Back to List Product]</a>
                         </div>
                     <%
@@ -196,34 +206,38 @@
                     %>
                      <!------------------------------------------------- Data Table ------------------------------------------------------->
                        <div class="container1">
-                        <form action="AddProductServlet" method="POST" class="" <% request.setCharacterEncoding("UTF-8"); %>>
+                        <form id="editProductForm" action="editProductServlet" method="POST" class="">
                            <div class="row1">
                               <div class="col1">
                                  <p class="title">New Product</p>
                                  
                                     <div class="inputBox">
                                        <label><span>Book Image :</span></label>
-                                       <input style="color: gray" type="file" name="image" value="" required/>
+                                       <input type="hidden" name="image" value="<%= prd.getImage() %>" />
+                                       
+                                       <img src="images/<%= prd.getImage() %>" alt="Current Profile" 
+                                            style="width:50px; height:50px; display:block; margin-bottom:10px;">
                                     </div>
                                  
                                     <div class="inputBox">
                                        <label><span>Book ID (25BOK00000):</span></label>
-                                       <input type="text" name="id" value="25BOK" required />
+                                       <input type="hidden" name="id" value="<%= prd.getBookId() %>" />
+                                       <input style="color: white" type="text" name="id" value="<%= prd.getBookId() %>" disabled />
                                     </div>
 
                                     <div class="inputBox">
                                        <label><span>Book Name :</span></label>
-                                       <input type="text" name="name" value="" required />
+                                       <input type="text" name="name" value="<%= isSuccess ? "" : prd.getBookName() %>" required />
                                     </div>
                                  
                                     <div class="inputBox">
                                        <label><span>Author Name :</span></label>
-                                       <input type="text" name="author" value="" required />
+                                       <input type="text" name="author" value="<%= isSuccess ? "" : prd.getAuthor() %>" required />
                                     </div>
                                  
                                     <div class="inputBox">
                                        <label><span>Publisher :</span></label>
-                                       <input type="text" name="publisher" value="" required />
+                                       <input type="text" name="publisher" value="<%= isSuccess ? "" : prd.getPublisher() %>" required />
                                     </div>
                                     
                                     <div class="inputBox">
@@ -232,45 +246,51 @@
                                                  width: 95%; 
                                                  padding:6px 8px; 
                                                  box-sizing:border-box; 
-                                                 resize:vertical;" type="text" name="desc" value="" required></textarea>
+                                                 resize:vertical;" type="text" name="desc" value="<%= isSuccess ? "" : prd.getDescription() %>" required></textarea>
                                     </div>
                                  
                                     <div class="inputBox">
                                        <label><span>No of Pages :</span></label>
-                                       <input type="number" name="no_pages" value="" required />
+                                       <input type="number" name="no_pages" value="<%= isSuccess ? "" : prd.getNoPages() %>" required />
                                     </div>                                   
                                     
                                     <div class="inputBox">
-                                       <label><span>Book Category :</span></label>
-                                       <select name="category" id="category" onchange="updateBookTypes()">
-                                           <option value="">-- Select Category --</option>
-                                           <option value="English">English</option>
-                                           <option value="Bahasa_Melayu">Bahasa Melayu</option>
-                                           <option value="中文图书">中文图书</option>
-                                           <option value="Revision">Revision</option>
-                                           <option value="Stationary">Stationary</option>
-                                       </select>
+                                        <label><span>Book Category :</span></label>
+                                        <select name="category" id="category" onchange="updateBookTypes()">
+                                            <option value="English" <%= (prd.getCategory() != null && 
+                                                    prd.getCategory().equals("English")) ? "selected" : "" %>>English</option>
+                                            <option value="Bahasa_Melayu" <%= (prd.getCategory() != null && 
+                                                    prd.getCategory().equals("Bahasa_Melayu")) ? "selected" : "" %>>Bahasa Melayu</option>
+                                            <option value="中文图书" <%= (prd.getCategory() != null 
+                                                    && prd.getCategory().equals("中文图书")) ? "selected" : "" %>>中文图书</option>
+                                            <option value="Revision" <%= (prd.getCategory() != null 
+                                                    && prd.getCategory().equals("Revision")) ? "selected" : "" %>>Revision</option>
+                                            <option value="Stationary" <%= (prd.getCategory() != null 
+                                                    && prd.getCategory().equals("Stationary")) ? "selected" : "" %>>Stationary</option>
+                                        </select>
                                     </div>
                                  
                                     <div class="inputBox">
                                        <label><span>Book Type :</span></label>
                                        <select name="type" id="type">
-                                           <option value=""></option>
+                                            <option value="<%= isSuccess ? "" : prd.getType() %>" selected>
+                                                <%= isSuccess ? "-- Select Type --" : prd.getType() %>
+                                            </option>
                                        </select>
                                     </div>
                                     
                                     <div class="inputBox">
                                        <label><span>Book Price :</span></label>
-                                       <input type="text" name="price" value="RM " required />
+                                       <input type="text" name="price" value="RM <%= isSuccess ? "" : prd.getPrice() %>" required />
                                     </div>
                                  
                                     <div class="inputBox">
                                        <label><span>Book Quantity :</span></label>
-                                       <input type="number" name="quantity" value="" required />
+                                       <input type="number" name="quantity" value="<%= isSuccess ? "" : prd.getQuantity() %>" required />
                                     </div>
 
                                     <input type="reset" value="Cancel" name="cancel" class="button"/>
-                                    <input type="submit" value="Insert" name="Confirm" class="button"/>
+                                    <input type="submit" value="Update" name="Confirm" class="button"/>
                               </div>
                            </div>
                         </form>
@@ -420,7 +440,38 @@
             selectElement.appendChild(opt);
         });
     }
+    
+    // This runs only if the page loaded with staffName (successfully added)
+    window.onload = function() {
+        // Initialize the category and type dropdowns
+        const currentCategory = "<%= prd.getCategory() %>";
+        if (currentCategory) {
+            document.getElementById('category').value = currentCategory;
+            updateBookTypes();
+
+            // Set the current type after the types are loaded
+            setTimeout(() => {
+                const currentType = "<%= prd.getType() %>";
+                if (currentType) {
+                    document.getElementById('type').value = currentType;
+                }
+            }, 100);
+        }
+
+        <% if (request.getAttribute("bookName") != null) { %>
+            // Clear form fields except profile
+            let form = document.getElementById("editProductForm");
+            form.reset();
+
+            // Re-set the profile value manually if needed
+            let image = "<%= request.getParameter("image") %>";
+            if (image) {
+                document.getElementById("image").value = image;
+            }
+        <% } %>
+    }
     </script>
   </body>
 </html>
+
 
