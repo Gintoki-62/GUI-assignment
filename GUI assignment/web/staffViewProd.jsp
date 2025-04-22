@@ -36,6 +36,7 @@
             border: 1px solid #ddd;
             padding: 12px;
             text-align: left;
+            font-size: 14px;
         }
         th {
             text-align: center;
@@ -43,6 +44,7 @@
             color: white;
             font-weight: bold;
             text-transform: uppercase;
+            font-size: 15px;
         }
         th.actions-header,
         td.actions {
