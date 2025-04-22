@@ -5,6 +5,7 @@
 package DB;
 
 import domain.Book;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -281,15 +282,11 @@ public class bookDB {
         }
     }
 
-    public static boolean insertPayment(String userId, String method, String bank, String wallet, String amount) {
+    public static boolean insertPayment(String transactionId, String orderId, String userId, String method, String bank, String wallet, String amount) {
         boolean success = false;
 
         try {
             Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/bookLoomDB", "book", "book");
-
-            // Generate UUID for payment_id
-            String transactionId = UUID.randomUUID().toString();
-            String orderId = UUID.randomUUID().toString();
 
             String sql = "INSERT INTO payment (transaction_id, order_id, user_id, method, bank, wallet, amount) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -304,13 +301,99 @@ public class bookDB {
             int rows = stmt.executeUpdate();
             if (rows > 0) success = true;
 
-        } catch (Exception ex) {
+            stmt.close();
+            conn.close();
+        } catch (SQLException ex) {
             System.err.println("Error insert payment: " + ex.getMessage());
         }
-
         return success;
     }
 
+    public void addOrder(String orderId, String userId) throws SQLException {
+        PreparedStatement selectStmt = null;
+        PreparedStatement insertStmt = null;
+        ResultSet rs = null;
+
+        try {
+            // Select all books from the user's cart
+            String selectCart = "SELECT * FROM CART WHERE user_id = ?";
+            selectStmt = conn.prepareStatement(selectCart);
+            selectStmt.setString(1, userId);  
+            rs = selectStmt.executeQuery();
+
+            // Loop through all items in the cart
+            while (rs.next()) {
+                String bookId = rs.getString("BOOK_ID");
+                String bookName = rs.getString("BOOK_NAME");
+                String bookPrice = rs.getString("BOOK_PRICE");
+                String bookImage = rs.getString("BOOK_IMAGE");
+                int quantity = rs.getInt("QUANTITY");
+
+                // Generate a unique order_item_id using UUID
+                String orderItemId = UUID.randomUUID().toString();
+
+                // Insert the book into the order_items table
+                String insertSql = "INSERT INTO ORDER_ITEMS (order_item_id, order_id, book_id, book_name, book_price, book_image, quantity) "
+                                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                insertStmt = conn.prepareStatement(insertSql);
+                insertStmt.setString(1, orderItemId); 
+                insertStmt.setString(2, orderId);   
+                insertStmt.setString(3, bookId);   
+                insertStmt.setString(4, bookName);    
+                insertStmt.setString(5, bookPrice);
+                insertStmt.setString(6, bookImage);  
+                insertStmt.setInt(7, quantity);
+                insertStmt.executeUpdate();
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error adding order items: " + ex.getMessage());
+            throw new SQLException("Error adding order items", ex);
+        } finally {
+            // Close the resources
+            try { if (rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+            try { if (selectStmt != null) selectStmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+            try { if (insertStmt != null) insertStmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+            try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+        }
+    }
+
+    public String createOrder(String orderId, String userId, String amount) throws SQLException {
+    
+    String sql = "INSERT INTO ORDERS (order_id, user_id, total_amount) VALUES (?, ?, ?)";
+    try{
+        stmt = conn.prepareStatement(sql); 
+        stmt.setString(1, orderId);
+        stmt.setString(2, userId);
+        stmt.setString(3, amount);
+        stmt.executeUpdate();
+        
+    }catch(SQLException ex){
+        System.err.println("Error insert order: " + ex.getMessage());
+    }
+
+    return orderId; // return so you can use it for order_items
+}
+    
+    public ResultSet getOrderInfo(String userId) {
+        ResultSet rs = null;
+        try {
+            String sql = "SELECT i.BOOK_ID, i.BOOK_NAME, i.BOOK_PRICE, i.BOOK_IMAGE, i.QUANTITY, o.TOTAL_AMOUNT " +
+                        "FROM ORDER_ITEMS i " + "JOIN ORDERS o ON i.ORDER_ID = o.ORDER_ID " +
+                        "WHERE o.user_id = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, userId);
+            rs = stmt.executeQuery();
+            
+        } catch (SQLException ex) {
+            System.err.println("Error fetching records: " + ex.getMessage());
+        }
+        return rs;
+    }
+    
+ 
+    
+    
     //Get Book by ID for edit products in staff
     public Book getBookById(String bookId) {
         Book book = null;

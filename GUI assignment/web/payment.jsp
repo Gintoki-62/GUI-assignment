@@ -27,7 +27,7 @@
                         <br/><br/>
                         <h2>Grand Total: &nbsp;&nbsp; <b>RM <%= String.format("%.2f", grandtotal) %></b></h2><br/>
                         
-                        <form action="ProcessPaymentServlet" method="post" onsubmit="return validateAll();">
+                        <form action="ProcessPaymentServlet" method="POST" onsubmit="return validateAll();">
                             <div class="p-t-30 p-b-40 m-lr-0-xl p-lr-15-sm">
                                 <label>Payment Method:</label>
                                 <select name="method" id="method" onchange="showFields()" class="bor19 size-218 m-b-20" style="padding:10px; width:600px" required>
@@ -147,7 +147,7 @@
                                 </div>
 
                                 <input type="hidden" name="amount" value="<%= String.format("%.2f", grandtotal) %>" />
-                                <input type="hidden" name="user_id" value="<%= username%>" />
+                                <input type="hidden" name="user_id" value="<%= username %>" />
 
                                 <br/><br/>
                                 <div id="finalError" class="error" style="margin-top:10px; color: red"></div><br/>

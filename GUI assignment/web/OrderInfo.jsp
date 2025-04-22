@@ -18,10 +18,10 @@
     </div>
 		
     <% 
-        bookDB book = new bookDB();
-        ResultSet rs = book.getCart(userId);
+        bookDB boook = new bookDB();
+        ResultSet rs = boook.getOrderInfo(userId);
     %>
-    <a href="OrderInfo.jsp">Order Info</a>
+    
     <!-- Shoping Cart -->
         <div class="container" style="padding-top: 20px">
             <div class="row">
@@ -48,9 +48,8 @@
             String name = rs.getString("BOOK_NAME");
             double price = rs.getDouble("BOOK_PRICE");
             String image = rs.getString("BOOK_IMAGE");
-            String type = rs.getString("BOOK_TYPE");
-            String category = rs.getString("BOOK_CATEGORY");
             int qty = rs.getInt("QUANTITY");
+            double totals = rs.getDouble("TOTAL_AMOUNT");
             double ttotal = price * qty;
             subtotal += ttotal;
     %>
@@ -65,7 +64,7 @@
                                     </td>
                         <!--===== show name ======-->
                                     <td class="column-2" style="padding-left: 15px; width: 250px">
-                                        <a href="product-detail.jsp?BOOK_ID=<%= id %>&CATEGORY=<%= category %>&TYPE=<%= type %>" 
+                                        <a href="product-detail.jsp" 
                                            style="color: #5B65F3;">
                                            <%= name %>
                                         </a> 
@@ -89,7 +88,7 @@
                                         </div>
                                     </td>
                         <!--===== show total ======-->
-                                    <td class="column-3" style="text-align: center">RM <%= String.format("%.2f", ttotal) %></td>
+                                    <td class="column-3" style="text-align: center">RM <%= String.format("%.2f", totals) %></td>
                         <!--===== show edit & save button ======-->
                                     <td class="column-3" style="text-align: center">
                                         <img src="images/icons/edit.png" title="Edit" style="cursor: pointer;" class="update-btn" />

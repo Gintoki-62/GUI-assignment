@@ -36,10 +36,9 @@
         ORDER_ID VARCHAR(50), 
         USER_ID VARCHAR(50), 
         "METHOD" VARCHAR(50), 
-        BANK VARCHAR(50), 
+        BANK VARCHAR(50) , 
         WALLET VARCHAR(50), 
         AMOUNT DECIMAL(10, 2), 
-        CART_ID VARCHAR(10), 
         PRIMARY KEY (TRANSACTION_ID),
         FOREIGN KEY (ORDER_ID) REFERENCES ORDERS(ORDER_ID));
          
