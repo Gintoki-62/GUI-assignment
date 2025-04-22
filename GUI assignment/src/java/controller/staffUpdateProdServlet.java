@@ -6,6 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -25,8 +27,7 @@ import domain.Book;
 public class staffUpdateProdServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 
         String bookId = request.getParameter("BOOK_ID");
         String bookName = request.getParameter("BOOK_NAME");
@@ -44,60 +45,103 @@ public class staffUpdateProdServlet extends HttpServlet {
         int bookQuantity = 0;
         String bookImage = null;
         boolean hasError = false;
-        String errorMessage = "";
+        List<String> errorMessages = new ArrayList<>();
 
         // 1. Data Validation
         if (bookId == null || bookId.trim().isEmpty()) {
             hasError = true;
-            errorMessage += "Book ID cannot be empty.<br>";
+            errorMessages.add("Book ID cannot be empty.");
         }
         if (bookName == null || bookName.trim().isEmpty()) {
             hasError = true;
-            errorMessage += "Book Name cannot be empty.<br>";
+            errorMessages.add("Book Name cannot be empty.");
+        } else if (bookName.length() > 255) {
+            hasError = true;
+            errorMessages.add("Book Name cannot exceed 255 characters.");
         }
         try {
             bookPrice = Double.parseDouble(bookPriceStr);
             if (bookPrice <= 0) {
                 hasError = true;
-                errorMessage += "Price must be a positive value.<br>";
+                errorMessages.add("Price must be a positive value.");
+            } else if (bookPrice > 99999.99) {
+                hasError = true;
+                errorMessages.add("Price cannot exceed 99999.99.");
             }
         } catch (NumberFormatException e) {
             hasError = true;
-            errorMessage += "Invalid price format.<br>";
+            errorMessages.add("Invalid price format.");
+        }
+        if (authorName == null || authorName.trim().isEmpty()) {
+            hasError = true;
+            errorMessages.add("Author Name cannot be empty.");
+        } else if (authorName.length() > 255) {
+            hasError = true;
+            errorMessages.add("Author Name cannot exceed 255 characters.");
+        }
+        if (publisher == null || publisher.trim().isEmpty()) {
+            hasError = true;
+            errorMessages.add("Publisher cannot be empty.");
+        } else if (publisher.length() > 255) {
+            hasError = true;
+            errorMessages.add("Publisher cannot exceed 255 characters.");
         }
         try {
             if (noOfPagesStr != null && !noOfPagesStr.trim().isEmpty()) {
                 noOfPages = Integer.parseInt(noOfPagesStr);
                 if (noOfPages < 0) {
                     hasError = true;
-                    errorMessage += "Number of pages cannot be negative.<br>";
+                    errorMessages.add("Number of pages cannot be negative.");
+                } else if (noOfPages > 9999) {
+                    hasError = true;
+                    errorMessages.add("Number of pages cannot exceed 9999.");
                 }
             }
         } catch (NumberFormatException e) {
             hasError = true;
-            errorMessage += "Invalid number of pages format.<br>";
+            errorMessages.add("Invalid number of pages format.");
+        }
+        if (bookDesc == null || bookDesc.trim().isEmpty()) {
+            hasError = true;
+            errorMessages.add("Book Description cannot be empty.");
+        } else {
+            String[] words = bookDesc.trim().split("\\s+");
+            // Check if the number of words exceeds 500
+            if (words.length > 500) {
+                hasError = true;
+                errorMessages.add("Book Description cannot exceed 500 words.");
+            }
         }
         try {
             bookQuantity = Integer.parseInt(bookQuantityStr);
             if (bookQuantity < 0) {
                 hasError = true;
-                errorMessage += "Quantity cannot be negative.<br>";
+                errorMessages.add("Quantity cannot be negative.");
+            } else if (bookQuantity > 9999) {
+                hasError = true;
+                errorMessages.add("Quantity cannot exceed 9999.");
             }
         } catch (NumberFormatException e) {
             hasError = true;
-            errorMessage += "Invalid quantity format.<br>";
+            errorMessages.add("Invalid quantity format.");
         }
         if (bookType == null || bookType.trim().isEmpty()) {
             hasError = true;
-            errorMessage += "Book Type cannot be empty.<br>";
+            errorMessages.add("Book Type cannot be empty.");
+        } else if (bookType.length() > 50) {
+            hasError = true;
+            errorMessages.add("Book Type cannot exceed 50 characters.");
         }
         if (bookCategory == null || bookCategory.trim().isEmpty()) {
             hasError = true;
-            errorMessage += "Book Category cannot be empty.<br>";
+            errorMessages.add("Book Category cannot be empty.");
+        } else if (bookCategory.length() > 50) {
+            hasError = true;
+            errorMessages.add("Book Category cannot exceed 50 characters.");
         }
 
         if (hasError) {
-            request.setAttribute("errorMessage", errorMessage);
+            request.setAttribute("errorMessages", errorMessages);
             // Re-populate the form with the submitted values
             request.setAttribute("book", new Book(bookId, bookName, bookPrice, authorName, publisher, noOfPages, bookDesc, bookQuantity, bookType, null, bookCategory));
             request.getRequestDispatcher("staffEditProd.jsp").forward(request, response);
@@ -120,7 +164,8 @@ public class staffUpdateProdServlet extends HttpServlet {
             } catch (IOException e) {
                 // Handle image upload error
                 e.printStackTrace();
-                request.setAttribute("errorMessage", "Error uploading the new image.");
+                errorMessages.add("Error uploading the new image.");
+                request.setAttribute("errorMessages", errorMessages);
                 request.setAttribute("book", new Book(bookId, bookName, bookPrice, authorName, publisher, noOfPages, bookDesc, bookQuantity, bookType, null, bookCategory));
                 request.getRequestDispatcher("staffEditProd.jsp").forward(request, response);
                 return;
@@ -134,7 +179,7 @@ public class staffUpdateProdServlet extends HttpServlet {
             }
         }
 
-        //Update database adwdda
+        //Update database
         Book updatedBook = new Book(bookId, bookName, bookPrice, authorName, publisher, noOfPages, bookDesc, bookQuantity, bookType, bookImage, bookCategory);
         bookDB bookDb = new bookDB();
 
@@ -145,13 +190,15 @@ public class staffUpdateProdServlet extends HttpServlet {
                 response.sendRedirect("staffViewProd.jsp?updateSuccess=true");
             } else {
                 //Handle database update failure
-                request.setAttribute("errorMessage", "Error updating the book in the database.");
+                errorMessages.add("Error updating the book in the database.");
+                request.setAttribute("errorMessages", errorMessages);
                 request.setAttribute("book", updatedBook);
                 request.getRequestDispatcher("staffEditProd.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            request.setAttribute("errorMessage", "Database error occurred: " + e.getMessage());
+            errorMessages.add("Database error occurred: " + e.getMessage());
+            request.setAttribute("errorMessages", errorMessages);
             request.setAttribute("book", updatedBook);
             request.getRequestDispatcher("staffEditProd.jsp").forward(request, response);
         }

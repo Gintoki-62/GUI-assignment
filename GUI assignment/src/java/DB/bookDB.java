@@ -393,7 +393,7 @@ public class bookDB {
     
  
     
-    
+    //Will make anohter db for my method tmr
     //Get Book by ID for edit products in staff
     public Book getBookById(String bookId) {
         Book book = null;
@@ -431,7 +431,7 @@ public class bookDB {
         boolean updated = false;
 
         try {
-            String sql = "UPDATE BOOK SET " + // Changed to "BOOK" to match your tableName
+            String sql = "UPDATE BOOK SET " +
                          "BOOK_NAME = ?, " +
                          "BOOK_PRICE = ?, " +
                          "AUTHOR_NAME = ?, " +
@@ -455,7 +455,7 @@ public class bookDB {
             preparedStatement.setString(8, book.getBOOK_TYPE());
             preparedStatement.setString(9, book.getBOOK_IMAGE());
             preparedStatement.setString(10, book.getBOOK_CATEGORY());
-            preparedStatement.setString(11, book.getBOOK_ID()); // Set the WHERE clause parameter
+            preparedStatement.setString(11, book.getBOOK_ID());
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
@@ -463,11 +463,9 @@ public class bookDB {
             }
 
         } catch (SQLException e) {
-            // Log the error properly
             e.printStackTrace();
-            throw e; // Re-throw the exception to be caught by the servlet
+            throw e;
         } finally {
-            // Close the PreparedStatement in the finally block
             if (preparedStatement != null) {
                 try {
                     preparedStatement.close();
@@ -475,10 +473,97 @@ public class bookDB {
                     e.printStackTrace();
                 }
             }
-            // Note: We are NOT closing the connection here, as it's managed by the bookDB instance.
         }
 
         return updated;
+    }
+    
+    //add book method
+    public boolean addBook(Book book) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        boolean added = false;
+
+        try {
+            String sql = "INSERT INTO BOOK (BOOK_ID, BOOK_NAME, BOOK_PRICE, AUTHOR_NAME, PUBLISHER, NO_OF_PAGES, BOOK_DESC, BOOK_QUANTITY, BOOK_TYPE, BOOK_IMAGE, BOOK_CATEGORY) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, book.getBOOK_ID());
+            preparedStatement.setString(2, book.getBOOK_NAME());
+            preparedStatement.setDouble(3, book.getBOOK_PRICE());
+            preparedStatement.setString(4, book.getAUTHOR_NAME());
+            preparedStatement.setString(5, book.getPUBLISHER());
+            preparedStatement.setInt(6, book.getNO_OF_PAGES());
+            preparedStatement.setString(7, book.getBOOK_DESC());
+            preparedStatement.setInt(8, book.getBOOK_QUANTITY());
+            preparedStatement.setString(9, book.getBOOK_TYPE());
+            preparedStatement.setString(10, book.getBOOK_IMAGE());
+            preparedStatement.setString(11, book.getBOOK_CATEGORY());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected > 0) {
+                added = true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return added;
+    }
+    
+    //auto generate id
+    public String generateNextBookId() {
+        String nextId = "25BOK00001";
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            if (conn == null || conn.isClosed()) {
+                createConnection();
+            }
+
+            String sql = "SELECT MAX(SUBSTR(BOOK_ID, 6)) AS max_suffix FROM BOOK WHERE SUBSTR(BOOK_ID, 1, 5) = '25BOK'";
+            preparedStatement = conn.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String maxSuffixStr = resultSet.getString("max_suffix");
+                if (maxSuffixStr != null) {
+                    try {
+                        int maxSuffix = Integer.parseInt(maxSuffixStr);
+                        int nextSuffix = maxSuffix + 1;
+                        nextId = String.format("25BOK%05d", nextSuffix);
+                    } catch (NumberFormatException e) {
+                        System.err.println("Error parsing book ID suffix: " + e.getMessage());
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error generating next book ID: " + e.getMessage());
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return nextId;
     }
     
     
