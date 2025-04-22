@@ -136,10 +136,11 @@
                     <br/><br/><br/>
                     
                     <%
-                    // Calculate shipping (example: free over RM1000)
-                    double shipping = (subtotal >= 1000) ? 0.00 : 25.00;
-                    double sst = subtotal * 0.06;
-                    grandtotal = subtotal + shipping + sst;
+                    double discount = (subtotal > 100) ? subtotal * 0.20 : 0.00;
+                    double shipping = (subtotal >= 1000) ? 0.00 : (subtotal > 0 ? 25.00 : 0.00);
+                    double subtotalAfterDiscount = subtotal - discount;
+                    double sst = subtotalAfterDiscount * 0.06;
+                    grandtotal = subtotalAfterDiscount + shipping + sst;
                     session.setAttribute("grandtotal", grandtotal);
                     %>
 
@@ -168,6 +169,16 @@
                         </div>
                         <div style="width: 44.5%;">
                             <span class="mtext-110 cl2">RM &nbsp;<%= String.format("%.2f", sst) %></span>
+                        </div>
+                    </div>
+                        
+                    <div class="flex-w flex-t bor12 p-t-15 p-b-30"  style="text-align: left">
+                        <div class="w-full-ssm" style="width: 55.5%;">
+                            <span class="stext-110 cl2">Discount (20%):</span>
+                            <p style="font-size: 12px">Spend more than RM 100, Get 20% discount.</p>
+                        </div>
+                        <div style="width: 44.5%;">
+                            <span class="mtext-110 cl2">RM &nbsp;<%= String.format("%.2f", discount) %></span>
                         </div>
                     </div>
 

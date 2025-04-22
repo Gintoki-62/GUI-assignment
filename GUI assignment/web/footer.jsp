@@ -229,6 +229,28 @@
         <%
             }
         %>
+<!--===============================================================================================-->  
+
+        <%
+            String success = request.getParameter("success");
+            String amount = request.getParameter("amount"); // assuming you passed amount in URL or as request attribute
+            if ("true".equals(success)) {
+        %>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                window.onload = function() {
+                    const currentDate = new Date().toLocaleString(); // Get current date/time
+                         Swal.fire({
+                                title: '<b>RM <%= amount %></b><br><br><span style="color: #8BD442;">Payment Successful&nbsp;!</span>',
+                                html: '<br><br><a href="OrderInfo.jsp" style="color:black; text-decoration: underline;">Show Order</a><br><br>Thank you for your order!',
+                                icon: 'success'
+                            });
+                        };
+            </script>
+        <%
+            }
+        %>
+       
         
     </body>
 </html>

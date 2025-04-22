@@ -32,12 +32,22 @@
                                 <label>Payment Method:</label>
                                 <select name="method" id="method" onchange="showFields()" class="bor19 size-218 m-b-20" style="padding:10px; width:600px" required>
                                       <option value="">-- Choose a Payment Method --</option>
-                                      <option value="Cash">Cash</option>
+                                      <option value="Cash">Cash On Delivery</option>
                                       <option value="CreditCard">Credit Card</option>
                                       <option value="OnlineBanking">Online Banking</option>
                                       <option value="E-Wallet">E-Wallet</option>
                                     </select>
                                 <br/><br/>
+                                
+                                <div id="cashFields" style="display:none;">
+                                    <ul>
+                                        <li>RULES OF COD :</LI><br/>
+                                        <li>1. Will never ask for any down payment before processing your order.</li>
+                                        <li>2. Never send or deposit money through wire transfers or personal bank accounts.</li>
+                                        <li>3. Full payment must only be given to the delivery agent upon the delivery of your item.</li>
+                                        <li>4. Only pay the amount specified in the Air Waybill stuck in the pouch or box of the item</li>
+                                    </ul>
+                                </div>
                                 
                     <!--=============== credit card ==================-->
                                 <div id="creditFields" style="display:none;">
@@ -168,6 +178,7 @@
     <script>
         function showFields() {
             // Hide all initially
+            document.getElementById("cashFields").style.display = "none";
             document.getElementById("creditFields").style.display = "none";
             document.getElementById("bankingFields").style.display = "none";
             document.getElementById("ewalletFields").style.display = "none";
@@ -195,6 +206,8 @@
             } else if (method === "E-Wallet") {
                 document.getElementById("ewalletFields").style.display = "block";
                 phoneInput.readOnly = false;
+            }else{
+                document.getElementById("cashFields").style.display = "block";
             }
         }
 

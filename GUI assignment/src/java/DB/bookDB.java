@@ -378,7 +378,7 @@ public class bookDB {
     public ResultSet getOrderInfo(String userId) {
         ResultSet rs = null;
         try {
-            String sql = "SELECT i.BOOK_ID, i.BOOK_NAME, i.BOOK_PRICE, i.BOOK_IMAGE, i.QUANTITY, o.TOTAL_AMOUNT " +
+            String sql = "SELECT i.BOOK_ID, i.BOOK_NAME, i.BOOK_PRICE, i.BOOK_IMAGE, i.QUANTITY, o.TOTAL_AMOUNT, o.ORDER_ID " +
                         "FROM ORDER_ITEMS i " + "JOIN ORDERS o ON i.ORDER_ID = o.ORDER_ID " +
                         "WHERE o.user_id = ?";
             stmt = conn.prepareStatement(sql);
@@ -391,7 +391,8 @@ public class bookDB {
         return rs;
     }
     
- 
+
+    
     
     //Will make anohter db for my method tmr
     //Get Book by ID for edit products in staff

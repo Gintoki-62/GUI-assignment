@@ -21,7 +21,7 @@
         bookDB book = new bookDB();
         ResultSet rs = book.getCart(userId);
     %>
-    <a href="OrderInfo.jsp">Order Info</a>
+
     <!-- Shoping Cart -->
         <div class="container" style="padding-top: 20px">
             <div class="row">
@@ -125,56 +125,74 @@
         </div>
        
         <%
-        // Calculate shipping (example: free over RM1000)
-        double shipping = (subtotal >= 1000) ? 0.00 : 25.00;
-        double sst = subtotal * 0.06;
-        grandtotal = subtotal + shipping + sst;
+        double discount = (subtotal > 100) ? subtotal * 0.20 : 0.00;
+        double shipping = (subtotal >= 1000) ? 0.00 : (subtotal > 0 ? 25.00 : 0.00);
+        double subtotalAfterDiscount = subtotal - discount;
+        double sst = subtotalAfterDiscount * 0.06;
+        grandtotal = subtotalAfterDiscount + shipping + sst;
+        session.setAttribute("grandtotal", grandtotal);
         %>
 
         <div style="display: flex; justify-content: flex-end;">
-            <div class="col-sm-10 col-lg-7 col-xl-5 m-b-50" style="margin-top: 50px;">
-                <div class="bor10 p-lr-40 p-t-30 p-b-40 m-r-40 m-lr-0-xl p-lr-15-sm">
-                        <div class="flex-w flex-t bor12 p-b-13"  style="text-align: left">
-                            <div style="width: 55.5%;">
-                                <span class="stext-110 cl2">SUBTOTAL:</span>
-                            </div>
-                            <div style="width: 44.5%;">
-                                <span class="mtext-110 cl2">RM &nbsp;<%= String.format("%.2f", subtotal) %></span>
-                            </div>
+            <div class="col-sm-10 col-lg-7 col-xl-5 m-b-50 m-r-40" style="margin-top: 50px;">
+                
+                    <div class="flex-w flex-t bor12 p-b-13"  style="text-align: left">
+                        <div style="width: 55.5%;">
+                            <span class="stext-110 cl2">SUBTOTAL:</span>
                         </div>
-                            
-                        <div class="flex-w flex-t bor12 p-t-15 p-b-30"  style="text-align: left">
-                            <div class="w-full-ssm" style="width: 55.5%;">
-                                <span class="stext-110 cl2">DELIVERY FEES:</span>
-                            </div>
-                            <div style="width: 44.5%;">
-                                <span class="mtext-110 cl2">RM &nbsp;<%= String.format("%.2f", shipping) %></span>
-                            </div>
+                        <div style="width: 44.5%;">
+                            <span class="mtext-110 cl2">RM &nbsp;<%= String.format("%.2f", subtotal) %></span>
                         </div>
-
-                        <div class="flex-w flex-t bor12 p-t-15 p-b-30"  style="text-align: left">
-                            <div class="w-full-ssm" style="width: 55.5%;">
-                                <span class="stext-110 cl2">SST (6%):</span>
-                            </div>
-                            <div style="width: 44.5%;">
-                                <span class="mtext-110 cl2">RM &nbsp;<%= String.format("%.2f", sst) %></span>
-                            </div>
-                        </div>
-
-                        <div class="flex-w flex-t"  style="text-align: left; padding-top: 35px">
-                            <div style="width: 55.5%;">
-                                <h4 class="mtext-109 cl2 p-b-30">GRAND TOTAL :</h4>
-                            </div>
-                            <div class="p-t-1" style="width: 44.5%;">
-                                <span class="mtext-110 cl2"><b>RM &nbsp;<%= String.format("%.2f", grandtotal) %></b></span>
-                            </div>
-                        </div>
-
-                        <a href="payCheckOut.jsp"><button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                             Proceed to Checkout 
-                        </button></a>
                     </div>
-            </div>
+
+                    <div class="flex-w flex-t bor12 p-t-15 p-b-30"  style="text-align: left">
+                        <div class="w-full-ssm" style="width: 55.5%;">
+                            <span class="stext-110 cl2">DELIVERY FEES:</span>
+                        </div>
+                        <div style="width: 44.5%;">
+                            <span class="mtext-110 cl2">RM &nbsp;<%= String.format("%.2f", shipping) %></span>
+                        </div>
+                    </div>
+
+                    <div class="flex-w flex-t bor12 p-t-15 p-b-30"  style="text-align: left">
+                        <div class="w-full-ssm" style="width: 55.5%;">
+                            <span class="stext-110 cl2">SST (6%):</span>
+                        </div>
+                        <div style="width: 44.5%;">
+                            <span class="mtext-110 cl2">RM &nbsp;<%= String.format("%.2f", sst) %></span>
+                        </div>
+                    </div>
+
+                    <div class="flex-w flex-t bor12 p-t-15 p-b-30"  style="text-align: left">
+                        <div class="w-full-ssm" style="width: 55.5%;">
+                            <span class="stext-110 cl2">Discount (20%):</span>
+                            <p style="font-size: 12px">Spend more than RM 100, Get 20% discount.</p>
+                        </div>
+                        <div style="width: 44.5%;">
+                            <span class="mtext-110 cl2">RM &nbsp;<%= String.format("%.2f", discount) %></span>
+                        </div>
+                    </div>
+
+                    <div class="flex-w flex-t"  style="text-align: left; padding-top: 35px">
+                        <div style="width: 55.5%;">
+                            <h4 class="mtext-109 cl2 p-b-30">GRAND TOTAL :</h4>
+                        </div>
+                        <div class="p-t-1" style="width: 44.5%;">
+                            <span class="mtext-110 cl2"><b>RM &nbsp;<%= String.format("%.2f", grandtotal) %></b></span>
+                        </div>
+                    </div>
+
+                    <%
+                        boolean isCartEmpty = subtotal == 0;
+                    %>
+
+                    <a href="<%= isCartEmpty ? "#" : "payCheckOut.jsp" %>">
+                        <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" 
+                            <%= isCartEmpty ? "disabled style='cursor: not-allowed;'" : "" %>>
+                            Proceed to Checkout 
+                        </button>
+                    </a>
+                </div>
         </div>
 
 		 
