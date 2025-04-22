@@ -192,7 +192,7 @@
                         <form id="editStaffForm" action="editStaff" method="POST" class="">
                            <div class="row1">
                               <div class="col1">
-                                 <p class="title">Edit Staff Account</p>
+                                 <p class="title">Edit Staff Account Information</p>
                                     <input type="hidden" name="profile" value="<%= staff.getProfile() %>" />
 
                                     <img src="images/<%= staff.getProfile() %>" alt="Current Profile" style="width:50px; height:50px; display:block; margin-bottom:10px;">

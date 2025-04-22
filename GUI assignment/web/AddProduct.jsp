@@ -188,7 +188,7 @@
                         if (bookName != null) {
                     %>
                         <div style="padding-left: 20px; padding-top: 20px; color: green; font-weight: bold; background-color: whitesmoke;">
-                            Staff "<%= bookName %>" has been created successfully.
+                            Product "<%= bookName %>" has been created successfully.
                             <a href="productAdmin.jsp">[Back to List Product]</a>
                         </div>
                     <%
@@ -269,7 +269,7 @@
                                        <input type="number" name="quantity" value="" required />
                                     </div>
 
-                                    <input type="reset" value="Cancel" name="cancel" class="button"/>
+                                    <input type="reset" value="Cancel" name="cancel" class="button" onclick="window.location.href='productAdmin.jsp'"/>
                                     <input type="submit" value="Insert" name="Confirm" class="button"/>
                               </div>
                            </div>

@@ -178,7 +178,7 @@
                         
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title">Create New Product</h4>
+                            <h4 class="card-title">Product Management</h4>
                         </div>
                     </div> 
                    <%
@@ -198,7 +198,7 @@
                         if (bookName != null) {
                     %>
                         <div style="padding-left: 20px; padding-top: 20px; color: green; font-weight: bold; background-color: whitesmoke;">
-                            Staff "<%= bookName %>" has been updated successfully.
+                            Product "<%= bookName %>" has been updated successfully.
                             <a href="productAdmin.jsp">[Back to List Product]</a>
                         </div>
                     <%
@@ -209,7 +209,7 @@
                         <form id="editProductForm" action="editProductServlet" method="POST" class="">
                            <div class="row1">
                               <div class="col1">
-                                 <p class="title">New Product</p>
+                                 <p class="title">Product Information</p>
                                  
                                     <div class="inputBox">
                                        <label><span>Book Image :</span></label>
@@ -240,14 +240,17 @@
                                        <input type="text" name="publisher" value="<%= isSuccess ? "" : prd.getPublisher() %>" required />
                                     </div>
                                     
-                                    <div class="inputBox">
-                                       <label><span>Book Descriptions :</span></label>
-                                       <textarea style="height:90px; 
-                                                 width: 95%; 
-                                                 padding:6px 8px; 
-                                                 box-sizing:border-box; 
-                                                 resize:vertical;" type="text" name="desc" value="<%= isSuccess ? "" : prd.getDescription() %>" required></textarea>
-                                    </div>
+                    <div class="inputBox">
+                        <label><span>Book Descriptions :</span></label>
+                        <textarea style="height:90px; 
+                                  width: 95%; 
+                                  padding:6px 8px; 
+                                  box-sizing:border-box; 
+                                  resize:vertical;" 
+                                  type="text" 
+                                  name="desc" 
+                                  required><%= isSuccess ? "" : prd.getDescription() %></textarea>
+                    </div>
                                  
                                     <div class="inputBox">
                                        <label><span>No of Pages :</span></label>
@@ -289,7 +292,7 @@
                                        <input type="number" name="quantity" value="<%= isSuccess ? "" : prd.getQuantity() %>" required />
                                     </div>
 
-                                    <input type="reset" value="Cancel" name="cancel" class="button"/>
+                                    <input type="reset" value="Cancel" name="cancel" class="button" onclick="window.location.href='productAdmin.jsp'"/>
                                     <input type="submit" value="Update" name="Confirm" class="button"/>
                               </div>
                            </div>
