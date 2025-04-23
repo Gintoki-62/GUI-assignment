@@ -8,6 +8,7 @@
 <body class="animsition">
     
     <% 
+        String Id = (String) session.getAttribute("ID");
         String username = (String) session.getAttribute("username");
         String phone = (String) session.getAttribute("phone");
         String address = (String) session.getAttribute("address");
@@ -23,19 +24,19 @@
                     <a href="shoping-cart.jsp" style="color:black"><img src="images/icons/replay.png" title="Back"/>Back</a><br/><br/>
                     <div>
                         <h1 class="mtext-113 cl2 p-b-12">Proceed to CheckOut</h1>
-                        <form action="payCheckOut.jsp" method="post" id="userForm">
+                        <form action="UpdateUserServlet" method="POST" id="userForm">
                             <table rows="2" columns="2" width="100%">
                                 <tr>
                                     <td>
                                         <label>Name:</label>
                                         <div id="nmadd" class="m-b-20" style="padding: 10px">
-                                            <input type="text" name="userName" value="<%= username %>" style="width:550px" required readonly>
+                                            <input type="text" name="username" id="uname" value="<%= username %>" style="width:550px" readonly>
                                         </div>
                                     </td>
                                     <td>
                                         <label style="margin-left: 25px">Phone Number:</label>
                                         <div id="phadd" class="m-b-20" style="margin-left: 25px; padding: 10px">
-                                            <input type="text" name="phone" value="<%= phone %>" required readonly>
+                                            <input type="text" name="phone" value="<%= phone %>" readonly>
                                         </div>
                                     </td>
                                 </tr>
@@ -43,12 +44,16 @@
                                     <td>
                                         <label>Address:</label>   
                                         <div id="adradd" class="m-b-20" style="padding: 10px">
-                                            <input type="textarea" name="address" value="<%= address %>" style="width:550px" required readonly>
+                                            <input type="text" name="address" value="<%= address %>" style="width:550px" readonly>
                                         </div>
                                     </td>
                                     <td>
+                                        <input type="hidden" value="<%= Id %>" name="ID">
                                         <button type="button" id="editBtn" class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04" style="float:right">
                                             Edit
+                                        </button>
+                                        <button type="submit" id="saveBtn" class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04 d-none" style="float:right; margin-right: 10px">
+                                            Save
                                         </button>
                                     </td>
                                 </tr>
@@ -85,7 +90,6 @@
 
                     <!--====== show Form ======-->    
                         <tr class="table_row">
-                            <form action="UpdateQuantityServlet" method="post">
                                 <input type="hidden" name="id" value="<%= id %>" />
                     <!--===== show image ======-->
                                 <td class="column-1">
@@ -118,7 +122,7 @@
                                 </td>
                     <!--===== show total ======-->
                                 <td class="column-3" style="text-align: center">RM <%= String.format("%.2f", ttotal) %></td>
-                            </form>
+                  
                      <!--===== end Form ======-->
                         </tr>
     <%}
@@ -201,7 +205,7 @@
 	
      <%@ include file="footer.jsp"%>
      
-     <script>
+<!--     <script>
         const editBtn = document.getElementById("editBtn");
         const form = document.getElementById("userForm");
         let isEditing = false;
@@ -226,13 +230,32 @@
                 editBtn.textContent = "Save";
                 isEditing = true;
                 
-                document.getElementById("userName").focus();
+                document.getElementById("username").focus();
             } else {
                 // Submit the form when the user clicks Save
                 form.submit();
             }
         });
-    </script>
+    </script>-->
+    
+    <script>
+    const editBtn = document.getElementById("editBtn");
+    const saveBtn = document.getElementById("saveBtn");
+    const form = document.getElementById("userForm");
+    const inputs = form.querySelectorAll("input:not([type='hidden'])");
+
+    editBtn.addEventListener("click", () => {
+        // Enable inputs
+        inputs.forEach(input => {
+            input.removeAttribute("readonly");
+        });
+
+        // Show Save, hide Edit
+        saveBtn.classList.remove("d-none");
+        editBtn.classList.add("d-none");
+    });
+</script>
+
      
 </body>
 </html>

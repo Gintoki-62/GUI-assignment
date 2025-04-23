@@ -391,16 +391,17 @@ public class bookDB {
         return rs;
     }
     
-    public void updateUser(String userId, String username, String phone, String address){
-        String sql = "UPDATE REGISTER SET USERNAME = ?, PHONE = ?, ADDRESS = ?  WHERE USER_ID = ?";
+    public void updateUser(String Id, String uname, String phone, String address){
+        
         try {
-            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/userdb", "nbuser", "nbuser");
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, username);
-            stmt.setString(2, phone);
-            stmt.setString(3, address);
-            stmt.setString(4, userId);
-            stmt.executeUpdate();
+            Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/userdb", "nbuser", "nbuser");
+            String sql = "UPDATE REGISTER SET USERNAME = ?, PHONE = ?, ADDRESS = ? WHERE ID = ? ";
+            PreparedStatement stmts = con.prepareStatement(sql);
+            stmts.setString(1, uname);
+            stmts.setString(2, phone);
+            stmts.setString(3, address);
+            stmts.setString(4, Id);
+            stmts.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(bookDB.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -9,9 +9,6 @@
     
     <% 
         String username = (String) session.getAttribute("username");
-        String phone = (String) session.getAttribute("phone");
-        String address = (String) session.getAttribute("address");
-        
         Double grandtotal = (Double) session.getAttribute("grandtotal");
         if (grandtotal == null) {
             grandtotal = 0.0;
