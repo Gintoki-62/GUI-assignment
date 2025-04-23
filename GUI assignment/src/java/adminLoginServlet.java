@@ -12,6 +12,10 @@ public class adminLoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         boolean isAuthenticated = false;
         String role = "";
+        String name = "";
+        String id = "";
+        String email = "";
+        String profile = "";
 
         try {
             Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/userdb", "nbuser", "nbuser");
@@ -25,6 +29,14 @@ public class adminLoginServlet extends HttpServlet {
             if (rsManager.next()) {
                 isAuthenticated = true;
                 role = "manager";
+                profile = rsManager.getString("Profile"); // Assuming you have a profile image path column
+                name = rsManager.getString("ManagerName"); // Assuming you have a name column
+                id = rsManager.getString("ManagerId");
+                email = rsManager.getString("Email");
+                
+                
+                
+                // Store more details if needed
             } else {
                 // Then check in staff table
                 PreparedStatement psStaff = conn.prepareStatement("SELECT * FROM ACCOUNT WHERE USERID=? AND PASSWORD=?");
@@ -42,6 +54,7 @@ public class adminLoginServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("adminUser", username);
                 session.setAttribute("role", role);
+                
                 
                 // Redirect to different dashboards (optional)
                 if ("manager".equals(role)) {
