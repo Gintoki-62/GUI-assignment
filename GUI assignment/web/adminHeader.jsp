@@ -137,6 +137,23 @@
                   </ul>
                 </div>
             </li>
+            
+            <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#documentation">
+                  <i class="fas fa-file"></i>
+                  <p>Documentation</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="documentation">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="productAdmin.jsp">
+                        <span class="sub-item">Reports</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+            </li>
               
               <li class="nav-section">
                 <span class="sidebar-mini-icon">

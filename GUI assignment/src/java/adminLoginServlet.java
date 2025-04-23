@@ -44,6 +44,7 @@ public class adminLoginServlet extends HttpServlet {
                 
                 // Redirect to different dashboards (optional)
                 if ("manager".equals(role)) {
+                    
                     response.sendRedirect("Index2.jsp");
                 } else {
                     response.sendRedirect("staffIndex.jsp");
