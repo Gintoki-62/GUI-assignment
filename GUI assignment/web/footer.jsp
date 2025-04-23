@@ -9,59 +9,29 @@
     <footer class="bg3 p-t-75 p-b-32">
         <div class="container">
             <div class="row">
+                
                 <div class="col-sm-6 col-lg-3 p-b-50">
-                    <h4 class="stext-301 cl0 p-b-30">Categories</h4>
-                    <ul><li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Women</a></li>
-                        <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">Men</a></li>
-                        <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">Shoes</a></li>
-                        <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">Watches</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-sm-6 col-lg-3 p-b-50">
-                    <h4 class="stext-301 cl0 p-b-30">Help</h4>
-                        <ul><li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">Track Order</a></li>
-                            <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">Returns</a></li>
-                            <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">Shipping</a></li>
-                            <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">FAQs</a></li>
+                   
+                        <ul><li class="p-b-10"><a href="about.jsp" class="stext-107 cl7 hov-cl1 trans-04">Home</a></li>
+                            <li class="p-b-10"><a href="product.jsp" class="stext-107 cl7 hov-cl1 trans-04">Book</a></li>
+                            <li class="p-b-10"><a href="shoping-cart.jsp" class="stext-107 cl7 hov-cl1 trans-04">Shopping Cart</a></li>
+                            <li class="p-b-10"><a href="OrderInfo.jsp" class="stext-107 cl7 hov-cl1 trans-04">OrderInfo</a></li>
                         </ul>
                 </div>
 
                 <div class="col-sm-6 col-lg-3 p-b-50">
-                    <h4 class="stext-301 cl0 p-b-30">GET IN TOUCH</h4>
-                        <p class="stext-107 cl7 size-201">Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879</p>
-                        <div class="p-t-27">
-                            <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"><i class="fa fa-instagram"></i></a>
-                            <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"><i class="fa fa-pinterest-p"></i></a>
-                        </div>
+                    <h4 class="stext-301 cl0 p-b-30">OUR LOCATION</h4>
+                        <p class="stext-107 cl7 size-201">Any questions? Came to meet us in store at 77, Lorong Lembah Permai 3, 11200 Tanjung Bungah, Pulau Pinang </p>
+                        
                 </div>
 
                 <div class="col-sm-6 col-lg-3 p-b-50">
-                    <h4 class="stext-301 cl0 p-b-30">Newsletter</h4>
-                        <form>
-                            <div class="wrap-input1 w-full p-b-4">
-                                <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
-                                <div class="focus-input1 trans-04"></div>
-                            </div>
-
-                            <div class="p-t-18">
-                                <button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-                                        Subscribe
-                                </button>
-                            </div>
-                        </form>
+                    
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.236828446695!2d100.28229957498445!3d5.45320519452633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304ac2c0305a5483%3A0xfeb1c7560c785259!2sTAR%20UMT%20Penang%20Branch!5e1!3m2!1sen!2smy!4v1745418880928!5m2!1sen!2smy" width="600" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
 
-            <div class="p-t-40">
-                <div class="flex-c-m flex-w p-b-18">
-                    <a href="#" class="m-all-1"><img src="images/icons/icon-pay-01.png" alt="ICON-PAY"></a>
-                    <a href="#" class="m-all-1"><img src="images/icons/icon-pay-02.png" alt="ICON-PAY"></a>
-                    <a href="#" class="m-all-1"><img src="images/icons/icon-pay-03.png" alt="ICON-PAY"></a>
-                    <a href="#" class="m-all-1"><img src="images/icons/icon-pay-04.png" alt="ICON-PAY"></a>
-                    <a href="#" class="m-all-1"><img src="images/icons/icon-pay-05.png" alt="ICON-PAY"></a>
-                </div>
+            
 
                 <p class="stext-107 cl6 txt-center">
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
