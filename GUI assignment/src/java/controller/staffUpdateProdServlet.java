@@ -27,7 +27,7 @@ import domain.Book;
 public class staffUpdateProdServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String bookId = request.getParameter("BOOK_ID");
         String bookName = request.getParameter("BOOK_NAME");
@@ -106,7 +106,6 @@ public class staffUpdateProdServlet extends HttpServlet {
             errorMessages.add("Book Description cannot be empty.");
         } else {
             String[] words = bookDesc.trim().split("\\s+");
-            // Check if the number of words exceeds 500
             if (words.length > 500) {
                 hasError = true;
                 errorMessages.add("Book Description cannot exceed 500 words.");
@@ -142,18 +141,16 @@ public class staffUpdateProdServlet extends HttpServlet {
 
         if (hasError) {
             request.setAttribute("errorMessages", errorMessages);
-            // Re-populate the form with the submitted values
             request.setAttribute("book", new Book(bookId, bookName, bookPrice, authorName, publisher, noOfPages, bookDesc, bookQuantity, bookType, null, bookCategory));
             request.getRequestDispatcher("staffEditProd.jsp").forward(request, response);
             return;
         }
 
-        //Handle Image Upload
+        // Handle Image Upload
         Part filePart = request.getPart("BOOK_IMAGE");
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
         InputStream fileContent = filePart.getInputStream();
 
-        //See if a new image was uploaded
         if (fileName != null && !fileName.isEmpty() && fileContent.available() > 0) {
             String uploadDirectory = getServletContext().getRealPath("images/book/");
             String newImagePath = uploadDirectory + "/" + fileName;
@@ -162,7 +159,6 @@ public class staffUpdateProdServlet extends HttpServlet {
                 Files.copy(fileContent, Paths.get(newImagePath), StandardCopyOption.REPLACE_EXISTING);
                 bookImage = "images/book/" + fileName;
             } catch (IOException e) {
-                // Handle image upload error
                 e.printStackTrace();
                 errorMessages.add("Error uploading the new image.");
                 request.setAttribute("errorMessages", errorMessages);
@@ -171,7 +167,6 @@ public class staffUpdateProdServlet extends HttpServlet {
                 return;
             }
         } else {
-            // If no new image, retrieve the existing image path from the database
             staffDB staffDb = new staffDB();
             Book existingBook = staffDb.getBookById(bookId);
             if (existingBook != null) {
@@ -179,17 +174,19 @@ public class staffUpdateProdServlet extends HttpServlet {
             }
         }
 
-        //Update database
+        // Update database
         Book updatedBook = new Book(bookId, bookName, bookPrice, authorName, publisher, noOfPages, bookDesc, bookQuantity, bookType, bookImage, bookCategory);
         staffDB staffDb = new staffDB();
 
         try {
             boolean updated = staffDb.updateBook(updatedBook);
             if (updated) {
-                //redirect to staff index if success
-                response.sendRedirect("staffViewProd.jsp?updateSuccess=true");
+                request.setAttribute("successMessage", "Product updated successfully!");
+                request.setAttribute("book", updatedBook);
+                request.setAttribute("bookId", bookId);
+                request.getRequestDispatcher("staffEditProd.jsp?BOOK_ID=" + bookId).forward(request, response);
             } else {
-                //Handle database update failure
+                // Handle database update failure
                 errorMessages.add("Error updating the book in the database.");
                 request.setAttribute("errorMessages", errorMessages);
                 request.setAttribute("book", updatedBook);

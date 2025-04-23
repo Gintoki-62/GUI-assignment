@@ -15,6 +15,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/addBook")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024,
@@ -43,29 +45,24 @@ public class staffAddProdServlet extends HttpServlet {
         Integer bookQuantity = null;
         String bookImage = "";
 
-        boolean hasErrors = false;
-        String errorMessage = "";
+        List<String> errorMessages = new ArrayList<>();
 
         // Data validation
         if (bookName == null || bookName.trim().isEmpty()) {
-            errorMessage += "Book Name is required.<br>";
-            hasErrors = true;
+            errorMessages.add("Book Name is required.");
         }
 
         try {
             bookPrice = Double.parseDouble(request.getParameter("bookPrice"));
-            if (bookPrice <= 0) {
-                errorMessage += "Price must be greater than zero.<br>";
-                hasErrors = true;
+            if (bookPrice == null || bookPrice <= 0) {
+                errorMessages.add("Price must be greater than zero.");
             }
         } catch (NumberFormatException e) {
-            errorMessage += "Invalid price format.<br>";
-            hasErrors = true;
+            errorMessages.add("Invalid price format.");
         }
 
         if (authorName == null || authorName.trim().isEmpty()) {
-            errorMessage += "Author Name is required.<br>";
-            hasErrors = true;
+            errorMessages.add("Author Name is required.");
         }
 
         try {
@@ -73,26 +70,22 @@ public class staffAddProdServlet extends HttpServlet {
             if (pagesStr != null && !pagesStr.isEmpty()) {
                 noOfPages = Integer.parseInt(pagesStr);
                 if (noOfPages < 0) {
-                    errorMessage += "Number of pages cannot be negative.<br>";
-                    hasErrors = true;
+                    errorMessages.add("Number of pages cannot be negative.");
                 }
             } else {
                 noOfPages = 0;
             }
         } catch (NumberFormatException e) {
-            errorMessage += "Invalid number of pages format.<br>";
-            hasErrors = true;
+            errorMessages.add("Invalid number of pages format.");
         }
 
         try {
             bookQuantity = Integer.parseInt(request.getParameter("bookQuantity"));
             if (bookQuantity < 0) {
-                errorMessage += "Quantity cannot be negative.<br>";
-                hasErrors = true;
+                errorMessages.add("Quantity cannot be negative.");
             }
         } catch (NumberFormatException e) {
-            errorMessage += "Invalid quantity format.<br>";
-            hasErrors = true;
+            errorMessages.add("Invalid quantity format.");
         }
 
         // Handle image upload
@@ -112,8 +105,8 @@ public class staffAddProdServlet extends HttpServlet {
             }
         }
 
-        if (hasErrors) {
-            request.setAttribute("errorMessage", errorMessage);
+        if (!errorMessages.isEmpty()) {
+            request.setAttribute("errorMessages", errorMessages); // Set the list of errors
             request.getRequestDispatcher("staffAddProd.jsp").forward(request, response);
             return;
         }
@@ -124,14 +117,17 @@ public class staffAddProdServlet extends HttpServlet {
             boolean added = staffDb.addBook(newBook);
             if (added) {
                 request.setAttribute("successMessage", "Product added successfully!");
+                request.setAttribute("bookId", bookId);
                 request.getRequestDispatcher("staffAddProd.jsp").forward(request, response);
             } else {
-                request.setAttribute("errorMessage", "Failed to add product.");
+                errorMessages.add("Failed to add product."); // Add a general error message
+                request.setAttribute("errorMessages", errorMessages);
                 request.getRequestDispatcher("staffAddProd.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            request.setAttribute("errorMessage", "Database error: " + e.getMessage());
+            errorMessages.add("Database error: " + e.getMessage()); // Add the database error
+            request.setAttribute("errorMessages", errorMessages);
             request.getRequestDispatcher("staffAddProd.jsp").forward(request, response);
         }
     }

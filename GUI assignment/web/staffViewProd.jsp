@@ -7,86 +7,168 @@
     <title>BOOKLOOM(STAFF)-View Products</title>
     <style>
         body {
-            font-family: sans-serif;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
+            background-color: #f0f4f8;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+            background-attachment: fixed;
             color: #333;
-            text-align: center;
-            margin-bottom: 20px;
+            min-height: 100vh;
         }
+
+        .container {
+            width: 95%;
+            max-width: 1400px;
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 1;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #5cb85c, #4a8f4a);
+            border-radius: 12px 12px 0 0;
+        }
+
+        h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: #5cb85c;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         table {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 25px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+            border-radius: 8px;
+            overflow: hidden;
         }
+
         th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
+            padding: 14px 16px;
             text-align: left;
             font-size: 14px;
+            border: none;
+            border-bottom: 1px solid #eaeaea;
         }
+
         th {
-            text-align: center;
-            background-color: #5cb85c;
+            background-color: #4a8f4a;
             color: white;
-            font-weight: bold;
+            font-weight: 600;
             text-transform: uppercase;
-            font-size: 15px;
+            font-size: 13px;
+            letter-spacing: 0.5px;
         }
+
         th.actions-header,
         td.actions {
             text-align: center;
-            padding-right: 15px;
+            width: 80px;
         }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
         tbody tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+
         tbody tr:hover {
-            background-color: #e0f7fa;
+            background-color: #e8f5e9;
+            transition: background-color 0.2s ease;
         }
+
         img {
             max-width: 80px;
             height: auto;
             display: block;
             margin: 0 auto;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
         }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
         a {
-            color: #007bff;
+            color: #3498db;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
+
         a:hover {
-            color: #0056b3;
-            text-decoration: underline;
+            color: #2980b9;
         }
+
         .actions a {
-            text-decoration: none;
+            display: inline-block;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
         }
+
+        .actions a:hover {
+            background-color: rgba(76, 175, 80, 0.1);
+            transform: translateY(-2px);
+        }
+
         .actions img {
             display: block;
-            width: 24px;
+            width: 22px;
             height: auto;
             margin: 0 auto;
+            box-shadow: none;
         }
+
         p {
             text-align: center;
             color: #777;
-            margin-top: 20px;
+            margin-top: 25px;
+            font-size: 16px;
+            font-style: italic;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233a5f3a' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
         }
     </style>
 </head>
@@ -120,8 +202,7 @@
             </thead>
             <tbody>
                 <% for (Book book : bookList) { %>
-                <tr>
-                    <td><%= book.getBOOK_ID() %></td>
+                <tr id="book-<%= book.getBOOK_ID() %>"> <td><%= book.getBOOK_ID() %></td>
                     <td><%= book.getBOOK_NAME() %></td>
                     <td><%= String.format("%.2f", book.getBOOK_PRICE()) %></td>
                     <td><%= book.getAUTHOR_NAME() %></td>

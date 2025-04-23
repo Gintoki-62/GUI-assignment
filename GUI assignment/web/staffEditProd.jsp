@@ -6,109 +6,231 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>BOOKLOOM(STAFF)-Edit Product</title>
     <style>
-        .content body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 20px;
-            background-color: #f8f9fa;
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #e4eaf5 100%);
+            background-attachment: fixed;
             color: #333;
-            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Subtle pattern overlay for background */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233a5075' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 30px;
         }
 
         .content h2 {
-            color: #007bff;
+            color: #2c3e50;
             margin-bottom: 30px;
             text-align: center;
+            font-size: 28px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .content h2:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: #3498db;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .content .error-message {
             color: #dc3545;
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
-            padding: 10px;
-            margin-bottom: 20px;
+            background-color: #fff;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin-bottom: 25px;
             border-radius: 5px;
-            font-weight: bold;
+            font-weight: 500;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .content .error-message ul {
+            margin: 5px 0 0 0;
+            padding-left: 20px;
+        }
+
+        .content .error-message li {
+            margin-bottom: 5px;
+        }
+
+        .content .success-message {
+            color: #28a745;
+            background-color: #fff;
+            border-left: 4px solid #28a745;
+            padding: 18px;
+            margin: 0 auto 25px;
+            border-radius: 5px;
+            max-width: 600px;
+            font-weight: 500;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .content .success-message button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: 12px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .content .success-message button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .content form {
-            width: 60%;
+            width: 65%;
             margin: 30px auto;
-            padding: 30px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            padding: 35px;
+            border-radius: 12px;
             background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .content form::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #3498db, #2980b9);
+            border-radius: 12px 12px 0 0;
         }
 
         .content label {
             display: block;
             margin-bottom: 8px;
-            font-weight: bold;
-            color: #495057;
+            font-weight: 600;
+            color: #3c4858;
+            font-size: 15px;
         }
 
         .content input[type="text"],
         .content input[type="number"],
-        .content input[type="file"],
         .content textarea,
         .content select {
-            width: calc(100% - 16px);
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
+            width: 100%;
+            padding: 12px 14px;
+            margin-bottom: 20px;
+            border: 1px solid #dce1e9;
+            border-radius: 6px;
             box-sizing: border-box;
-            font-size: 16px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background-color: #fbfbfc;
+        }
+
+        .content input[type="file"] {
+            width: 100%;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .content input:focus,
+        .content textarea:focus,
+        .content select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+            background-color: #fff;
         }
 
         .content textarea {
             resize: vertical;
+            min-height: 120px;
         }
 
         .content select {
             appearance: none;
-            background-image: url('data:image/svg+xml;utf8,<svg fill="#495057" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%233498db" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
             background-repeat: no-repeat;
-            background-position: right 10px top 50%;
+            background-position: right 14px top 50%;
             background-size: 16px;
-            padding-right: 30px;
+            padding-right: 40px;
         }
 
         .content button[type="submit"] {
-            background-color: #28a745;
+            background-color: #3498db;
             color: white;
-            padding: 12px 20px;
+            padding: 14px 24px;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 30px auto 10px;
+            min-width: 180px;
         }
 
         .content button[type="submit"]:hover {
-            background-color: #218838;
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .content .error {
             color: #dc3545;
-            margin-top: 8px;
-            font-style: italic;
+            background-color: #fff;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 20px auto;
+            border-radius: 5px;
+            font-weight: 500;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .content img {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            max-width: 150px;
+            height: auto;
         }
 
-        @media (max-width: 768px) {
-            .content form {
-                width: 90%;
-                margin: 20px auto;
-                padding: 20px;
-            }
+        /* Field grouping for related inputs */
+        .form-group {
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -126,6 +248,16 @@
                         <li><%= error %></li>
                     <% } %>
                 </ul>
+            </div>
+        <% } %>
+
+        <% String successMessage = (String) request.getAttribute("successMessage"); %>
+        <% String updatedBookId = (String) request.getAttribute("bookId"); %>
+        <% if (successMessage != null && !successMessage.isEmpty() && updatedBookId != null && !updatedBookId.isEmpty()) { %>
+            <div class="success-message">
+                <%= successMessage %>
+                
+                <button onclick="window.location.href='staffViewProd.jsp#book-<%= updatedBookId %>'">Click to View</button>
             </div>
         <% } %>
 
