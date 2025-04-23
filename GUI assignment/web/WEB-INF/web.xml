@@ -52,6 +52,10 @@
         <servlet-name>adminLoginServlet</servlet-name>
         <servlet-class>adminLoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateUser</servlet-name>
+        <servlet-class>controller.UpdateUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/AddToCartServlet</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>adminLoginServlet</servlet-name>
         <url-pattern>/adminLoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUser</servlet-name>
+        <url-pattern>/UpdateUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
