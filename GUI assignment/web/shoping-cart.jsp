@@ -21,7 +21,7 @@
         bookDB book = new bookDB();
         ResultSet rs = book.getCart(userId);
     %>
-
+    <a href="OrderInfo.jsp">OrderInfo</a>
     <!-- Shoping Cart -->
         <div class="container" style="padding-top: 20px">
             <div class="row">
