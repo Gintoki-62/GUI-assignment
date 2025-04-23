@@ -8,7 +8,7 @@
 <body class="animsition">
     
     <% 
-        String Id = (String) session.getAttribute("ID");
+        // String Id = (String) session.getAttribute("ID");
         String username = (String) session.getAttribute("username");
         String phone = (String) session.getAttribute("phone");
         String address = (String) session.getAttribute("address");
@@ -30,13 +30,13 @@
                                     <td>
                                         <label>Name:</label>
                                         <div id="nmadd" class="m-b-20" style="padding: 10px">
-                                            <input type="text" name="username" id="uname" value="<%= username %>" style="width:550px" readonly>
+                                            <input type="text" name="uname" id="uname" value="<%= username %>" style="width:550px" readonly>
                                         </div>
                                     </td>
                                     <td>
                                         <label style="margin-left: 25px">Phone Number:</label>
                                         <div id="phadd" class="m-b-20" style="margin-left: 25px; padding: 10px">
-                                            <input type="text" name="phone" value="<%= phone %>" readonly>
+                                            <input type="text" name="phone" id="phone" value="<%= phone %>" readonly>
                                         </div>
                                     </td>
                                 </tr>
@@ -44,16 +44,13 @@
                                     <td>
                                         <label>Address:</label>   
                                         <div id="adradd" class="m-b-20" style="padding: 10px">
-                                            <input type="text" name="address" value="<%= address %>" style="width:550px" readonly>
+                                            <input type="text" name="address" id="address" value="<%= address %>" style="width:550px" readonly>
                                         </div>
                                     </td>
                                     <td>
-                                        <input type="hidden" value="<%= Id %>" name="ID">
+                                       
                                         <button type="button" id="editBtn" class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04" style="float:right">
                                             Edit
-                                        </button>
-                                        <button type="submit" id="saveBtn" class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04 d-none" style="float:right; margin-right: 10px">
-                                            Save
                                         </button>
                                     </td>
                                 </tr>
@@ -205,7 +202,7 @@
 	
      <%@ include file="footer.jsp"%>
      
-<!--     <script>
+     <script>
         const editBtn = document.getElementById("editBtn");
         const form = document.getElementById("userForm");
         let isEditing = false;
@@ -236,26 +233,7 @@
                 form.submit();
             }
         });
-    </script>-->
-    
-    <script>
-    const editBtn = document.getElementById("editBtn");
-    const saveBtn = document.getElementById("saveBtn");
-    const form = document.getElementById("userForm");
-    const inputs = form.querySelectorAll("input:not([type='hidden'])");
-
-    editBtn.addEventListener("click", () => {
-        // Enable inputs
-        inputs.forEach(input => {
-            input.removeAttribute("readonly");
-        });
-
-        // Show Save, hide Edit
-        saveBtn.classList.remove("d-none");
-        editBtn.classList.add("d-none");
-    });
-</script>
-
+    </script>
      
 </body>
 </html>
