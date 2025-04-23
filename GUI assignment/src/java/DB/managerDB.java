@@ -25,7 +25,7 @@ public class managerDB {
         return stmt.executeQuery();
     }
     
-    public Manager getMangagerById(String id) throws SQLException {
+    public Manager getManagerById(String id) throws SQLException {
         String queryStr = "SELECT * FROM " + tableName + " WHERE ManagerId = ?";
         Manager manager = null;
 

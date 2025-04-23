@@ -1,3 +1,4 @@
+<%@ page import="DB.managerDB, domain.Manager" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -331,13 +332,6 @@
                 </a>
               </li>
               
-              <li class="nav-item">
-                <a href="../../documentation/index.html">
-                  <i class="fas fa-file"></i>
-                  <p>Documentation</p>
-                  <span class="badge badge-secondary">1</span>
-                </a>
-              </li>
               
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#submenu">
@@ -719,7 +713,21 @@
                     </div>
                   </div>
                 </li>
-
+                <%
+                    String ManagerId = request.getParameter("id");
+                    Manager manager = null;
+                    try {
+                        managerDB db = new managerDB();
+                        manager = db.getManagerById(ManagerId);
+                    } catch (Exception e) {
+                        out.println("Error: " + e.getMessage());
+                    }
+                %> 
+                <%
+                        String staffName = (String) request.getAttribute("staffName");
+                       
+                    %>
+                <!--------------------------------------- View Profile ------------------------------------------------>
                 <li class="nav-item topbar-user dropdown hidden-caret">
                   <a
                     class="dropdown-toggle profile-pic"
@@ -736,7 +744,7 @@
                     </div>
                     <span class="profile-username">
                       <span class="op-7">Hi,</span>
-                      <span class="fw-bold">Hizrian</span>
+                      <span class="fw-bold"><%= staffName %></span>
                     </span>
                   </a>
                   <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -774,6 +782,7 @@
                     </div>
                   </ul>
                 </li>
+                <!--------------------------------------- End View Profile ------------------------------------------------>
               </ul>
             </div>
           </nav>
