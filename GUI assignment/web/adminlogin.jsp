@@ -110,7 +110,7 @@
         <h1>ADMIN LOGIN</h1>
 
         <form action="adminLoginServlet" method="post">
-            <input type="text" name="username" placeholder="Admin Username" required />
+            <input type="text" name="username" placeholder="Admin ID" required />
             <input type="password" name="password" placeholder="Admin Password" required />
             <button type="submit">Login</button>
         </form>
