@@ -73,6 +73,19 @@
         PRIMARY KEY (USERID, USERNAME));
         <!--================== End Staff Table ============================ -->
         
+        <!--================== Register Table ============================ -->
+        CREATE TABLE REGISTER (
+        ID INTEGER DEFAULT AUTOINCREMENT: start 1 increment 1  NOT NULL GENERATED ALWAYS AS IDENTITY, 
+        "NAME" VARCHAR(100), 
+        PHONE VARCHAR(15), 
+        EMAIL VARCHAR(100), 
+        USERNAME VARCHAR(50), 
+        PASSWORD VARCHAR(100), 
+        GENDER VARCHAR(10), 
+        ADDRESS VARCHAR(255), 
+        PRIMARY KEY (ID));
+        <!--================== End Register Table ============================ -->
+        
 
     </body>
 </html>

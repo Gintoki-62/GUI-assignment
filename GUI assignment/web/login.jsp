@@ -182,6 +182,10 @@
             <div class="register-forget opacity">
                 <a href="register.jsp">REGISTER</a>
             </div>
+            
+            <a href="adminlogin.jsp" style="font-size: 12px; text-decoration: underline;">Admin Login</a>
+            
+            
         </div>
 
         <div class="circle circle-two"></div>
