@@ -39,6 +39,7 @@ public class AddProductServlet extends HttpServlet {
             throws ServletException, IOException {
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
+            request.setCharacterEncoding("UTF-8");           
         
         String image = request.getParameter("image");
         String id = request.getParameter("id");

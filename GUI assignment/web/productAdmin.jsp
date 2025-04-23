@@ -204,6 +204,7 @@
                   %>
                   
                  <div class="card-body">
+                     
                      <%
                         String bookName = (String) request.getAttribute("bookName");
                         if (bookName != null) {

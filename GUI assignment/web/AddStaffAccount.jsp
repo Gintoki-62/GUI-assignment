@@ -188,7 +188,7 @@
                                     </div>
                   
                                     <div class="inputBox">
-                                       <label><span>User ID :</span></label>
+                                       <label><span>User ID (ST000):</span></label>
                                        <input type="text" name="id" value="" required />
                                     </div>
 
@@ -212,7 +212,7 @@
                                        <input type="text" name="gender" value="" required />
                                     </div>
 
-                                    <input type="reset" value="Cancel" name="cancel" class="button"/>
+                                    <input type="reset" value="Cancel" name="cancel" class="button" onclick="window.location.href='productAdmin.jsp'"/>
                                     <input type="submit" value="Insert" name="Confirm" class="button"/>
                               </div>
                            </div>
