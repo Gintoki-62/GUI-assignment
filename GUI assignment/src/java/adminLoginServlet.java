@@ -14,8 +14,9 @@ public class adminLoginServlet extends HttpServlet {
         String role = "";
         String name = "";
         String id = "";
+        String psw = "";
         String email = "";
-        String profile = "";
+        String profile = "null";
 
         try {
             Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/userdb", "nbuser", "nbuser");
@@ -32,10 +33,9 @@ public class adminLoginServlet extends HttpServlet {
                 profile = rsManager.getString("Profile"); // Assuming you have a profile image path column
                 name = rsManager.getString("ManagerName"); // Assuming you have a name column
                 id = rsManager.getString("ManagerId");
+                psw = rsManager.getString("Password");
                 email = rsManager.getString("Email");
-                
-                
-                
+    
                 // Store more details if needed
             } else {
                 // Then check in staff table
@@ -53,9 +53,11 @@ public class adminLoginServlet extends HttpServlet {
             if (isAuthenticated) {
                 HttpSession session = request.getSession();
                 session.setAttribute("adminUser", username);
+                session.setAttribute("E-mail", email);
                 session.setAttribute("role", role);
-                
-                
+                session.setAttribute("staffName", name);
+                session.setAttribute("profileImage", profile);
+
                 // Redirect to different dashboards (optional)
                 if ("manager".equals(role)) {
                     
