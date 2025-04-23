@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>BOOKLOOM(STAFF) - Edit Products</title>
+    <title>BOOKLOOM(STAFF)-Edit Product</title>
     <style>
         .content body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

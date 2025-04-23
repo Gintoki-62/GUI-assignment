@@ -36,6 +36,12 @@
                             <span>View Customers</span>
                         </a>
                     </li>
+                    <li class="sidebar-item">
+                        <a href="staffCheckStatus.jsp" class="sidebar-link">
+                            <i class="bi bi-truck"></i>
+                            <span>Order Status</span>
+                        </a>
+                    </li>
                 </ul>
                 <hr class="sidebar-item separator">
                 <ul class="menu">
