@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="DB.bookDB" %>
+<%@ page import="DB.staffDB" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,7 +90,7 @@
         <h2>Add New Book Product</h2>
         <form action="addBook" method="post" enctype="multipart/form-data" class="staff-add-product-form">
             <label for="bookId">Book ID:</label>
-            <input type="text" id="bookId" name="bookId" value="<%= new bookDB().generateNextBookId() %>" class="staff-add-product-input"><br>
+            <input type="text" id="bookId" name="bookId" value="<%= new staffDB().generateNextBookId() %>" class="staff-add-product-input"><br>
 
             <label for="bookName">Book Name:</label>
             <input type="text" id="bookName" name="bookName" required class="staff-add-product-input"><br>

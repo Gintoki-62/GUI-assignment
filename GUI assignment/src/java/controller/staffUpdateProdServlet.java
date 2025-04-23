@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import DB.bookDB;
+import DB.staffDB;
 import domain.Book;
 
 @WebServlet("/staffUpdateProdServlet")
@@ -172,8 +172,8 @@ public class staffUpdateProdServlet extends HttpServlet {
             }
         } else {
             // If no new image, retrieve the existing image path from the database
-            bookDB bookDb = new bookDB();
-            Book existingBook = bookDb.getBookById(bookId);
+            staffDB staffDb = new staffDB();
+            Book existingBook = staffDb.getBookById(bookId);
             if (existingBook != null) {
                 bookImage = existingBook.getBOOK_IMAGE();
             }
@@ -181,10 +181,10 @@ public class staffUpdateProdServlet extends HttpServlet {
 
         //Update database
         Book updatedBook = new Book(bookId, bookName, bookPrice, authorName, publisher, noOfPages, bookDesc, bookQuantity, bookType, bookImage, bookCategory);
-        bookDB bookDb = new bookDB();
+        staffDB staffDb = new staffDB();
 
         try {
-            boolean updated = bookDb.updateBook(updatedBook);
+            boolean updated = staffDb.updateBook(updatedBook);
             if (updated) {
                 //redirect to staff index if success
                 response.sendRedirect("staffViewProd.jsp?updateSuccess=true");

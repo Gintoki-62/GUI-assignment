@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="DB.bookDB, domain.Book, java.util.List"%>
+<%@page import="DB.staffDB, domain.Book, java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -136,8 +136,8 @@
             <p class="error">ERROR: Book ID not provided.</p>
         <%
             } else {
-                bookDB bookDb = new bookDB();
-                Book book = bookDb.getBookById(bookId);
+                staffDB staffDb = new staffDB();
+                Book book = staffDb.getBookById(bookId);
 
                 if (book == null) {
         %>

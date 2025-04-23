@@ -1,6 +1,6 @@
 package controller;
 
-import DB.bookDB;
+import DB.staffDB;
 import domain.Book;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -22,11 +22,11 @@ import java.sql.SQLException;
         maxRequestSize = 1024 * 1024 * 10)
 public class staffAddProdServlet extends HttpServlet {
 
-    private bookDB bookDb;
+    private staffDB staffDb;
 
     @Override
     public void init() throws ServletException {
-        bookDb = new bookDB();
+        staffDb = new staffDB();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -102,13 +102,13 @@ public class staffAddProdServlet extends HttpServlet {
             String submittedFileName = filePart.getSubmittedFileName();
             if (submittedFileName != null && !submittedFileName.isEmpty()) {
                 String fileName = Paths.get(submittedFileName).getFileName().toString();
-                String uploadDirectory = getServletContext().getRealPath("/images/book_covers");
+                String uploadDirectory = getServletContext().getRealPath("images/book/");
 
                 Files.createDirectories(Paths.get(uploadDirectory));
 
                 InputStream fileContent = filePart.getInputStream();
                 Files.copy(fileContent, Paths.get(uploadDirectory, fileName), StandardCopyOption.REPLACE_EXISTING);
-                bookImage = "images/book_covers/" + fileName;
+                bookImage = "images/book/" + fileName;
             }
         }
 
@@ -121,7 +121,7 @@ public class staffAddProdServlet extends HttpServlet {
         Book newBook = new Book(bookId, bookName, bookPrice, authorName, publisher, noOfPages, bookDesc, bookQuantity, bookType, bookImage, bookCategory);
 
         try {
-            boolean added = bookDb.addBook(newBook);
+            boolean added = staffDb.addBook(newBook);
             if (added) {
                 request.setAttribute("successMessage", "Product added successfully!");
                 request.getRequestDispatcher("staffAddProd.jsp").forward(request, response);

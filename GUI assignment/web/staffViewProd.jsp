@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.List, DB.bookDB, domain.Book"%>
+<%@page import="java.util.List, DB.staffDB, domain.Book"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,8 +97,8 @@
         <h2>View Products</h2>
 
         <%
-            bookDB bookDb = new bookDB();
-            List<Book> bookList = bookDb.getRecord();
+            staffDB staffDb = new staffDB();
+            List<Book> bookList = staffDb.getRecord();
 
             if (bookList != null && !bookList.isEmpty()) {
         %>
