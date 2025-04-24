@@ -56,6 +56,10 @@
         <servlet-name>UpdateUserServlet</servlet-name>
         <servlet-class>controller.UpdateUserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>staffCheckStatusServlet</servlet-name>
+        <servlet-class>staffCheckStatusServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/AddToCartServlet</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>UpdateUserServlet</servlet-name>
         <url-pattern>/UpdateUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>staffCheckStatusServlet</servlet-name>
+        <url-pattern>/staffCheckStatusServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
