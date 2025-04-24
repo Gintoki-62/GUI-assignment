@@ -8,7 +8,7 @@
 <body class="animsition">
     
     <% 
-        String username = (String) session.getAttribute("username");
+        String Id = (String) session.getAttribute("name");
         Double grandtotal = (Double) session.getAttribute("grandtotal");
         if (grandtotal == null) {
             grandtotal = 0.0;
@@ -154,7 +154,7 @@
                                 </div>
 
                                 <input type="hidden" name="amount" value="<%= String.format("%.2f", grandtotal) %>" />
-                                <input type="hidden" name="user_id" value="<%= username %>" />
+                                <input type="hidden" name="user_id" value="<%= Id %>" />
 
                                 <br/><br/>
                                 <div id="finalError" class="error" style="margin-top:10px; color: red"></div><br/>

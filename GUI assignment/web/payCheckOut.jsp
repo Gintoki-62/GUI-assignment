@@ -8,7 +8,7 @@
 <body class="animsition">
     
     <% 
-        // String Id = (String) session.getAttribute("ID");
+        String Id = (String) session.getAttribute("name");
         String username = (String) session.getAttribute("username");
         String phone = (String) session.getAttribute("phone");
         String address = (String) session.getAttribute("address");
@@ -48,7 +48,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                       
+                                        <input type="hidden" name="ID" id="ID" value="<%= Id %>" >
                                         <button type="button" id="editBtn" class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04" style="float:right">
                                             Edit
                                         </button>

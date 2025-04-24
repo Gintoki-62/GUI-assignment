@@ -1,6 +1,5 @@
 package controller;
 
-import DB.bookDB;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,33 +10,46 @@ import javax.servlet.http.*;
 public class UpdateUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-//        int Id = Integer.parseInt(request.getParameter("ID"));
+
+        // Get parameters from form
         String uname = request.getParameter("uname");
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
-
-        try{
-//            bookDB DB = new bookDB();
-//            DB.updateUser(Id, uname, phone, address);
-            
+        String Id = request.getParameter("ID");
+        
+        try {
+            // Connect to DB
             Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/userdb", "nbuser", "nbuser");
-            String sql = "UPDATE REGISTER SET PHONE = ?, ADDRESS = ? WHERE username = ? ";
-            PreparedStatement stmts = con.prepareStatement(sql);
-//            stmts.setString(1, uname);
-            stmts.setString(1, phone);
-            stmts.setString(2, address);
-            stmts.setString(3, uname);
-//            stmts.setInt(4, Id);
-            stmts.executeUpdate();
 
-            response.sendRedirect("payCheckOut.jsp");
-            
-        }catch(Exception e){
-           response.getWriter().println("Update failed: " + e.getMessage()); 
+            // Prepare SQL
+            String sql = "UPDATE REGISTER SET USERNAME = ?, PHONE = ?, ADDRESS = ? WHERE NAME = ?";
+            PreparedStatement stmts = con.prepareStatement(sql);
+
+            // Set parameters correctly
+            stmts.setString(1, uname);       // username
+            stmts.setString(2, phone);       // phone
+            stmts.setString(3, address);
+            stmts.setString(4, Id);// id
+
+            // Execute update
+            int rowsUpdated = stmts.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                // Update session attributes
+                HttpSession session = request.getSession();
+                session.setAttribute("username", uname);
+                session.setAttribute("phone", phone);
+                session.setAttribute("address", address);
+
+                // Redirect to confirmation/next page
+                response.sendRedirect("payCheckOut.jsp");
+            } else {
+                // ID not found or update failed
+                response.getWriter().println("Update failed: User not found or no changes made.");
+            }
+
+        } catch (Exception e) {
+            response.getWriter().println("Update failed: " + e.getMessage());
         }
-        
-        
-        
     }
 }
