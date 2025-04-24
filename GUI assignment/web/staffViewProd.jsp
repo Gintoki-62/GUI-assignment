@@ -4,16 +4,15 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>BOOKLOOM(STAFF)-View Products</title>
+    <title>BookLoom Staff Page</title>
+    <link rel="icon" type="image/png" href="images/icons/tablogo.png"/>
     <style>
         body {
             font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f4f8;
-            background-image: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
-            background-attachment: fixed;
-            color: #333;
+            background-color: #e8f5e9;
+            color: #388e3c;
             min-height: 100vh;
         }
 
@@ -36,14 +35,14 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(90deg, #5cb85c, #4a8f4a);
+            background: linear-gradient(90deg, #81c784, #4caf50);
             border-radius: 12px 12px 0 0;
         }
 
         h2 {
-            color: #2c3e50;
             text-align: center;
             margin-bottom: 30px;
+            color: #2e7d32;
             font-size: 28px;
             font-weight: 600;
             position: relative;
@@ -55,7 +54,7 @@
             position: absolute;
             width: 60px;
             height: 3px;
-            background-color: #5cb85c;
+            background-color: #4caf50;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
@@ -69,6 +68,7 @@
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
             border-radius: 8px;
             overflow: hidden;
+            background-color: #f1f8e9;
         }
 
         th, td {
@@ -76,11 +76,11 @@
             text-align: left;
             font-size: 14px;
             border: none;
-            border-bottom: 1px solid #eaeaea;
+            border-bottom: 1px solid #c8e6c9;
         }
 
         th {
-            background-color: #4a8f4a;
+            background: linear-gradient(135deg, #8bc34a, #689f38);
             color: white;
             font-weight: 600;
             text-transform: uppercase;
@@ -99,11 +99,11 @@
         }
 
         tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: #e8f5e9;
         }
 
         tbody tr:hover {
-            background-color: #e8f5e9;
+            background-color: #dcedc8;
             transition: background-color 0.2s ease;
         }
 
@@ -122,13 +122,13 @@
         }
 
         a {
-            color: #3498db;
+            color: #43a047;
             text-decoration: none;
             transition: all 0.3s ease;
         }
 
         a:hover {
-            color: #2980b9;
+            color: #388e3c;
         }
 
         .actions a {
@@ -153,7 +153,7 @@
 
         p {
             text-align: center;
-            color: #777;
+            color: #66bb6a;
             margin-top: 25px;
             font-size: 16px;
             font-style: italic;
@@ -166,9 +166,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233a5f3a' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233a5f3a' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); /* Keep the subtle green pattern */
             pointer-events: none;
             z-index: 0;
+        }
+
+        .logo{
+            box-shadow: none;
         }
     </style>
 </head>

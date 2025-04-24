@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Staff Sidebar</title>
+    <title>BookLoom Staff Sidebar</title>
     <link rel="stylesheet" href="css/staffSidebar.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 </head>
@@ -11,7 +11,7 @@
     <aside id="sidebar" class="active">
         <div class="sidebar-wrapper">
             <div class="sidebar-header">
-                <a href="staffIndex.jsp" target="_blank"><img src="images/tablogo.png" alt="Logo" class="logo"/></a>
+                <a href="staffIndex.jsp" target="_blank"><img src="images/icons/Logo.png" alt="Logo" class="logo"/></a>
             </div>
             <nav class="sidebar-menu">
                 <ul class="menu">

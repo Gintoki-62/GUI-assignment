@@ -4,7 +4,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>BOOKLOOM(STAFF)-Edit Product</title>
+    <title>BookLoom Staff Page</title>
+    <link rel="icon" type="image/png" href="images/icons/tablogo.png"/>
     <style>
         body {
             font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;

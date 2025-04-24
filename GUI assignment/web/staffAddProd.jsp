@@ -4,7 +4,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>BOOKLOOM(STAFF) - ADD NEW PRODUCT</title>
+    <title>BookLoom Staff Page</title>
+    <link rel="icon" type="image/png" href="images/icons/tablogo.png"/>
     <style>
         body {
             font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;

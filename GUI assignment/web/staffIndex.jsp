@@ -3,7 +3,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>BOOKLOOM(STAFF)-Index</title>
+    <title>BookLoom Staff Page</title>
+    <link rel="icon" type="image/png" href="images/icons/tablogo.png"/>
     <link rel="stylesheet" href="css/staffSidebar.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>

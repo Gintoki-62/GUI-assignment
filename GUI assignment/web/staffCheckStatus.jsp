@@ -5,101 +5,176 @@
     <%@ page contentType="text/html" pageEncoding="UTF-8" language="java" %>
     <%@ page import="java.sql.*, java.text.SimpleDateFormat" %>
     <%@ include file="staffSidebar.jsp" %>
-    <title>BOOKLOOM - Staff Order Status</title>
+    <title>BookLoom Staff Page</title>
+    <link rel="icon" type="image/png" href="images/icons/tablogo.png"/>
     <style>
+       
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
+            background-color: #f9f7f5;
+            color: #333;
         }
-        
+
         .container {
-            margin-left: 250px; /* Sidebar width */
-            padding: 20px;
+            margin-left: 250px;
+            padding: 25px;
+            transition: all 0.3s ease;
         }
-        
+
         h2 {
             text-align: center;
-            margin-top: 20px;
-            color: #333;
-            padding-bottom: 20px;
+            margin: 10px 0 30px;
+            color: #4a4a4a;
+            font-size: 28px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 15px;
         }
-        
+
+        h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff7043, #ffab40);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
         .message {
             text-align: center;
-            padding: 10px;
-            margin: 10px auto;
-            width: 80%;
-            border-radius: 5px;
-        }
-        
-        .success {
-            background-color: #d4edda;
-            color: #155724;
-        }
-        
-        .error {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-        
-        table {
+            padding: 12px 15px;
+            margin: 15px auto;
             width: 90%;
-            margin: 30px auto;
+            border-radius: 6px;
+            font-size: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+        }
+
+        .success {
+            background-color: #fff3e0;
+            color: #a76100;
+            border-left: 4px solid #ff9800;
+        }
+
+        .error {
+            background-color: #ffebee;
+            color: #b71c1c;
+            border-left: 4px solid #f44336;
+        }
+
+        table {
+            width: 95%;
+            margin: 25px auto;
             border-collapse: collapse;
             background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
         }
 
         th, td {
-            padding: 12px;
-            border: 1px solid #ddd;
+            padding: 14px 12px;
+            border: none;
             text-align: center;
         }
 
         th {
-            background-color: #717fe0;
+            background: linear-gradient(135deg, #ff7043, #ff9800);
             color: white;
+            font-weight: 600;
             position: sticky;
             top: 0;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.5px;
         }
 
         tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: #fff8f0;
+        }
+
+        tr:not(:last-child) td {
+            border-bottom: 1px solid #f0e6dd;
         }
 
         tr:hover {
-            background-color: #e9e9e9;
+            background-color: #fff1e4;
+            transition: background-color 0.2s ease;
         }
 
         select {
-            padding: 6px;
+            padding: 8px 10px;
             font-size: 14px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            border: 1px solid #e8d6c6;
+            border-radius: 5px;
             width: 100%;
+            background-color: white;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        select:focus {
+            border-color: #ff9800;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.2);
         }
 
         button {
-            padding: 6px 12px;
-            font-weight: bold;
-            background-color: #28a745;
+            padding: 8px 16px;
+            font-weight: 600;
+            background: linear-gradient(to right, #ff7043, #ff9800);
             color: white;
             border: none;
             cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(255, 112, 67, 0.2);
+            width: 100%;
+            max-width: 120px;
         }
 
         button:hover {
-            background-color: #218838;
+            background: linear-gradient(to right, #f4511e, #fb8c00);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(255, 112, 67, 0.25);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        td:nth-child(3) {
+            font-family: 'Courier New', monospace;
+            font-weight: 500;
+            color: #795548;
+        }
+
+        td:nth-child(4) {
+            color: #e65100;
+            font-weight: bold;
+        }
+
+        select[name="status"] option[value="packaging"] {
+            color: #ff7043;
+        }
+
+        select[name="status"] option[value="shipping"] {
+            color: #ff9800;
+        }
+
+        select[name="status"] option[value="delivered"] {
+            color: #8d6e63;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h2>Staff Order Status Management</h2>
+    <h2>Product Order Status</h2>
     
     <%-- Display success/error messages --%>
     <%
