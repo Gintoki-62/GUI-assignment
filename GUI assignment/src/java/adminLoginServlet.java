@@ -3,8 +3,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.sql.*;
 
-
-
 public class adminLoginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -60,7 +58,6 @@ public class adminLoginServlet extends HttpServlet {
 
                 // Redirect to different dashboards (optional)
                 if ("manager".equals(role)) {
-                    
                     response.sendRedirect("Index2.jsp");
                 } else {
                     response.sendRedirect("staffIndex.jsp");

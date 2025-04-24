@@ -240,17 +240,17 @@
                                        <input type="text" name="publisher" value="<%= isSuccess ? "" : prd.getPublisher() %>" required />
                                     </div>
                                     
-                    <div class="inputBox">
-                        <label><span>Book Descriptions :</span></label>
-                        <textarea style="height:90px; 
-                                  width: 95%; 
-                                  padding:6px 8px; 
-                                  box-sizing:border-box; 
-                                  resize:vertical;" 
-                                  type="text" 
-                                  name="desc" 
-                                  required><%= isSuccess ? "" : prd.getDescription() %></textarea>
-                    </div>
+                                    <div class="inputBox">
+                                        <label><span>Book Descriptions :</span></label>
+                                        <textarea style="height:90px; 
+                                                  width: 95%; 
+                                                  padding:6px 8px; 
+                                                  box-sizing:border-box; 
+                                                  resize:vertical;" 
+                                                  type="text" 
+                                                  name="desc" 
+                                                  required><%= isSuccess ? "" : prd.getDescription() %></textarea>
+                                    </div>
                                  
                                     <div class="inputBox">
                                        <label><span>No of Pages :</span></label>

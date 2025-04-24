@@ -1,3 +1,4 @@
+<%@page import="java.sql.*"%>
 <%@ page import="DB.managerDB, domain.Manager" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,9 +47,7 @@
         .fa-user:before{
             content:"\f007";
         }
-        
     </style>
-    
   </head>
   <body>
     <div class="wrapper">
@@ -56,8 +55,8 @@
       <div class="sidebar" data-background-color="dark">
         <div class="sidebar-logo">
           <!----------------------------------------------------- Logo Header ---------------------------------------------------------->
-          <div class="logo-header" data-background-color="white" style= "padding-left:0px">
-            <a href="Index2.jsp" class="logo" >
+          <div class="logo-header" data-background-color="white" style="padding-left:0px">
+            <a href="Index2.jsp" class="logo">
               <img
                 src="images/icons/Logo.png"
                 alt="navbar brand"
@@ -82,7 +81,6 @@
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
           <div class="sidebar-content">
             <ul class="nav nav-secondary">
-                
               <li class="nav-item">
                 <a
                   data-bs-toggle="collapse"
@@ -105,7 +103,7 @@
                 </div>
               </li>
               
-            <li class="nav-item">
+              <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#staff">
                   <i class="fas fa-user"></i>
                   <p>Staff Accounts</p>
@@ -120,9 +118,9 @@
                     </li>
                   </ul>
                 </div>
-            </li>
-            
-            <li class="nav-item">
+              </li>
+              
+              <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#products">
                   <i class="fas fa-book"></i>
                   <p>Products</p>
@@ -137,9 +135,9 @@
                     </li>
                   </ul>
                 </div>
-            </li>
-            
-            <li class="nav-item">
+              </li>
+              
+              <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#documentation">
                   <i class="fas fa-file"></i>
                   <p>Documentation</p>
@@ -154,7 +152,7 @@
                     </li>
                   </ul>
                 </div>
-            </li>
+              </li>
               
               <li class="nav-section">
                 <span class="sidebar-mini-icon">
@@ -332,7 +330,6 @@
                 </a>
               </li>
               
-              
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#submenu">
                   <i class="fas fa-bars"></i>
@@ -389,7 +386,6 @@
         </div>
       </div>
       <!--------------------------------------------------------- End Sidebar ---------------------------------------------------------------->
-
       <div class="main-panel">
         <div class="main-header">
           <div class="main-header-logo">
@@ -713,7 +709,6 @@
                     </div>
                   </div>
                 </li>
-                
                 <!--------------------------------------- View Profile ------------------------------------------------>
                 <li class="nav-item topbar-user dropdown hidden-caret">
                   <a
@@ -723,14 +718,14 @@
                     aria-expanded="false"
                   >
                     <div class="avatar-sm">
-                       <%
-                  String profileImage = (String) session.getAttribute("profileImage");
-                  if (profileImage == null || profileImage.isEmpty()) {
-                      profileImage = "assets/img/profile.jpg"; // Default image
-                  }
-                    %> 
+                      <% 
+                        String profileImage = (String) session.getAttribute("profileImage");
+                        if (profileImage == null || profileImage.isEmpty()) {
+                            profileImage = "assets/img/profile.jpg"; // Default image
+                        }
+                      %> 
                       <img
-                        src="<%= profileImage %>"
+                        src="images/<%= profileImage %>"
                         alt="..."
                         class="avatar-img rounded-circle"
                       />
@@ -738,10 +733,10 @@
                     <span class="profile-username">
                       <span class="op-7">Hi,</span>
                       <span class="fw-bold">
-                           <% 
-                    String staffName = (String) session.getAttribute("staffName");
-                    out.print(staffName != null ? staffName : "Admin");
-                %>
+                        <% 
+                          String stfName = (String) session.getAttribute("staffName");
+                          out.print(stfName != null ? stfName : "Admin");
+                        %>
                       </span>
                     </span>
                   </a>
@@ -751,25 +746,28 @@
                         <div class="user-box">
                           <div class="avatar-lg">
                             <img
-                              src="<%= profileImage %>"
+                              src="images/<%= profileImage %>"
                               alt="image profile"
                               class="avatar-img rounded"
                             />
                           </div>
                           <div class="u-text">
-                            <h4><%= staffName != null ? staffName : "Admin" %></h4>
-                            <p class="text-muted"> <% 
-                          String email = (String) session.getAttribute("E-mail");
-                          out.print(email != null ? email : "");
-                      %></p>
+                            <h4><%= stfName != null ? stfName : "Admin" %></h4>
+                            <p class="text-muted"> 
+                              <% 
+                                String email = (String) session.getAttribute("E-mail");
+                                out.print(email != null ? email : "");
+                              %>
+                            </p>
                             <a
-                              href="profile.html"
+                              href="profileManager.jsp"
                               class="btn btn-xs btn-secondary btn-sm"
                               >View Profile</a
                             >
                           </div>
                         </div>
                       </li>
+                      
                       <li>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">My Profile</a>
@@ -778,7 +776,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Account Setting</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="logout.jsp">Logout</a>
                       </li>
                     </div>
                   </ul>
@@ -789,8 +787,4 @@
           </nav>
           <!---------------------------------------------------------- End Navbar ------------------------------------------------------------>
         </div>
-
-        <!---------------------------------------------------------- content right here  ---------------------------------------------------->
-        
-  </body>
-</html>
+        <!-- Main Content Area (This is where Index2.jsp content will be inserted) -->

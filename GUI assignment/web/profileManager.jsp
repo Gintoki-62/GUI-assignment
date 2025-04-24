@@ -1,11 +1,11 @@
 <%-- 
-    Document   : productAdmin
-    Created on : 17 Apr 2025, 11:31:17 pm
+    Document   : profileManager
+    Created on : 24 Apr 2025, 3:34:22 pm
     Author     : User
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.sql.*, DB.ProductDB"%>
+<%@page import="java.sql.*, DB.managerDB, domain.Manager"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -50,96 +50,38 @@
     <link rel="stylesheet" href="assets/css/demo.css" />
     
     <style>
-        .button_container {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 10px;
-        
-        }
-        
-        .edit_button {
-            font-weight: bold;
-            color: darkslategray;
-            -webkit-box-flex: 0;
-            -ms-flex: 0 0 100%;
-            flex: 1; /* Make buttons share space equally */
-            max-width: 98%;
-            margin: auto;
-            justify-content: center;
-            align-items: center;
-            background-color: whitesmoke;
-            cursor: pointer;
-            font-size: 14px; /* Smaller font */
-            width: 105px; /* Remove fixed width */
-            height: 40px; /* Smaller height */
-            border: 2px solid whitesmoke;
-            box-shadow: 0px 1px 1px 1px grey;
-            border-radius: 10px;
-            transform: translate(1%, 0%);
-        }
-         
-        .edit_button:hover {
-           color: black;
-           font-weight: bold;
-           background-color: #9BB0C1;
-           transition-duration: 0.6s;
-        }
-         
-        .create_button {
-           font-weight: bold;
-           color: black;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           background-color: #9BB0C1;
-           cursor: pointer;
-           font-size: 16px;
-           padding:9px 25px;
-           border: none;
-           border-radius: 50px;
-           cursor: pointer;
-           float: right;
-           margin: 10px;
-        }
-        
-        .create_button:hover {
-            color: white;
-            background-color: #00224D;
-            transition-duration: 0.6s;
-        }
-        
-        .heading_section p {
-           color: white;
-           text-align: center;
-        }
-        .heading_section h6 {
-           font-size: large;
-           color: white;
-           text-align: center;
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #BA68C8
         }
 
-        .gallery_container {
-           display: grid;
-           grid-template-columns: repeat(4, 1fr);
-           gap: 15px; /* Adjust the gap between items as needed */
-           padding: 35px; /* Ensure padding for consistency */
+        .profile-button {
+            background: rgb(99, 39, 120);
+            box-shadow: none;
+            border: none
         }
 
-        .gallery_item {
-           background: #fff;
-           box-shadow: 0 0 13px -10px #000;
-           overflow: hidden;
-           padding: 20px;
-           border-radius: 5px;
-           text-align: center;
+        .profile-button:hover {
+            background: #682773
         }
 
-        .gallery_item img {
-           max-width: 100%;
-           height: auto;
-           display: block;
-           margin: 0 auto 10px;
+        .profile-button:focus {
+            background: #682773;
+            box-shadow: none
+        }
+
+        .profile-button:active {
+            background: #682773;
+            box-shadow: none
+        }
+
+        .back:hover {
+            color: #682773;
+            cursor: pointer
+        }
+
+        .labels {
+            font-size: 11px
         }
     </style>
   </head>
@@ -152,7 +94,7 @@
                 
                 <!--------------------------------------------------------Page Header------------------------------------------------------->    
                 <div class="page-header">
-                    <h3 class="fw-bold mb-3">Products</h3>
+                    <h3 class="fw-bold mb-3">Profile</h3>
                     <ul class="breadcrumbs mb-3">
                       <li class="nav-home">
                         <a href="#">
@@ -163,14 +105,9 @@
                         <i class="icon-arrow-right"></i>
                       </li>
                       <li class="nav-item">
-                        <a href="#">Products</a>
+                        <a href="#">View Profile</a>
                       </li>
-                      <li class="separator">
-                        <i class="icon-arrow-right"></i>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#">Products Management</a>
-                      </li>
+                      
                     </ul>
                 </div>
             </div>
@@ -182,76 +119,79 @@
                         
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                          <h4 class="card-title">Products</h4>
-
-                          <!-------------------------------------------- Button------------------------------------------------------ -->
-                          <button
-                            onclick="window.location.href='AddProduct.jsp';"
-                            class="btn btn-primary btn-round ms-auto" style="font-weight:bold"
-                          >
-                            <i class="fa fa-plus"></i>
-                             Create New Product
-                          </button>
+                          <h4 class="card-title">Profile Information</h4>
                         </div>
                     </div> 
                     <%
-                    ProductDB productDB = new ProductDB();
-                    ResultSet rs = null;
+                    String ManagerId = request.getParameter("id");
+                    Manager manager = null;
                     try {
-                        rs = productDB.getAllRecords();
-                  %>
-                  
+                        managerDB mdb = new managerDB();
+                        manager = mdb.getManagerById(ManagerId);
+                    } catch (Exception e) {
+                        out.println("Error: " + e.getMessage());
+                    }
+                %>       
                  <div class="card-body">
-                     
-                     <%
-                        String bookName = (String) request.getAttribute("bookName");
-                        if (bookName != null) {
+                    <%
+                        String ManagerName = (String) request.getAttribute("ManagerName");
+                        boolean IsSuccess = ManagerName != null;
+                        if (ManagerName != null) {
                     %>
-                        <div class="success-msg" style="padding-left: 20px; padding-bottom: 20px; padding-top: 20px; color: green; font-weight: bold; background-color: whitesmoke;">
-                            Product "<%= bookName %>" has been deleted successfully.
+                        <div style="padding-left: 20px; padding-top: 20px; color: green; font-weight: bold; background-color: whitesmoke;">
+                            Manager "<%= ManagerName %>" has been updated successfully.
+                            <a href="productAdmin.jsp">[Back to List Product]</a>
                         </div>
                     <%
                         }
-                    %>
-                     <!------------------------------------------------- Data Table ------------------------------------------------------->
-                    <div class="gallery_container">
-                        <% while (rs != null && rs.next()) { %>
-                        <div class="gallery_item">
-                            <a data-fancybox="gallery" href="<%= rs.getString("BOOK_IMAGE") %>">
-                              <img class="img-responsive" width="250" height="250" src="<%= rs.getString("BOOK_IMAGE") %>" alt="#" />
-                            </a>
-                          
-                            <div class="heading_section">
-                            <div class="button_container"> 
-                                <a href="editProduct.jsp?id=<%= rs.getString("BOOK_ID") %>">
-                                    <button type="submit" class="edit_button">Edit</button>
-                                </a>
-                                <a href="deleteProduct.jsp?id=<%= rs.getString("BOOK_ID") %>">
-                                    <button type="submit" class="edit_button">Delete</button>
-                                </a>
-                              </div>
-                              <h6 style="color: black">Current Stock: <%= rs.getInt("BOOK_QUANTITY") %></h6>
-                              <h6 style="color: black">Price: RM <%= rs.getDouble("BOOK_PRICE") %></h6>
-                              <p style="color: black"><%= rs.getString("BOOK_NAME") %></p>
+                    %> 
+                    <!------------------------------------------------- Profile ------------------------------------------------------->
+                 <div class="col-md-3 border-right">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <input type="hidden" name="image" value="<%= manager.getProfile() %>" />
+                        <img class="rounded-circle mt-5" width="150px" src="<%= manager.getProfile() %>">
+                        <span class="font-weight-bold"><%= manager.getName() %></span>
+                        <span class="text-black-50"><%= manager.getEmail() %></span>
+                        <span> </span>
+                    </div>
+                </div>
+                    
+                <div class="col-md-5 border-right">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Profile Settings</h4>
+                        </div>
+                        
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <label class="labels">Name</label>
+                                <input type="text" class="form-control" placeholder="Enter Manager name" value="<%= IsSuccess ? "" : manager.getName() %>">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="labels">Manager Id</label>
+                                <input type="text" class="form-control" value="<%= IsSuccess ? "" : manager.getId() %>" placeholder="Enter Manager ID">
                             </div>
                         </div>
-                        <% } %>
+                        
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label class="labels">Password</label>
+                                <input type="password" class="form-control" placeholder="Enter Password" value="<%= IsSuccess ? "" : manager.getPsw() %>">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="labels">E-mail</label>
+                                <input type="text" class="form-control" placeholder="Enter E-mail" value="<%= IsSuccess ? "" : manager.getEmail() %>">
+                            </div>
+                        </div>
+                        
+                        <form action="" method="POST">
+                        <div class="mt-5 text-center">
+                            <button class="btn btn-primary profile-button" type="button">Save Profile</button>
+                        </div>
+                        </form>
                     </div>
-                     <%
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            } finally {
-                                if (rs != null) {
-                                    try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
-                                }
-                                if (productDB != null) {
-                                    try { productDB.shutDown(); } catch (SQLException e) { e.printStackTrace(); }
-                                }
-                            }
-                        %>
-                <!-------------------------------------------------End of Data Table ---------------------------------->
-            
-            
+                </div>   
+                <!-------------------------------------------------View Profile ---------------------------------->
             </div>
             </div>
             </div>
