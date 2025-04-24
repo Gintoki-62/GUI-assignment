@@ -30,13 +30,13 @@
                                     <td>
                                         <label>Name:</label>
                                         <div id="nmadd" class="m-b-20" style="padding: 10px">
-                                            <input type="text" name="uname" id="uname" value="<%= username %>" style="width:550px" readonly>
+                                            <input type="text" name="uname" id="uname" value="<%= username %>" style="width:550px" readonly maxlength="50">
                                         </div>
                                     </td>
                                     <td>
                                         <label style="margin-left: 25px">Phone Number:</label>
                                         <div id="phadd" class="m-b-20" style="margin-left: 25px; padding: 10px">
-                                            <input type="text" name="phone" id="phone" value="<%= phone %>" readonly>
+                                            <input type="text" name="phone" id="phone" value="<%= phone %>" readonly maxlength="11">
                                         </div>
                                     </td>
                                 </tr>
@@ -44,7 +44,7 @@
                                     <td>
                                         <label>Address:</label>   
                                         <div id="adradd" class="m-b-20" style="padding: 10px">
-                                            <input type="text" name="address" id="address" value="<%= address %>" style="width:550px" readonly>
+                                            <input type="text" name="address" id="address" value="<%= address %>" style="width:550px" readonly maxlength="65">
                                         </div>
                                     </td>
                                     <td>
