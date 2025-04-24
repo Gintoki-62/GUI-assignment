@@ -713,20 +713,7 @@
                     </div>
                   </div>
                 </li>
-                <%
-                    String ManagerId = request.getParameter("id");
-                    Manager manager = null;
-                    try {
-                        managerDB db = new managerDB();
-                        manager = db.getManagerById(ManagerId);
-                    } catch (Exception e) {
-                        out.println("Error: " + e.getMessage());
-                    }
-                %> 
-                <%
-                        String staffName = (String) request.getAttribute("staffName");
-                       
-                    %>
+                
                 <!--------------------------------------- View Profile ------------------------------------------------>
                 <li class="nav-item topbar-user dropdown hidden-caret">
                   <a
@@ -736,15 +723,26 @@
                     aria-expanded="false"
                   >
                     <div class="avatar-sm">
+                       <%
+                  String profileImage = (String) session.getAttribute("profileImage");
+                  if (profileImage == null || profileImage.isEmpty()) {
+                      profileImage = "assets/img/profile.jpg"; // Default image
+                  }
+                    %> 
                       <img
-                        src="assets/img/profile.jpg"
+                        src="<%= profileImage %>"
                         alt="..."
                         class="avatar-img rounded-circle"
                       />
                     </div>
                     <span class="profile-username">
                       <span class="op-7">Hi,</span>
-                      <span class="fw-bold"><%= staffName %></span>
+                      <span class="fw-bold">
+                           <% 
+                    String staffName = (String) session.getAttribute("staffName");
+                    out.print(staffName != null ? staffName : "Admin");
+                %>
+                      </span>
                     </span>
                   </a>
                   <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -753,14 +751,17 @@
                         <div class="user-box">
                           <div class="avatar-lg">
                             <img
-                              src="assets/img/profile.jpg"
+                              src="<%= profileImage %>"
                               alt="image profile"
                               class="avatar-img rounded"
                             />
                           </div>
                           <div class="u-text">
-                            <h4>Hizrian</h4>
-                            <p class="text-muted">hello@example.com</p>
+                            <h4><%= staffName != null ? staffName : "Admin" %></h4>
+                            <p class="text-muted"> <% 
+                          String email = (String) session.getAttribute("E-mail");
+                          out.print(email != null ? email : "");
+                      %></p>
                             <a
                               href="profile.html"
                               class="btn btn-xs btn-secondary btn-sm"

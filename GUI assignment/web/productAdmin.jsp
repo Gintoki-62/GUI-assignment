@@ -220,7 +220,7 @@
                         <% while (rs != null && rs.next()) { %>
                         <div class="gallery_item">
                             <a data-fancybox="gallery" href="<%= rs.getString("BOOK_IMAGE") %>">
-                              <img class="img-responsive" width="250" height="250"src="<%= rs.getString("BOOK_IMAGE") %>" alt="#" />
+                              <img class="img-responsive" width="250" height="250" src="<%= rs.getString("BOOK_IMAGE") %>" alt="#" />
                             </a>
                           
                             <div class="heading_section">
