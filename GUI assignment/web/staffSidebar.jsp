@@ -31,7 +31,7 @@
                         </a>
                     </li>
                      <li class="sidebar-item">
-                        <a href="viewCustomers.jsp" class="sidebar-link">
+                        <a href="staffCustRecord.jsp" class="sidebar-link">
                             <i class="bi bi-people"></i>
                             <span>View Customers</span>
                         </a>

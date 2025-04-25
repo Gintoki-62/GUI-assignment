@@ -80,7 +80,7 @@
         }
 
         th {
-            background: linear-gradient(135deg, #8bc34a, #689f38);
+            background: linear-gradient(135deg, #689f38, #8bc34a);
             color: white;
             font-weight: 600;
             text-transform: uppercase;

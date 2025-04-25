@@ -200,6 +200,7 @@
             cursor: pointer;
             font-size: 15px;
             margin-top: 12px;
+            margin-left: 5px;
             transition: all 0.3s ease;
             font-weight: 500;
         }
