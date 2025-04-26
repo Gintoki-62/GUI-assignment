@@ -196,7 +196,7 @@
                     %>
                      <!------------------------------------------------- Data Table ------------------------------------------------------->
                        <div class="container1">
-                        <form action="AddProductServlet" method="POST" class="" <% request.setCharacterEncoding("UTF-8"); %>>
+                        <form action="AddProductServlet" method="POST" class="" enctype="multipart/form-data" <% request.setCharacterEncoding("UTF-8"); %>>
                            <div class="row1">
                               <div class="col1">
                                  <p class="title">New Product</p>
