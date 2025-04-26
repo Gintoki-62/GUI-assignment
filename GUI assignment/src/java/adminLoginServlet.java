@@ -68,10 +68,12 @@ public class adminLoginServlet extends HttpServlet {
                 response.sendRedirect("staffIndex.jsp");
             } else if ("manager".equals(role)) {
                 session.setAttribute("adminUser", username);
-                session.setAttribute("E-mail", email);
+                session.setAttribute("Email", email);
                 session.setAttribute("role", role);
-                session.setAttribute("staffName", name);
+                session.setAttribute("ManagerName", name);
                 session.setAttribute("profileImage", profile);
+                session.setAttribute("Password", password);
+
                 response.sendRedirect("Index2.jsp");
             }
         } else {
