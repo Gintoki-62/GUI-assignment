@@ -14,9 +14,9 @@ import java.sql.*;
 import javax.swing.*;
 
 public class ProductDB {
-    private String host = "jdbc:derby://localhost:1527/bookloomDB;create=true";
-    private String user = "nbuser";
-    private String password = "nbuser";
+    private String host = "jdbc:derby://localhost:1527/bookLoomDB;create=true";
+    private String user = "book";
+    private String password = "book";
     private String tableName = "Book";
     private Connection conn;
     private PreparedStatement stmt;
