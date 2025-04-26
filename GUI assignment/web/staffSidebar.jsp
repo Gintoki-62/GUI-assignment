@@ -49,13 +49,13 @@
                         <span>Account</span>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
+                        <a href="staffProfile.jsp" class="sidebar-link">
                             <i class="bi bi-person-circle"></i>
                             <span>Profile</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
+                        <a href="staffLogoutServlet" class="sidebar-link">
                             <i class="bi bi-box-arrow-left"></i>
                             <span>Logout</span>
                         </a>

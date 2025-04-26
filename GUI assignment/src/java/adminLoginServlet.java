@@ -15,7 +15,9 @@ public class adminLoginServlet extends HttpServlet {
         String psw = "";
         String email = "";
         String profile = "null";
-
+        String userid = "";
+        String gender = "";
+        
         try {
             Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/userdb", "nbuser", "nbuser");
 
@@ -45,26 +47,36 @@ public class adminLoginServlet extends HttpServlet {
                 if (rsStaff.next()) {
                     isAuthenticated = true;
                     role = "staff";
+                    userid = rsStaff.getString("USERID");
+                    name = rsStaff.getString("USERNAME");
+                    email = rsStaff.getString("EMAIL");
+                    gender = rsStaff.getString("GENDER");
+                    profile = rsStaff.getString("PROFILE");
                 }
             }
 
             if (isAuthenticated) {
-                HttpSession session = request.getSession();
+            HttpSession session = request.getSession();
+
+            if ("staff".equals(role)) {
+                session.setAttribute("userid", userid);
+                session.setAttribute("name", name);
+                session.setAttribute("email", email);
+                session.setAttribute("gender", gender);
+                session.setAttribute("role", role);
+                session.setAttribute("profileImage", profile);
+                response.sendRedirect("staffIndex.jsp");
+            } else if ("manager".equals(role)) {
                 session.setAttribute("adminUser", username);
                 session.setAttribute("E-mail", email);
                 session.setAttribute("role", role);
                 session.setAttribute("staffName", name);
                 session.setAttribute("profileImage", profile);
-
-                // Redirect to different dashboards (optional)
-                if ("manager".equals(role)) {
-                    response.sendRedirect("Index2.jsp");
-                } else {
-                    response.sendRedirect("staffIndex.jsp");
-                }
-            } else {
-                response.sendRedirect("adminlogin.jsp?error=invalid");
+                response.sendRedirect("Index2.jsp");
             }
+        } else {
+            response.sendRedirect("adminlogin.jsp?error=invalid");
+        }
 
             conn.close();
 

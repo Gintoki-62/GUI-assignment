@@ -50,11 +50,19 @@
     <jsp:include page="staffSidebar.jsp" />
 
     <div id="content">
-        <div class="welcome-message">
-            Welcome, Staff Member!
-        </div>
+        <%
+            // Retrieve the staff name from the session
+            String staffName = (String) session.getAttribute("name");
+
+            if (staffName != null && !staffName.isEmpty()) {
+        %>
+            <div class="welcome-message">
+                Welcome, <%= staffName %>!
             </div>
-        </div>
+        <%
+            }
+        %>
+        <%-- too empty, will add some stuff>
     </div>
 </body>
-</html>
+</html>v
