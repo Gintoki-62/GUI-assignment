@@ -28,7 +28,7 @@ public class staffUpdateProdServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
         String bookId = request.getParameter("BOOK_ID");
         String bookName = request.getParameter("BOOK_NAME");
         String bookPriceStr = request.getParameter("BOOK_PRICE");

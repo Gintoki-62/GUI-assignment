@@ -183,6 +183,7 @@
         <h2>View Products</h2>
 
         <%
+            request.setCharacterEncoding("UTF-8");
             staffDB staffDb = new staffDB();
             List<Book> bookList = staffDb.getRecord();
 

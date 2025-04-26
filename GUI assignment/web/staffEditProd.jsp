@@ -240,7 +240,7 @@
 
     <div style="padding: 20px;" class="content">
         <h2>Edit Product</h2>
-
+        <% request.setCharacterEncoding("UTF-8"); %>
         <% List<String> errorMessages = (List<String>) request.getAttribute("errorMessages"); %>
         <% if (errorMessages != null && !errorMessages.isEmpty()) { %>
             <div class="error-message">

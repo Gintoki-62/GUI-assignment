@@ -32,6 +32,7 @@ public class staffAddProdServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String bookId = request.getParameter("bookId");
         String bookName = request.getParameter("bookName");
         String authorName = request.getParameter("authorName");
