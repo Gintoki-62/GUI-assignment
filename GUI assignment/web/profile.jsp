@@ -136,6 +136,11 @@
             <input type="submit" value="Logout" />
         </form>
     </div>
+    
+    <div class="logout-btn">
+        <a href="about.jsp" style="color: white">Back</a>
+    </div>
+    
 </div>
 
 </body>
