@@ -9,5 +9,9 @@ package domain;
  * @author yenxi
  */
 public class ManagerPK {
+
+    ManagerPK(String managerid, String managername) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
