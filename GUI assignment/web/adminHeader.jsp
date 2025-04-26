@@ -146,7 +146,7 @@
                 <div class="collapse" id="documentation">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="productAdmin.jsp">
+                      <a href="report.jsp">
                         <span class="sub-item">Reports</span>
                       </a>
                     </li>

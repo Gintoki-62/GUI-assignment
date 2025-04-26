@@ -5,15 +5,18 @@
 package DB;
 
 import domain.Manager;
+import domain.Manager_1;
 import java.sql.*;
+import javax.persistence.EntityManager;
 
 public class managerDB {
-    private String host = "jdbc:derby://localhost:1527/bookloom";
-    private String user = "ckj";
-    private String password = "ckj";
+    private String host = "jdbc:derby://localhost:1527/userdb";
+    private String user = "nbuser";
+    private String password = "nbuser";
     private String tableName = "Manager";
     private Connection conn;
     private PreparedStatement stmt;
+    EntityManager em;
     
     public managerDB() throws Exception {
         createConnection();  
@@ -25,26 +28,9 @@ public class managerDB {
         return stmt.executeQuery();
     }
     
-    public Manager getManagerById(String id) throws SQLException {
+    public Manager_1 getManagerById(String id) throws SQLException {
+        Manager_1 manager = em.find(Manager_1.class, id);
         String queryStr = "SELECT * FROM " + tableName + " WHERE ManagerId = ?";
-        Manager manager = null;
-
-        try {
-            stmt = conn.prepareStatement(queryStr);
-            stmt.setString(1, id);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                manager = new Manager();
-                manager.setProfile(rs.getString("Profile"));
-                manager.setId(rs.getString("UserId"));
-                manager.setName(rs.getString("UserName"));
-                manager.setEmail(rs.getString("Email"));
-                manager.setPsw(rs.getString("Password"));
-            }
-        } catch (SQLException ex) {
-            throw ex;
-        }
 
         return manager;
     }
