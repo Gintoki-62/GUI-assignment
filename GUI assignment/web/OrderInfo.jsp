@@ -66,6 +66,8 @@
                         String orderdate = rs.getString("ORDER_DATE");
                         String status = rs.getString("STATUS");
                         double ttotal = bookPrice * quantity;
+                        String transactionId = rs.getString("TRANSACTION_ID");
+                        String method = rs.getString("METHOD");
 
                         if (!orderId.equals(currentOrderId)) {
                             if (!currentOrderId.isEmpty()) {
@@ -105,6 +107,9 @@
                 <button class="accordion">Order ID: <%= orderId %> <p style='text-align: right'>Status: <%= status %></p></button>
                 <div class="panel">
                     <table class="table-shopping-cart">
+                        <br/>
+                        <div><strong>Transaction ID : </strong> <%= transactionId %></div><br/>
+                        <div><strong>Payment Method : </strong> <%= method %></div><br/><br/>
                         <tr class="table_head">
                             <th class="column-1" style="text-align: center">Product</th>
                             <th style="text-align: center">Name</th>

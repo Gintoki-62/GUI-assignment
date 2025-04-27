@@ -378,8 +378,8 @@ public class bookDB {
     public ResultSet getOrderInfo(String userId) {
         ResultSet rs = null;
         try {
-            String sql = "SELECT i.BOOK_ID, i.BOOK_NAME, i.BOOK_PRICE, i.BOOK_IMAGE, i.QUANTITY, o.TOTAL_AMOUNT, o.ORDER_ID, o.ORDER_DATE, O.STATUS " +
-                        "FROM ORDER_ITEMS i " + "JOIN ORDERS o ON i.ORDER_ID = o.ORDER_ID " +
+            String sql = "SELECT i.BOOK_ID, i.BOOK_NAME, i.BOOK_PRICE, i.BOOK_IMAGE, i.QUANTITY, o.TOTAL_AMOUNT, o.ORDER_ID, o.ORDER_DATE, O.STATUS, p.TRANSACTION_ID, p.METHOD " +
+                        "FROM ORDER_ITEMS i " + "JOIN ORDERS o ON i.ORDER_ID = o.ORDER_ID " + "JOIN PAYMENT p ON o.ORDER_ID = p.ORDER_ID " +
                         "WHERE o.user_id = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, userId);
