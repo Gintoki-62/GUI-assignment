@@ -7,10 +7,10 @@ import javax.servlet.http.*;
 public class staffLogoutServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(false); // Get current session
+        HttpSession session = request.getSession(false);
         if (session != null) {
-            session.invalidate(); // End session
+            session.invalidate();
         }
-        response.sendRedirect("about.jsp"); // Redirect to main page aka about page
+        response.sendRedirect("about.jsp");
     }
 }

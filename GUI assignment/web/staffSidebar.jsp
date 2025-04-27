@@ -6,6 +6,24 @@
     <title>BookLoom Staff Sidebar</title>
     <link rel="stylesheet" href="css/staffSidebar.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .logout-button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: inherit;
+            text-align: left;
+            font-size: inherit;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        .logout-button i {
+            margin-right: 0.5rem;
+        }
+    </style>
 </head>
 <body>
     <aside id="sidebar" class="active">
@@ -55,10 +73,12 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="staffLogoutServlet" class="sidebar-link">
-                            <i class="bi bi-box-arrow-left"></i>
-                            <span>Logout</span>
-                        </a>
+                        <form action="staffLogoutServlet" method="post">
+                            <button type="submit" class="sidebar-link logout-button">
+                                <i class="bi bi-box-arrow-left"></i>
+                                <span>Logout</span>
+                            </button>
+                        </form>
                     </li>
                 </ul>
             </nav>
@@ -71,7 +91,7 @@
             const currentPage = window.location.pathname.split('/').pop();
 
             links.forEach(link => {
-                const linkPage = link.getAttribute('href').split('/').pop();
+                const linkPage = link.getAttribute('href') ? link.getAttribute('href').split('/').pop() : '';
                 if (linkPage === currentPage) {
                     link.parentElement.classList.add('active');
                 }
