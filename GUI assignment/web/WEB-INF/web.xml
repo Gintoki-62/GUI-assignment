@@ -64,6 +64,10 @@
         <servlet-name>editProfileServlet</servlet-name>
         <servlet-class>controller.editProfileServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>reportServlet</servlet-name>
+        <servlet-class>reportServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/AddToCartServlet</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>editProfileServlet</servlet-name>
         <url-pattern>/editProfileServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>reportServlet</servlet-name>
+        <url-pattern>/reportServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
