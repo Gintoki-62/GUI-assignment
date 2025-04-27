@@ -60,6 +60,10 @@
         <servlet-name>staffCheckStatusServlet</servlet-name>
         <servlet-class>staffCheckStatusServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>editProfileServlet</servlet-name>
+        <servlet-class>controller.editProfileServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/AddToCartServlet</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>staffCheckStatusServlet</servlet-name>
         <url-pattern>/staffCheckStatusServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editProfileServlet</servlet-name>
+        <url-pattern>/editProfileServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

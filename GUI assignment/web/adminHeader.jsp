@@ -755,7 +755,7 @@
                             <h4><%= stfName != null ? stfName : "Admin" %></h4>
                             <p class="text-muted"> 
                               <% 
-                                String email = (String) session.getAttribute("E-mail");
+                                String email = (String) session.getAttribute("Email");
                                 out.print(email != null ? email : "");
                               %>
                             </p>
