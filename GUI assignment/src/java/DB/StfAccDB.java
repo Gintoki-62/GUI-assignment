@@ -14,9 +14,9 @@ import java.sql.*;
 import javax.swing.*;
 
 public class StfAccDB {
-    private String host = "jdbc:derby://localhost:1527/bookloom";
-    private String user = "ckj";
-    private String password = "ckj";
+    private String host = "jdbc:derby://localhost:1527/userdb";
+    private String user = "nbuser";
+    private String password = "nbuser";
     private String tableName = "Account";
     private Connection conn;
     private PreparedStatement stmt;

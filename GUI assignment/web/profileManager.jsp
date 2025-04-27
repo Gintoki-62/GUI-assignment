@@ -5,7 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.sql.*, DB.managerDB, domain.Manager"%>
+<%@page import="java.sql.*, DB.managerDB, domain.Manager_1"%>
+<%@ page import="javax.servlet.http.*, javax.servlet.*" %>
+<%@ page session="true" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -122,14 +125,26 @@
                           <h4 class="card-title">Profile Information</h4>
                         </div>
                     </div> 
-                    <%
-                    String ManagerId = request.getParameter("id");
-                    Manager manager = null;
+                <%
+                    // Get session attributes
+                    String managerId = (String) session.getAttribute("adminUser");
+                    if (managerId == null) {
+                        response.sendRedirect("adminlogin.jsp?error=session");
+                        return;
+                    }
+                    
+                    managerDB mDB = new managerDB();
+                    Manager_1 manager = null;
+
                     try {
-                        managerDB mdb = new managerDB();
-                        manager = mdb.getManagerById(ManagerId);
-                    } catch (Exception e) {
-                        out.println("Error: " + e.getMessage());
+                        manager = mDB.getManagerById(managerId);
+                        if (manager == null) {
+                            response.sendRedirect("adminlogin.jsp?error=notfound");
+                            return;
+                        }
+                    } catch (SQLException e) {
+                        out.println("Database error: " + e.getMessage());
+                        return;
                     }
                 %>       
                  <div class="card-body">
@@ -139,17 +154,28 @@
                         if (ManagerName != null) {
                     %>
                         <div style="padding-left: 20px; padding-top: 20px; color: green; font-weight: bold; background-color: whitesmoke;">
-                            Manager "<%= ManagerName %>" has been updated successfully.
-                            <a href="productAdmin.jsp">[Back to List Product]</a>
+                            Manager "<%= manager.getName() %>" has been updated successfully.
+                            <a href="Index2.jsp">[Back to HomePage]</a>
                         </div>
                     <%
                         }
                     %> 
+                    
+                    <%
+                        String error = (String) request.getAttribute("error");
+                        if (error != null) {
+                    %>
+                        <div style="padding-left: 20px; padding-top: 20px; color: red; font-weight: bold; background-color: whitesmoke;">
+                            <%= error %>
+                        </div>
+                    <%
+                        }
+                    %>
                     <!------------------------------------------------- Profile ------------------------------------------------------->
                  <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                         <input type="hidden" name="image" value="<%= manager.getProfile() %>" />
-                        <img class="rounded-circle mt-5" width="150px" src="<%= manager.getProfile() %>">
+                        <img class="rounded-circle mt-5" width="150px" src="images/<%= manager.getProfile() %>">
                         <span class="font-weight-bold"><%= manager.getName() %></span>
                         <span class="text-black-50"><%= manager.getEmail() %></span>
                         <span> </span>
@@ -162,32 +188,33 @@
                             <h4 class="text-right">Profile Settings</h4>
                         </div>
                         
-                        <div class="row mt-2">
-                            <div class="col-md-6">
-                                <label class="labels">Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Manager name" value="<%= IsSuccess ? "" : manager.getName() %>">
+                        <form action="editProfileServlet" method="POST" id="editProfileManager">
+                            <div class="row mt-2">
+                                <div class="col-md-6">
+                                    <label class="labels">Manager Name</label>
+                                    <input type="text" class="form-control" name="ManagerName" placeholder="Enter Manager name" value="<%= IsSuccess ? "" : manager.getName() %>">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="labels">Manager Id</label>
+                                    <input type="hidden" name="ManagerID" value="<%= manager.getId() %>" />
+                                    <input type="text" class="form-control" name="ManagerID" value="<%= manager.getId() %>" placeholder="Enter Manager ID" disabled>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label class="labels">Manager Id</label>
-                                <input type="text" class="form-control" value="<%= IsSuccess ? "" : manager.getId() %>" placeholder="Enter Manager ID">
+
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <label class="labels">Password</label>
+                                    <input type="text" class="form-control" name="password" placeholder="Enter Password" value="<%= IsSuccess ? "" : manager.getPassword() %>">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="labels">E-mail</label>
+                                    <input type="text" class="form-control" name="email" placeholder="Enter E-mail" value="<%= IsSuccess ? "" : manager.getEmail() %>">
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="row mt-3">
-                            <div class="col-md-12">
-                                <label class="labels">Password</label>
-                                <input type="password" class="form-control" placeholder="Enter Password" value="<%= IsSuccess ? "" : manager.getPsw() %>">
+
+                            <div class="mt-5 text-center">
+                                <input type="submit" name="update" class="btn btn-primary profile-button" value="Update Profile"/>
                             </div>
-                            <div class="col-md-12">
-                                <label class="labels">E-mail</label>
-                                <input type="text" class="form-control" placeholder="Enter E-mail" value="<%= IsSuccess ? "" : manager.getEmail() %>">
-                            </div>
-                        </div>
-                        
-                        <form action="" method="POST">
-                        <div class="mt-5 text-center">
-                            <button class="btn btn-primary profile-button" type="button">Save Profile</button>
-                        </div>
                         </form>
                     </div>
                 </div>   
