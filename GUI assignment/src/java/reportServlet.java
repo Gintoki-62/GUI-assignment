@@ -5,7 +5,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-@WebServlet(urlPatterns = {"/reportServlet"})
+
 public class reportServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -14,15 +14,15 @@ public class reportServlet extends HttpServlet {
         String action = request.getParameter("action");
         
         if ("top10".equals(action)) {
-            handleTop10Report(request, response);
+            top10Report(request, response);
         } else if ("daymonthyear".equals(action)) {
-            handleDayMonthYearReport(request, response);
+            dayMonthYearReport(request, response);
         } else {
             response.sendRedirect("report.jsp"); 
         }
     }
 
-    private void handleTop10Report(HttpServletRequest request, HttpServletResponse response)
+    private void top10Report(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         
         List<Map<String, Object>> top10List = new ArrayList<>();
@@ -56,7 +56,7 @@ public class reportServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private void handleDayMonthYearReport(HttpServletRequest request, HttpServletResponse response)
+    private void dayMonthYearReport(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         
         String year = request.getParameter("year");
