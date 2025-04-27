@@ -215,7 +215,7 @@
                                        <label><span>Book Image :</span></label>
                                        <input type="hidden" name="image" value="<%= prd.getImage() %>" />
                                        
-                                       <img src="images/<%= prd.getImage() %>" alt="Current Profile" 
+                                       <img src="<%= prd.getImage() %>" alt="Current Profile" 
                                             style="width:50px; height:50px; display:block; margin-bottom:10px;">
                                     </div>
                                  

@@ -185,7 +185,7 @@
                 <table border="1" cellpadding="10" cellspacing="10">
                     <tr>
                     <th>Book Image :</th>
-                    <td><img src="images/<%= prd.getImage() %>" alt="Current Profile" style="width:50px; height:50px; display:block; margin-bottom:10px;"></td>
+                    <td><img src="<%= prd.getImage() %>" alt="Current Profile" style="width:50px; height:50px; display:block; margin-bottom:10px;"></td>
                     </tr>
 
                     <tr style="border: 2px solid #272c30;">
