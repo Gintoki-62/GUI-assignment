@@ -1,5 +1,3 @@
-<%@page import="java.sql.*"%>
-<%@ page import="DB.managerDB, domain.Manager" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -121,6 +119,23 @@
               </li>
               
               <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#customer">
+                  <i class="fas fa-user"></i>
+                  <p>Customer Accounts</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="customer">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="ViewCustomer.jsp">
+                        <span class="sub-item">Customer Accounts Management</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              
+              <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#products">
                   <i class="fas fa-book"></i>
                   <p>Products</p>
@@ -138,20 +153,10 @@
               </li>
               
               <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#documentation">
+                <a href="report.jsp">
                   <i class="fas fa-file"></i>
-                  <p>Documentation</p>
-                  <span class="caret"></span>
+                  <p>Reports</p>
                 </a>
-                <div class="collapse" id="documentation">
-                  <ul class="nav nav-collapse">
-                    <li>
-                      <a href="report.jsp">
-                        <span class="sub-item">Reports</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
               </li>
               
               <li class="nav-section">
