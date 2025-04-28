@@ -133,15 +133,8 @@
             border-radius: 5px;
             transition: all 0.3s ease;
             font-size: 14px;
-            box-shadow: 0 2px 4px rgba(255, 112, 67, 0.2);
             width: 100%;
             max-width: 120px;
-        }
-
-        button:hover {
-            background: linear-gradient(to right, #f4511e, #fb8c00);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 6px rgba(255, 112, 67, 0.25);
         }
 
         button:active {

@@ -146,6 +146,14 @@
                 box-sizing: border-box;
                 font-size: 16px;
             }
+            .form-group input[type="file"]{
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ced4da;
+                border-radius: 4px;
+                box-sizing: border-box;
+                font-size: 16px;
+            }
 
             .form-group button {
                 background-color: #007bff;
@@ -251,7 +259,7 @@
             <div class="profile-container">
                 <div class="profile-header">
                     <% if (profileImage != null && !profileImage.equals("null") && !profileImage.isEmpty()) { %>
-                        <img src="images/<%= profileImage %>" alt="Profile Picture" class="profile-image">
+                        <img src="<%= session.getAttribute("profileImage") %>" alt="Profile Picture" class="profile-image">
                     <% } else { %>
                         <div class="profile-image-placeholder"><%= firstLetter %></div>
                     <% } %>
@@ -286,7 +294,7 @@
 
                 <div id="edit-profile" class="hidden edit-profile-section">
                     <h3>Edit Your Information</h3>
-                    <form action="staffEditProfileServlet" method="post">
+                    <form action="staffEditProfileServlet" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="staffName">Name:</label>
                             <input type="text" id="staffName" name="staffName" value="<%= name %>" required>
@@ -307,6 +315,10 @@
                         <div class="form-group">
                             <label for="staffPassword">New Password:</label>
                             <input type="password" id="staffPassword" name="staffPassword" placeholder="Enter new password">
+                        </div>
+                        <div class="form-group">
+                            <label for="staffImage">Profile Image:</label>
+                            <input type="file" id="staffImage" name="staffImage" accept="image/*">
                         </div>
                         <div class="form-group">
                             <button type="submit">Update Information</button>
