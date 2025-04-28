@@ -114,6 +114,17 @@ public class CustomerDB {
    
     }
      
+   public ResultSet searchCustomers(String searchTerm) throws SQLException {
+        String queryStr = "SELECT ID FROM " + tableName + " WHERE " +
+                "NAME LIKE ? OR USERNAME LIKE ? OR EMAIL LIKE ?";
+        stmt = conn.prepareStatement(queryStr);
+        stmt.setString(1, "%" + searchTerm + "%");
+        stmt.setString(2, "%" + searchTerm + "%");
+        stmt.setString(3, "%" + searchTerm + "%");
+        ResultSet rs = stmt.executeQuery();
+        return rs;
+    }
+   
     public void shutDown() throws SQLException{
         if (conn != null) {
             try {

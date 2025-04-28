@@ -151,6 +151,35 @@
             margin-bottom: 15px;
         }
 
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            background-color: var(--primary-color);
+            color: var(--color);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: 0.2s;
+            z-index: 100;
+        }
+
+        .back-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button:before {
+            content: "←";
+            margin-right: 5px;
+            font-size: 16px;
+        }
+
         @keyframes wobble {
             0%, 100% { transform: scale(1.025); }
             25%, 75% { transform: scale(1); }
@@ -159,6 +188,9 @@
 </head>
 <body>
 <section class="container">
+    <!-- Back button to about.jsp -->
+    <a href="about.jsp" class="back-button">Back</a>
+    
     <div class="login-container">
         <div class="circle circle-one"></div>
 
@@ -183,7 +215,7 @@
                 <a href="register.jsp">REGISTER</a>
             </div>
             
-            <a href="adminlogin.jsp" style="font-size: 12px; text-decoration: underline;">Admin Login</a>
+            <a href="adminlogin.jsp" style="font-size: 12px; text-decoration: underline; justify-content: center; display: flex;">Admin Login</a>
             
             
         </div>
