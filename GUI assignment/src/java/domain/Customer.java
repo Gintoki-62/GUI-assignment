@@ -23,9 +23,8 @@ public class Customer implements Serializable{
     public Customer(){
     }
     
-    public Customer(int CusID, String CusName, String CusPhone, String CusEmail, 
+    public Customer(String CusName, String CusPhone, String CusEmail, 
             String CusUserName, String CusPsw, String CusGender, String Address){
-        this.CusID = CusID;
         this.CusName = CusName;
         this.CusPhone = CusPhone;
         this.CusEmail = CusEmail;

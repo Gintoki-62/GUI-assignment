@@ -80,6 +80,18 @@
         <servlet-name>reportServlet</servlet-name>
         <servlet-class>reportServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddCustomerServlet</servlet-name>
+        <servlet-class>controller.AddCustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editCustomerServlet</servlet-name>
+        <servlet-class>controller.editCustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteCustomerServlet</servlet-name>
+        <servlet-class>controller.deleteCustomerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/AddToCartServlet</url-pattern>
@@ -147,6 +159,18 @@
     <servlet-mapping>
         <servlet-name>reportServlet</servlet-name>
         <url-pattern>/reportServlet</url-pattern>
+    </servlet-mapping>
+        <servlet-mapping>
+        <servlet-name>AddCustomerServlet</servlet-name>
+        <url-pattern>/AddCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editCustomerServlet</servlet-name>
+        <url-pattern>/editCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteCustomerServlet</servlet-name>
+        <url-pattern>/deleteCustomerServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

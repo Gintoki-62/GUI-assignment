@@ -82,14 +82,14 @@ public class CustomerDB {
 
             if (rs.next()) {
                 customer = new Customer();
-                customer.setCusID(rs.getInt("UserId"));
-                customer.setCusName(rs.getString("UserName"));
-                customer.setCusPhone(rs.getString("Email"));
-                customer.setCusEmail(rs.getString("Password"));
-                customer.setCusUserName(rs.getString("Password"));
-                customer.setCusPsw(rs.getString("Password"));
-                customer.setCusGender(rs.getString("Password"));
-                customer.setAddress(rs.getString("Password"));
+                customer.setCusID(rs.getInt("ID"));
+                customer.setCusName(rs.getString("NAME"));
+                customer.setCusPhone(rs.getString("PHONE"));
+                customer.setCusEmail(rs.getString("EMAIL"));
+                customer.setCusUserName(rs.getString("USERNAME"));
+                customer.setCusPsw(rs.getString("PASSWORD"));
+                customer.setCusGender(rs.getString("GENDER"));
+                customer.setAddress(rs.getString("ADDRESS"));
                 
             }
         } catch (SQLException ex) {
@@ -101,7 +101,7 @@ public class CustomerDB {
    
    public boolean deleteRecord(String id)throws SQLException {
         try {
-            String deleteStr = "DELETE FROM " + tableName + " WHERE UserId = ?";
+            String deleteStr = "DELETE FROM " + tableName + " WHERE ID = ?";
             stmt = conn.prepareStatement(deleteStr);
             stmt.setString(1, id);
             int rowsAffected = stmt.executeUpdate();

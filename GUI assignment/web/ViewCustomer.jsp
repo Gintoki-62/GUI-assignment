@@ -1,11 +1,11 @@
 <%-- 
-    Document   : staffAcc
-    Created on : 17 Apr 2025, 11:22:29 pm
+    Document   : ViewCustomer
+    Created on : 27 Apr 2025, 10:05:33 pm
     Author     : User
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.sql.*, DB.StfAccDB"%>
+<%@page import="java.sql.*, DB.CustomerDB"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,7 +49,7 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="assets/css/demo.css" />
   </head>
-
+  
   <body>
       <%@ include file="adminHeader.jsp" %>
       
@@ -59,7 +59,7 @@
             <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
             <!--------------------------------------------------------Page Header------------------------------------------------------->
               <div class="page-header">
-                <h3 class="fw-bold mb-3">Staff Accounts</h3>
+                <h3 class="fw-bold mb-3">Customer Accounts</h3>
                 <ul class="breadcrumbs mb-3">
                   <li class="nav-home">
                     <a href="#">
@@ -70,13 +70,13 @@
                     <i class="icon-arrow-right"></i>
                   </li>
                   <li class="nav-item">
-                    <a href="#">Staff Accounts</a>
+                    <a href="#">Customer Accounts</a>
                   </li>
                   <li class="separator">
                     <i class="icon-arrow-right"></i>
                   </li>
                   <li class="nav-item">
-                    <a href="#">Staff Account Management</a>
+                    <a href="#">Customer Account Management</a>
                   </li>
                 </ul>
               </div>
@@ -89,38 +89,35 @@
                     
                   <div class="card-header">
                     <div class="d-flex align-items-center">
-                      <h4 class="card-title">Staff Accounts</h4>
+                      <h4 class="card-title">Customer Accounts</h4>
                       
                       <!-------------------------------------------- Button------------------------------------------------------ -->
                       <button
-                        onclick="window.location.href='AddStaffAccount.jsp';"
+                        onclick="window.location.href='AddCustomer.jsp';"
                         class="btn btn-primary btn-round ms-auto" style="font-weight:bold"
                       >
                         <i class="fa fa-plus"></i>
-                         Create a new account
+                         New Customer account
                       </button>
                     </div>
                   </div>
-                  
-                 <%
-                    StfAccDB staffDB = new StfAccDB();
+                    <%
+                    CustomerDB cusDB = new CustomerDB();
                     ResultSet rs = null;
                     try {
-                        rs = staffDB.getAllRecords();
+                        rs = cusDB.getAllRecords();
                   %>
-
-                  <div class="card-body">
-                    <%
-                        String staffName = (String) request.getAttribute("staffName");
-                        if (staffName != null) {
+                     <div class="card-body">
+                         <%
+                        String customerName = (String) request.getAttribute("CustomerName");
+                        if (customerName != null) {
                     %>
-                        <div class="success-msg" style="padding-left: 20px; padding-bottom: 20px; padding-top: 20px; color: green; font-weight: bold; background-color: whitesmoke;">
-                            Staff "<%= staffName %>" has been deleted successfully.
+                       <div class="success-msg" style="padding-left: 20px; padding-bottom: 20px; padding-top: 20px; color: green; font-weight: bold; background-color: whitesmoke;">
+                            Staff "<%= customerName %>" has been deleted successfully.
                         </div>
                     <%
                         }
                     %>
-                    
                     <!------------------------------------------------- Data Table ------------------------------------------------------->
                     <div class="table-responsive">
                       <table
@@ -128,38 +125,36 @@
                         class="display table table-striped table-hover"
                       >
                         <thead>
-                          <tr>
-                            <th>Profile</th>
-                            <th>StaffID</th>
-                            <th>StaffName</th>
+                          <tr>                          
+                            <th>UserID</th>
+                            <th>Name</th>
+                            <th>UserName</th>
+                            <th>Phone Number</th>
                             <th>E-mail</th>
                             <th>Password</th>
-                            <th>Gender</th>
                             <th style="width: 10%">Action</th>
                           </tr>
                         </thead>
                         <tfoot>
                           <tr>
-                            <th>Profile</th>
-                            <th>StaffID</th>
-                            <th>StaffName</th>
+                            <th>UserID</th>
+                            <th>Name</th>
+                            <th>UserName</th>
+                            <th>Phone Number</th>
                             <th>E-mail</th>
                             <th>Password</th>
-                            <th>Gender</th>
                             <th>Action</th>
                           </tr>
                         </tfoot>
                         <tbody>
-                             <% while (rs != null && rs.next()) { %>
+                            <% while (rs != null && rs.next()) { %>
                             <tr>
-                                <td><img src="images/<%= rs.getString("Profile") %>"
-                                         alt="Profile Image" 
-                                        style="width:50px; height:50px; border-radius:50%; object-fit:cover;"></td>
-                                <td><%= rs.getString("UserId") %></td>
-                                <td><%= rs.getString("UserName") %></td>
-                                <td><%= rs.getString("Email") %></td>
-                                <td><%= rs.getString("Password") %></td>
-                                <td><%= rs.getString("Gender") %></td>
+                                <td><%= rs.getString("ID") %></td>
+                                <td><%= rs.getString("NAME") %></td>
+                                <td><%= rs.getString("USERNAME") %></td>
+                                <td><%= rs.getString("PHONE") %></td>
+                                <td><%= rs.getString("EMAIL") %></td>
+                                <td><%= rs.getString("PASSWORD") %></td>
                                 <td>
                                     <div class="form-button-action">
                                         <button
@@ -168,7 +163,7 @@
                                             title=""
                                             class="btn btn-link btn-primary btn-lg"
                                             data-original-title="Edit Task"
-                                            onclick="window.location.href='editStaffAccount.jsp?id=<%= rs.getString("UserId") %>';"
+                                            onclick="window.location.href='editCustomer.jsp?id=<%= rs.getString("ID") %>';"
                                         >
                                             <i class="fa fa-edit"></i>
                                         </button>
@@ -178,7 +173,7 @@
                                             title=""
                                             class="btn btn-link btn-danger"
                                             data-original-title="Remove"
-                                            onclick="window.location.href='deleteStaffAccount.jsp?id=<%= rs.getString("UserId") %>'; "
+                                            onclick="window.location.href='deleteCustomer.jsp?id=<%= rs.getString("ID") %>'; "
                                         >
                                             <i class="fa fa-times"></i>
                                         </button>
@@ -194,11 +189,12 @@
                                 if (rs != null) {
                                     try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
                                 }
-                                if (staffDB != null) {
-                                    try { staffDB.shutDown(); } catch (SQLException e) { e.printStackTrace(); }
+                                if (cusDB != null) {
+                                    try { cusDB.shutDown(); } catch (SQLException e) { e.printStackTrace(); }
                                 }
                             }
                         %>
+
                       </table>
                     </div>
                 <!------------------------------------------------End Table------------------------------------------------------------>   
@@ -209,35 +205,21 @@
           </div>
         </div>
 
-        <!--------------------------------------------------------Footer------------------------------------------------------->
+        <!-- Footer -->
         <footer class="footer">
-          <div class="container-fluid d-flex justify-content-between">
-            <nav class="pull-left">
-              <ul class="nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="http://www.themekita.com">
-                    ThemeKita
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"> Help </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"> Licenses </a>
-                </li>
-              </ul>
-            </nav>
-            <div class="copyright">
-              2024, made with <i class="fa fa-heart heart text-danger"></i> by
-              <a href="http://www.themekita.com">ThemeKita</a>
+            <div class="container-fluid d-flex justify-content-between">
+                <nav class="pull-left">
+                    <ul class="nav">
+                        <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Licenses</a></li>
+                    </ul>
+                </nav>
+                <div class="copyright">
+                    2025, made with <i class="fa fa-heart heart text-danger"></i> by BOOKLOOM
+                </div>
             </div>
-            <div>
-              Distributed by
-              <a target="_blank" href="https://themewagon.com/">ThemeWagon</a>.
-            </div>
-          </div>
         </footer>
-    
+   
    
     <!--   Core JS Files   -->
     <script src="assets/js/core/jquery-3.7.1.min.js"></script>
@@ -308,4 +290,3 @@
     </script>
   </body>
 </html>
-

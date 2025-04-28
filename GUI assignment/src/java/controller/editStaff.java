@@ -37,9 +37,8 @@ public class editStaff extends HttpServlet {
 
         try {
             StfAccDB db = new StfAccDB();
-            db.updateRecord(staff);  // you can also use updateStaffAccount()
+            db.updateRecord(staff); 
             
-            // response.sendRedirect("AddStaffAccount.jsp");
             request.setAttribute("staffName", name);
             request.getRequestDispatcher("editStaffAccount.jsp").forward(request, response);
             
