@@ -81,16 +81,15 @@ public class staffEditProfileServlet extends HttpServlet {
                     if (staffPassword != null && !staffPassword.isEmpty()) {
                         staffAccount.setPsw(staffPassword);
                     }
-                    //IMPORTANT:  Do NOT  set the profileImage  in the staffAccount object.
 
-                    stfAccDB.updateRecord(staffAccount); //update other staff details
+                    stfAccDB.updateRecord(staffAccount);
 
                     session.setAttribute("name", staffName);
                     session.setAttribute("email", staffEmail);
                     session.setAttribute("gender", staffGender);
-                    session.setAttribute("profileImage", profileImage); // Store for display in JSP
+                    session.setAttribute("profileImage", profileImage);
                     if (profileImage != null) {
-                        staffAccount.setProfile(profileImage);  //still set profile in staffAccount
+                        staffAccount.setProfile(profileImage);
                     }
 
                     response.sendRedirect("staffProfile.jsp?updateSuccess=true");
