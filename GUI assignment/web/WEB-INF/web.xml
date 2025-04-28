@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+    
+    <context-param>
+        <param-name>companyName</param-name>
+        <param-value>BookLoom</param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>companyEmail</param-name>
+        <param-value>bookloom123@gmail.com</param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>copyright</param-name>
+        <param-value>All rights reserved |Made with</param-value>
+    </context-param>
+    
     <servlet>
         <servlet-name>AddToCartServlet</servlet-name>
         <servlet-class>controller.AddToCartServlet</servlet-class>
@@ -11,6 +27,7 @@
     <servlet>
         <servlet-name>registerServlet</servlet-name>
         <servlet-class>registerServlet</servlet-class>
+        
     </servlet>
     <servlet>
         <servlet-name>logoutServlet</servlet-name>
