@@ -124,8 +124,7 @@
         }
 
         button {
-            padding: 8px 16px;
-            font-weight: 600;
+            padding: 8px 16px;  
             background: linear-gradient(to right, #ff7043, #ff9800);
             color: white;
             border: none;
