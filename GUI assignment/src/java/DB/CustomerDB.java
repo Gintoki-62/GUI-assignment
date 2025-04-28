@@ -125,6 +125,25 @@ public class CustomerDB {
         return rs;
     }
    
+   public int countCustomer() throws SQLException {
+        String countStr = "SELECT COUNT(ID) FROM REGISTER";
+        int count = 0;
+        ResultSet rs = null;
+        
+        try {
+            stmt = conn.prepareStatement(countStr);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return count;
+    }
+
+   
     public void shutDown() throws SQLException{
         if (conn != null) {
             try {

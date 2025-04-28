@@ -47,7 +47,7 @@ public class StfAccDB {
         stmt = conn.prepareStatement(queryStr);
         return stmt.executeQuery();
     }
-    
+
    public void updateRecord(StaffAccount stf)throws SQLException {
         try {
             String updateStr = "UPDATE " + tableName + 
@@ -107,6 +107,24 @@ public class StfAccDB {
         
         }
    
+    }
+   
+   public int countStaff() throws SQLException {
+        String countStr = "SELECT COUNT(PROFILE) FROM ACCOUNT";
+        int count = 0;
+        ResultSet rs = null;
+        
+        try {
+            stmt = conn.prepareStatement(countStr);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return count;
     }
     
     public void shutDown() throws SQLException{

@@ -52,7 +52,7 @@ public class ProductDB {
         stmt = conn.prepareStatement(queryStr);
         return stmt.executeQuery();
     }
-    
+
    public void updateRecord(Product prd)throws SQLException {
         try {
             String updateStr = "UPDATE " + tableName + 
@@ -124,6 +124,62 @@ public class ProductDB {
         }
    
     }
+   
+    public int countOrder() throws SQLException {
+        String countStr = "SELECT COUNT(order_id) FROM ORDERS";
+        int count = 0;
+        ResultSet rs = null;
+        
+        try {
+            stmt = conn.prepareStatement(countStr);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return count;
+    }
+    
+    public double sumTotalAmount() throws SQLException {
+        String sumStr = "SELECT SUM(AMOUNT) FROM PAYMENT";
+        double total = 0.0;
+        ResultSet rs = null;
+
+        try {
+            stmt = conn.prepareStatement(sumStr);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                total = rs.getDouble(1); // get the SUM result
+            }
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return total;
+    }
+    
+    public double avgTotalAmount() throws SQLException {
+        String avgStr = "SELECT AVG(AMOUNT) FROM PAYMENT";
+        double avg = 0.0;
+        ResultSet rs = null;
+
+        try {
+            stmt = conn.prepareStatement(avgStr);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                avg = rs.getDouble(1); // get the AVG result
+            }
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return avg;
+    }
+
+
     
     public void shutDown() throws SQLException{
         if (conn != null) {
