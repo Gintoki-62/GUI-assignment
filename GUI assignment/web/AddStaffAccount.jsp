@@ -177,7 +177,7 @@
 
                  <!------------------------------------------------ Form------------------------------------------------------------>        
                       <div class="container1">
-                        <form action="AddStaff" method="POST" enctype="multipart/form-data">
+                        <form action="AddStaff" method="POST">
                         <div class="row1">
                            <div class="col1">
                               <p class="title">New Staff Account</p>
@@ -214,7 +214,7 @@
                               </div>
 
                               <input type="reset" value="Cancel" name="cancel" class="button" onclick="window.location.href='productAdmin.jsp'; return false;" />
-                              <input type="submit" value="Insert" name="Confirm" class="button" />
+                              <input type="submit" value="Insert" name="submit" class="button" />
                            </div>
                         </div>
                      </form>
