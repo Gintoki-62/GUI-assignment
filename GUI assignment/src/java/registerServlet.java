@@ -3,69 +3,69 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.sql.*;
 import javax.servlet.annotation.WebServlet;
+import domain.UserBean;
 
 @WebServlet(urlPatterns = {"/registerServlet"})
 public class registerServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        String name = request.getParameter("name");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String confirmPassword = request.getParameter("confirmPassword");
-        String email = request.getParameter("email");
-        String gender = request.getParameter("gender");
-        String phone = request.getParameter("phone");
-        String address = request.getParameter("address");
 
-        
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        // Populate bean with request data
+        UserBean user = new UserBean();
+        user.setName(request.getParameter("name"));
+        user.setUsername(request.getParameter("username"));
+        user.setPassword(request.getParameter("password"));
+        user.setConfirmPassword(request.getParameter("confirmPassword"));
+        user.setEmail(request.getParameter("email"));
+        user.setGender(request.getParameter("gender"));
+        user.setPhone(request.getParameter("phone"));
+        user.setAddress(request.getParameter("address"));
+
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        
-        if (!password.equals(confirmPassword)) {
+        // Validation
+        if (!user.getPassword().equals(user.getConfirmPassword())) {
             out.println("<script>alert('Passwords do not match!'); window.history.back();</script>");
             return;
         }
 
-        
-        if (!email.matches("^\\S+@\\S+\\.\\S+$")) {
+        if (!user.getEmail().matches("^\\S+@\\S+\\.\\S+$")) {
             out.println("<script>alert('Invalid email format!'); window.history.back();</script>");
             return;
         }
 
-        
-        if (!phone.matches("^\\d{10,11}$")) {
+        if (!user.getPhone().matches("^\\d{10,11}$")) {
             out.println("<script>alert('Invalid phone number!'); window.history.back();</script>");
             return;
         }
 
+        // Database operations
         try {
-            
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             Connection conn = DriverManager.getConnection(
                 "jdbc:derby://localhost:1527/userdb", "nbuser", "nbuser");
 
             String sql = "INSERT INTO NBUSER.REGISTER (name, username, password, email, gender, phone, address) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setString(1, name);
-            pst.setString(2, username);
-            pst.setString(3, password);
-            pst.setString(4, email);
-            pst.setString(5, gender);
-            pst.setString(6, phone);
-            pst.setString(7, address);
+            pst.setString(1, user.getName());
+            pst.setString(2, user.getUsername());
+            pst.setString(3, user.getPassword());
+            pst.setString(4, user.getEmail());
+            pst.setString(5, user.getGender());
+            pst.setString(6, user.getPhone());
+            pst.setString(7, user.getAddress());
 
             int result = pst.executeUpdate();
 
             if (result > 0) {
-                
                 HttpSession session = request.getSession();
-                session.setAttribute("name", name);
-                session.setAttribute("username", username);
-                session.setAttribute("email", email);
-                session.setAttribute("gender", gender);
-                session.setAttribute("phone", phone);
-                session.setAttribute("address", address);
+                session.setAttribute("name", user.getName());
+                session.setAttribute("username", user.getUsername());
+                session.setAttribute("email", user.getEmail());
+                session.setAttribute("gender", user.getGender());
+                session.setAttribute("phone", user.getPhone());
+                session.setAttribute("address", user.getAddress());
 
                 response.sendRedirect("login.jsp");
             } else {

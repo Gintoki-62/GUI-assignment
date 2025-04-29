@@ -203,6 +203,11 @@
                 <input type="text" name="username" placeholder="USERNAME" required />
                 <input type="password" name="password" placeholder="PASSWORD" required />
                 <button class="opacity">SUBMIT</button>
+                
+                <%@ page import="domain.loginBean" %>
+                <%@ page language="java" contentType="text/html;charset=UTF-8" %>
+                <jsp:useBean id="login" class="domain.loginBean" scope="request" />
+                <jsp:setProperty name="login" property="*" />
             </form>
 
             <% String error = request.getParameter("error");

@@ -136,6 +136,10 @@
 </div>
 
 <form action="registerServlet" method="post" onsubmit="return validateForm()">
+    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+    <jsp:useBean id="user" class="domain.UserBean" scope="request"/>
+    <jsp:setProperty name="user" property="*" />
+
     <h3>Register Here</h3>
 
     <% 
