@@ -189,7 +189,7 @@
                                  
                                     <div class="inputBox">
                                        <label><span>Gender :</span></label>
-                                       <input type="text" name="gender" value="" maxlength="1" required />
+                                       <input type="text" name="gender" value="" required />
                                     </div>
                                     
                                     <div class="inputBox">
