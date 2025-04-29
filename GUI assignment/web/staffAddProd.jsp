@@ -164,7 +164,7 @@
             border-radius: 5px;
             font-weight: 500;
             max-width: 600px;
-            text-align: left; /* Align errors to the left for better readability */
+            text-align: left;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
@@ -244,7 +244,7 @@
             <label for="bookId">Book ID:</label>
             <input type="text" id="bookId" name="bookId" value="<%= new staffDB().generateNextBookId() %>" class="staff-add-product-input"><br>
 
-            <label for="bookName">Book Name:</label>
+            <label for="bookName">Name:</label>
             <input type="text" id="bookName" name="bookName" required class="staff-add-product-input"><br>
 
             <label for="bookPrice">Price:</label>
