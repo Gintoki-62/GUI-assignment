@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/tablogo.png" type="image/x-icon" />
 
-    <!-- CSS Files -->
+    
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/css/plugins.min.css" />
     <link rel="stylesheet" href="assets/css/kaiadmin.min.css" />
     <link rel="stylesheet" href="assets/css/demo.css" />
     
-    <!-- Fonts and icons -->
+    
     <script src="assets/js/plugin/webfont/webfont.min.js"></script>
     <script>
       WebFont.load({
@@ -98,7 +98,7 @@
             </div>
         <% } %>
 
-        <!-- Select Report Type -->
+        
         <div class="row mb-4">
             <div class="col-md-12">
                 <label for="reportType" class="form-label fw-bold">Select Report Type:</label>
@@ -110,7 +110,7 @@
             </div>
         </div>
 
-        <!-- Top 10 Section -->
+        
         <div id="top10Section" class="hidden">
             <div class="card p-4">
                 <form action="reportServlet" method="get">
@@ -122,7 +122,7 @@
             </div>
         </div>
 
-        <!-- Day/Month/Year Section -->
+        
         <div id="dayMonthYearSection" class="hidden">
             <div class="card p-4">
                 <form action="reportServlet" method="get">
@@ -160,7 +160,7 @@
             </div>
         </div>
 
-        <!-- Display Results -->
+        
         <div class="report-results mt-5">
             <%-- Top 10 Results --%>
             <%
@@ -252,7 +252,7 @@
         }
     }
     
-    // Initialize the correct section if coming back with results
+    
     window.onload = function() {
         <% if (request.getAttribute("top10List") != null) { %>
             document.getElementById("reportType").value = "top10";

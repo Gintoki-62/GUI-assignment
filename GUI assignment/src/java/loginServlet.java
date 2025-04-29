@@ -11,14 +11,14 @@ public class loginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         try {
-            // Load JDBC driver
+            
             Class.forName("org.apache.derby.jdbc.ClientDriver");
 
-            // Connect to Derby database
+            
             Connection conn = DriverManager.getConnection(
                 "jdbc:derby://localhost:1527/userdb", "nbuser", "nbuser");
 
-            // SQL query to check user
+            
             String sql = "SELECT * FROM NBUSER.REGISTER WHERE username = ? AND password = ?";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, username);
@@ -34,7 +34,7 @@ public class loginServlet extends HttpServlet {
                 String phone = rs.getString("phone");
                 String address = rs.getString("address");
 
-                // Login success - set session attributes
+                
                 HttpSession session = request.getSession();
                 session.setAttribute("username", username);
                 session.setAttribute("name", name);
@@ -43,14 +43,14 @@ public class loginServlet extends HttpServlet {
                 session.setAttribute("phone", phone);
                 session.setAttribute("address", address);
 
-                // Redirect to homepage
+                
                 response.sendRedirect("about.jsp");
             } else {
                 // Login failed
                 response.sendRedirect("login.jsp?error=invalid");
             }
 
-            // Clean up
+            
             rs.close();
             pst.close();
             conn.close();

@@ -188,7 +188,7 @@
 </head>
 <body>
 <section class="container">
-    <!-- Back button to about.jsp -->
+    
     <a href="about.jsp" class="back-button">Back</a>
     
     <div class="login-container">

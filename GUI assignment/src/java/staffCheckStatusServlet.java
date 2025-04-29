@@ -24,7 +24,7 @@ public class staffCheckStatusServlet extends HttpServlet {
 
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/bookLoomDB", "book", "book");
             
-            // Update order status
+            
             String sql = "UPDATE ORDERS SET STATUS = ? WHERE ORDER_ID = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, newStatus);

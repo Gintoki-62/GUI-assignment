@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 @WebServlet(urlPatterns = {"/registerServlet"})
 public class registerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Retrieve form inputs
+        
         String name = request.getParameter("name");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -17,30 +17,30 @@ public class registerServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
 
-        // Set response content type
+        
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        // Simple validation
+        
         if (!password.equals(confirmPassword)) {
             out.println("<script>alert('Passwords do not match!'); window.history.back();</script>");
             return;
         }
 
-        // Email format check
+        
         if (!email.matches("^\\S+@\\S+\\.\\S+$")) {
             out.println("<script>alert('Invalid email format!'); window.history.back();</script>");
             return;
         }
 
-        // Phone number check (basic 10 digits)
+        
         if (!phone.matches("^\\d{10,}$")) {
             out.println("<script>alert('Invalid phone number!'); window.history.back();</script>");
             return;
         }
 
         try {
-            // Connect to Java DB (Derby)
+            
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             Connection conn = DriverManager.getConnection(
                 "jdbc:derby://localhost:1527/userdb", "nbuser", "nbuser");
@@ -58,7 +58,7 @@ public class registerServlet extends HttpServlet {
             int result = pst.executeUpdate();
 
             if (result > 0) {
-                // Save details to session
+                
                 HttpSession session = request.getSession();
                 session.setAttribute("name", name);
                 session.setAttribute("username", username);
