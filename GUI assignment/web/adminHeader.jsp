@@ -260,7 +260,7 @@
                       <span class="op-7">Hi,</span>
                       <span class="fw-bold">
                         <% 
-                          String stfName = (String) session.getAttribute("staffName");
+                          String stfName = (String) session.getAttribute("ManagerName");
                           out.print(stfName != null ? stfName : "Admin");
                         %>
                       </span>

@@ -238,25 +238,7 @@
     </div>
 </div>
 
-<!-- Footer -->
-<footer class="footer">
-    <div class="container-fluid d-flex justify-content-between">
-        <nav class="pull-left">
-            <ul class="nav">
-                <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Licenses</a></li>
-            </ul>
-        </nav>
-        <div class="copyright">
-            2025, made with <i class="fa fa-heart heart text-danger"></i> by BOOKLOOM
-        </div>
-    </div>
-</footer>
-
-<!-- Scripts -->
-<script src="assets/js/core/jquery-3.7.1.min.js"></script>
-<script src="assets/js/core/popper.min.js"></script>
-<script src="assets/js/core/bootstrap.min.js"></script>
+ <%@ include file="adminFooter.jsp" %>
 <script>
     function toggleReportFields() {
         var reportType = document.getElementById("reportType").value;
