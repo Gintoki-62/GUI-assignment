@@ -280,7 +280,7 @@
             <form action="staffUpdateProdServlet" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="BOOK_ID" value="<%= book.getBOOK_ID() %>">
 
-                <label for="BOOK_NAME">Book Name:</label>
+                <label for="BOOK_NAME">Product Name:</label>
                 <input type="text" id="BOOK_NAME" name="BOOK_NAME" value="<%= book.getBOOK_NAME() %>" required>
 
                 <label for="BOOK_PRICE">Price (RM):</label>

@@ -192,7 +192,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>Book ID</th>
+                    <th>Product ID</th>
                     <th>Name</th>
                     <th>Price (RM)</th>
                     <th>Author</th>

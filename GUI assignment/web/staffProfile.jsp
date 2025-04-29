@@ -146,14 +146,6 @@
                 box-sizing: border-box;
                 font-size: 16px;
             }
-            .form-group input[type="file"]{
-                width: 100%;
-                padding: 10px;
-                border: 1px solid #ced4da;
-                border-radius: 4px;
-                box-sizing: border-box;
-                font-size: 16px;
-            }
 
             .form-group button {
                 background-color: #007bff;
@@ -315,10 +307,6 @@
                         <div class="form-group">
                             <label for="staffPassword">New Password:</label>
                             <input type="password" id="staffPassword" name="staffPassword" placeholder="Enter new password">
-                        </div>
-                        <div class="form-group">
-                            <label for="staffImage">Profile Image:</label>
-                            <input type="file" id="staffImage" name="staffImage" accept="image/*">
                         </div>
                         <div class="form-group">
                             <button type="submit">Update Information</button>

@@ -215,8 +215,8 @@
     <jsp:include page="staffSidebar.jsp" />
 
     <div class="staff-add-product-content">
-        <h2>Add New Book Product</h2>
-        <form action="addBook" method="post" enctype="multipart/form-data" class="staff-add-product-form">
+        <h2>Add New Product</h2>
+        <form action="staffAddProdServlet" method="post" enctype="multipart/form-data" class="staff-add-product-form">
             <% String successMessage = (String) request.getAttribute("successMessage"); %>
             <% String newBookId = (String) request.getAttribute("bookId"); %>
             <% if (successMessage != null && !successMessage.isEmpty() && newBookId != null && !newBookId.isEmpty()) { %>
@@ -238,7 +238,7 @@
                 </div>
             <% } %>
 
-            <label for="bookId">Book ID:</label>
+            <label for="bookId">Product ID:</label>
             <input type="text" id="bookId" name="bookId" value="<%= new staffDB().generateNextBookId() %>" class="staff-add-product-input"><br>
 
             <label for="bookName">Name:</label>

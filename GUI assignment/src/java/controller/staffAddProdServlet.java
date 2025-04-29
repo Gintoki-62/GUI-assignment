@@ -18,7 +18,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/addBook")
+@WebServlet("/staffAddProdServlet")
+@MultipartConfig(fileSizeThreshold = 1024 * 1024,
+        maxFileSize = 1024 * 1024 * 5,
+        maxRequestSize = 1024 * 1024 * 10)
 public class staffAddProdServlet extends HttpServlet {
 
     private staffDB staffDb;
