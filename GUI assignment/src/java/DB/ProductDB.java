@@ -178,6 +178,29 @@ public class ProductDB {
         }
         return avg;
     }
+    
+    public String[] mostOrderedBookWithQuantity() throws SQLException {
+        String[] result = new String[2]; // result[0] = book name, result[1] = total quantity
+
+        String sql = "SELECT BOOK_NAME, SUM(QUANTITY) AS total_quantity " +
+                     "FROM ORDER_ITEMS " +
+                     "GROUP BY BOOK_NAME " +
+                     "ORDER BY total_quantity DESC " +
+                     "FETCH FIRST 1 ROWS ONLY"; // Use LIMIT 1 if not Derby/Oracle
+        ResultSet rs = null;
+        try {
+            stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                result[0] = rs.getString("BOOK_NAME");
+                result[1] = String.valueOf(rs.getInt("total_quantity"));
+            }
+        } catch (SQLException ex) {
+            throw ex;
+        }
+
+        return result;
+    }
 
 
     

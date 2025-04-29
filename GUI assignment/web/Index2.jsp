@@ -255,12 +255,36 @@
                   </div>
                   <div class="card-body pb-0">
                     <div class="mb-4 mt-2">
-                      <h1>RM <%= String.format("%.2f", averageSales) %></h1>
+                      <h2>RM <%= String.format("%.2f", averageSales) %></h2>
                     </div>
                   </div>
                 </div>
+            <!------------------------------------ ENd Average ----------------------------------------->      
+           <!------------------------------------ Top Sale ----------------------------------------->       
+              <%
+                String[] mostSalesBook = null; 
+                try {
+                    ProductDB dao = new ProductDB(); // create object
+                    mostSalesBook = dao.mostOrderedBookWithQuantity(); // call method
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            %>  
+            <div class="card card-primary card-round">
+              <div class="card-header">
+                <div class="card-head-row">
+                  <div class="card-title">Top Sales Product</div>
+                </div>
+                <div class="card-category">Quantity: <%= mostSalesBook != null ? mostSalesBook[1] : "N/A" %></div>
               </div>
-              <!------------------------------------ ENd Average ----------------------------------------->      
+              <div class="card-body pb-0">
+                <div class="mb-4 mt-2">
+                  <h4><%= mostSalesBook != null ? mostSalesBook[0] : "No data" %></h4>
+                </div>
+              </div>
+            </div>
+              </div>
+              <!------------------------------------ ENd Top Sales ----------------------------------------->  
             </div>     
         </div>
     <!------------------------------------ Footeer ----------------------------------------->
