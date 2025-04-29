@@ -58,13 +58,13 @@
 
             <div class="wrap-menu-desktop how-shadow1">
                 <nav class="limiter-menu-desktop container">		
-                    <a href="#" class="logo"><img src="images/icons/Logo.png" alt="IMG-LOGO"></a>
+                    <a href="about.jsp" class="logo"><img src="images/icons/Logo.png" alt="IMG-LOGO"></a>
                     <div class="menu-desktop">
                         <ul class="main-menu">
                             <li class="active-menu"><a href="about.jsp">Home</a></li>
                             <li class="label1" data-label1="hot"><a href="product.jsp">Book</a></li>
                             <li><a href="shoping-cart.jsp">Shopping Cart</a></li>
-                            <li><a href="OrderInfo.jsp">OrderInfo</a></li>
+                            <li><a href="OrderInfo.jsp">Order Info</a></li>
                         </ul>
                     </div>	
 
