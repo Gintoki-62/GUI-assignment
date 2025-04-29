@@ -34,7 +34,7 @@ public class registerServlet extends HttpServlet {
         }
 
         
-        if (!phone.matches("^\\d{10,}$")) {
+        if (!phone.matches("^\\d{10,11}$")) {
             out.println("<script>alert('Invalid phone number!'); window.history.back();</script>");
             return;
         }

@@ -18,9 +18,6 @@ import DB.StfAccDB;
 import domain.StaffAccount;
 
 @WebServlet("/staffEditProfileServlet")
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 10,
-        maxFileSize = 1024 * 1024 * 50,
-        maxRequestSize = 1024 * 1024 * 100)
 public class staffEditProfileServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

@@ -29,14 +29,13 @@ public class ProcessPaymentServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Get form inputs
+
         String method = request.getParameter("method");
         String bank = request.getParameter("bank");
         String wallet = request.getParameter("e-wallet");
         String amount = request.getParameter("amount");
         String userId = request.getParameter("user_id");
         
-        // Generate UUID for payment_id
         String transactionId = UUID.randomUUID().toString();
         String orderId = UUID.randomUUID().toString();
 
@@ -45,11 +44,9 @@ public class ProcessPaymentServlet extends HttpServlet {
             DB.createOrder(orderId, userId, amount);
             DB.addOrder(orderId, userId);
             
-        // Call DB insert logic
         boolean success = bookDB.insertPayment(transactionId, orderId, userId, method, bank, wallet, amount);
         
         if (success) {
-            // Delete all items from the user's cart
             Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/bookLoomDB", "book", "book");
             String deleteCartSql = "DELETE FROM CART WHERE user_id = ?";
             PreparedStatement stmt = conn.prepareStatement(deleteCartSql);

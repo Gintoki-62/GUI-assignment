@@ -258,8 +258,8 @@
         <div class="main-content">
             <div class="profile-container">
                 <div class="profile-header">
-                    <% if (profileImage != null && !profileImage.equals("null") && !profileImage.isEmpty()) { %>
-                        <img src="<%= session.getAttribute("profileImage") %>" alt="Profile Picture" class="profile-image">
+                    <% if (profileImage != null && !profileImage.trim().isEmpty() && !profileImage.equalsIgnoreCase("null")) { %>
+                        <img src="images/<%= profileImage %>" alt="Profile Picture" class="profile-image">
                     <% } else { %>
                         <div class="profile-image-placeholder"><%= firstLetter %></div>
                     <% } %>

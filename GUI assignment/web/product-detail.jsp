@@ -136,7 +136,6 @@
             const min = parseInt(input.min) || 1;
             const max = parseInt(input.max) || 100;
 
-            // - button
             btnMinus.addEventListener("click", function () {
                 let val = parseInt(input.value) || min;
                 if (val > min) {
@@ -144,7 +143,6 @@
                 }
             });
 
-            // + button
             btnPlus.addEventListener("click", function () {
                 let val = parseInt(input.value) || min;
                 if (val < max) {
@@ -152,7 +150,6 @@
                 }
             });
 
-            // Manual input
             input.addEventListener("input", function () {
                 let val = parseInt(this.value);
                 if (isNaN(val) || val < min) this.value = min;
