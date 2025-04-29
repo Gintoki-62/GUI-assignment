@@ -164,7 +164,7 @@
     <label for="email">Email</label>
     <input type="email" id="email" name="email" placeholder="Enter email" required>
 
-    <label for="phone">Phone Number</label>
+    <label for="phone">Phone Number ( without - )</label>
     <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
 
     <label for="address">Address</label>
