@@ -141,6 +141,47 @@
            display: block;
            margin: 0 auto 10px;
         }
+        
+        
+        .pagination-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .page-label {
+            color: #333;
+        }
+
+        .pagination {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 6px;
+        }
+
+        .pagination li {
+            display: inline-block;
+        }
+
+        .pagination li a {
+            padding: 6px 12px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            background-color: white;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .pagination li.active a,
+        .pagination li a:hover {
+            background-color: lightskyblue;
+        }
     </style>
   </head>
   <body>
@@ -213,28 +254,44 @@
                         }
                     %>
                      <!------------------------------------------------- Data Table ------------------------------------------------------->
-                    <div class="gallery_container">
-                        <% while (rs != null && rs.next()) { %>
-                        <div class="gallery_item">
-                            <a data-fancybox="gallery" href="<%= rs.getString("BOOK_IMAGE") %>">
-                              <img class="img-responsive" width="250" height="250" src="<%= rs.getString("BOOK_IMAGE") %>" alt="#" />
-                            </a>
-                          
-                            <div class="heading_section">
-                            <div class="button_container"> 
-                                <a href="editProduct.jsp?id=<%= rs.getString("BOOK_ID") %>">
-                                    <button type="submit" class="edit_button">Edit</button>
-                                </a>
-                                <a href="deleteProduct.jsp?id=<%= rs.getString("BOOK_ID") %>">
-                                    <button type="submit" class="edit_button">Delete</button>
-                                </a>
-                              </div>
-                              <h6 style="color: black">Current Stock: <%= rs.getInt("BOOK_QUANTITY") %></h6>
-                              <h6 style="color: black">Price: RM <%= rs.getDouble("BOOK_PRICE") %></h6>
-                              <p style="color: black"><%= rs.getString("BOOK_NAME") %></p>
+                    <div id="productList">
+                        <!-- Search & Pagination Controls -->
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-md-6">
+                               <input class="search form-control" placeholder="Search product..." />
+                            </div>
+                            <div class="col-md-6 text-right">
+                               <div class="pagination-wrapper">
+                                 <span class="page-label">Page:</span>
+                                 <ul class="pagination pagination-sm"></ul>
+                               </div>
                             </div>
                         </div>
-                        <% } %>
+
+                        <!-- Gallery Items Container -->
+                        <div class="gallery_container list">
+                            <% while (rs != null && rs.next()) { %>
+                            <div class="gallery_item">
+                                <a data-fancybox="gallery" href="<%= rs.getString("BOOK_IMAGE") %>">
+                                  <img class="img-responsive" width="250" height="250" src="<%= rs.getString("BOOK_IMAGE") %>" alt="#" />
+                                </a>
+                                <div class="heading_section">
+                                    <div class="button_container"> 
+                                        <a href="editProduct.jsp?id=<%= rs.getString("BOOK_ID") %>">
+                                            <button type="submit" class="edit_button">Edit</button>
+                                        </a>
+                                        <a href="deleteProduct.jsp?id=<%= rs.getString("BOOK_ID") %>">
+                                            <button type="submit" class="edit_button">Delete</button>
+                                        </a>
+                                    </div>
+                                    <!-- These span elements help List.js search/filter -->
+                                    <h6 class="book-quantity" style="color: black">Current Stock: <%= rs.getInt("BOOK_QUANTITY") %></h6>
+                                    <h6 class="book-price" style="color: black">Price: RM <%= rs.getDouble("BOOK_PRICE") %></h6>
+                                    <p class="book-name" style="color: black"><%= rs.getString("BOOK_NAME") %></p>
+                                </div>
+                            </div>
+                            <% } %>
+                        </div>
                     </div>
                      <%
                             } catch (Exception e) {
@@ -258,5 +315,15 @@
         
         <!--------------------------------------------------------Footer---------------------------------------------------------->
          <%@ include file="adminFooter.jsp" %>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+         <script>
+            var options = {
+              valueNames: ['book-name', 'book-price', 'book-quantity'],
+              page: 6,
+              pagination: true
+            };
+
+            var productList = new List('productList', options);
+        </script>
   </body>
 </html>
