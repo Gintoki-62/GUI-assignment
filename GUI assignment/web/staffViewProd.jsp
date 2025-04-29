@@ -17,7 +17,7 @@
         }
 
         .container {
-            width: 95%;
+            width: 100%;
             max-width: 1400px;
             margin: 30px auto;
             background-color: #fff;
@@ -26,6 +26,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             position: relative;
             z-index: 1;
+            overflow: auto;
         }
 
         .container::before {
@@ -59,7 +60,9 @@
             left: 50%;
             transform: translateX(-50%);
         }
-
+        
+        
+        
         table {
             width: 100%;
             border-collapse: separate;
@@ -88,10 +91,10 @@
             letter-spacing: 0.5px;
         }
 
-        th.actions-header,
-        td.actions {
-            text-align: center;
-            width: 80px;
+        th.edit-header,
+        td.edit {
+            text-align: left;
+            width: 60px;
         }
 
         tbody tr:last-child td {
@@ -131,19 +134,19 @@
             color: #388e3c;
         }
 
-        .actions a {
+        .edit a {
             display: inline-block;
             padding: 5px;
             border-radius: 50%;
             transition: all 0.2s ease;
         }
 
-        .actions a:hover {
+        .edit a:hover {
             background-color: rgba(76, 175, 80, 0.1);
             transform: translateY(-2px);
         }
 
-        .actions img {
+        .edit img {
             display: block;
             width: 22px;
             height: auto;
@@ -174,6 +177,13 @@
         .logo{
             box-shadow: none;
         }
+        
+        @media screen and (max-width: 1200px) {
+            .container {
+                width: 98%;
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -202,7 +212,7 @@
                     <th>Type</th>
                     <th>Image</th>
                     <th>Category</th>
-                    <th class="actions-header">Actions</th>
+                    <th class="edit-header">Edit</th>
                 </tr>
             </thead>
             <tbody>
@@ -217,7 +227,7 @@
                     <td><%= book.getBOOK_TYPE() %></td>
                     <td><img src="<%= book.getBOOK_IMAGE() %>" alt="<%= book.getBOOK_NAME() %>" width="80"></td>
                     <td><%= book.getBOOK_CATEGORY() %></td>
-                    <td class="actions">
+                    <td class="edit">
                         <a href="staffEditProd.jsp?BOOK_ID=<%= book.getBOOK_ID() %>">
                             <img src="images/icons/staff_edit.png" alt="Edit" >
                         </a>
