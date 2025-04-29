@@ -18,7 +18,6 @@
             min-height: 100vh;
         }
 
-        /* Subtle pattern overlay for background */
         body::after {
             content: "";
             position: fixed;
@@ -218,7 +217,6 @@
     <div class="staff-add-product-content">
         <h2>Add New Book Product</h2>
         <form action="addBook" method="post" enctype="multipart/form-data" class="staff-add-product-form">
-            <%-- Success Message Display --%>
             <% String successMessage = (String) request.getAttribute("successMessage"); %>
             <% String newBookId = (String) request.getAttribute("bookId"); %>
             <% if (successMessage != null && !successMessage.isEmpty() && newBookId != null && !newBookId.isEmpty()) { %>
@@ -228,7 +226,6 @@
                 </div>
             <% } %>
 
-            <%-- Multiple Error Message Display --%>
             <% List<String> errorMessages = (List<String>) request.getAttribute("errorMessages"); %>
             <% if (errorMessages != null && !errorMessages.isEmpty()) { %>
                 <div class="error-message">

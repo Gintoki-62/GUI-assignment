@@ -51,7 +51,6 @@
 
     <div id="content">
         <%
-            // Retrieve the staff name from the session
             String staffName = (String) session.getAttribute("name");
 
             if (staffName != null && !staffName.isEmpty()) {
@@ -62,7 +61,6 @@
         <%
             }
         %>
-        <%-- too empty, will add some stuff--%>
     </div>
 </body>
 </html>v

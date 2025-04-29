@@ -18,7 +18,6 @@
             min-height: 100vh;
         }
 
-        /* Subtle pattern overlay for background */
         body::after {
             content: "";
             position: fixed;

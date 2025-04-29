@@ -167,8 +167,6 @@
 <body>
 <div class="container">
     <h2>Product Order Status</h2>
-    
-    <%-- Display success/error messages --%>
     <%
     String message = (String) request.getAttribute("message");
     if (message != null) {
@@ -179,7 +177,6 @@
     <%
     }
     %>
-
     <table>
         <tr>
             <th>Order ID</th>
@@ -208,7 +205,6 @@
                 double total = rs.getDouble("TOTAL_AMOUNT");
                 String status = rs.getString("STATUS");
 
-                // Format date
                 String formattedDate = orderDate;
                 try {
                     SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
@@ -244,7 +240,6 @@
             e.printStackTrace();
             out.println("<tr><td colspan='6' class='error'>Error processing orders: " + e.getMessage() + "</td></tr>");
         } finally {
-            // Close resources
             try { if (rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
             try { if (ps != null) ps.close(); } catch (SQLException e) { e.printStackTrace(); }
             try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
