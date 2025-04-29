@@ -118,6 +118,7 @@
         <% String error = request.getParameter("error");
            if ("invalid".equals(error)) {
         %>
+        <br>
         <p class="error-msg">Invalid admin credentials!</p>
         <% } %>
 
