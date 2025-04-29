@@ -26,8 +26,7 @@ public class UpdateQuantityServlet extends HttpServlet {
         throws ServletException, IOException {
 
         String bookId = request.getParameter("id");
-        String action = request.getParameter("action"); // "update" or "delete"
-//        String userId = "user123"; // Replace with session-based user ID if needed
+        String action = request.getParameter("action"); 
         String userId = (String) request.getSession().getAttribute("name");
 
         try {
@@ -43,11 +42,11 @@ public class UpdateQuantityServlet extends HttpServlet {
 
             } else if ("delete".equals(action)) {
                 if (bookId != null) {
-                    db.removeFromCart(userId, bookId); // Make sure this method exists in bookDB
+                    db.removeFromCart(userId, bookId);
                 }
             }
 
-            response.sendRedirect("shoping-cart.jsp"); // Back to cart
+            response.sendRedirect("shoping-cart.jsp"); 
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -207,29 +207,24 @@
         const form = document.getElementById("userForm");
         let isEditing = false;
 
-        // Toggle between Edit and Save
         editBtn.addEventListener("click", function () {
             const inputs = form.querySelectorAll("input");
 
             if (!isEditing) {
-                // Enable editing and add border
                 inputs.forEach(input => {
                     input.removeAttribute("readonly");
-                    input.classList.add("editable"); // Optional class for styling
+                    input.classList.add("editable"); 
                 });
 
-                // Add bor19 class dynamically to divs
                 document.getElementById("nmadd").classList.add("bor19");
                 document.getElementById("phadd").classList.add("bor19");
                 document.getElementById("adradd").classList.add("bor19");
 
-                // Change button text to "Save"
                 editBtn.textContent = "Save";
                 isEditing = true;
                 
                 document.getElementById("username").focus();
             } else {
-                // Submit the form when the user clicks Save
                 form.submit();
             }
         });

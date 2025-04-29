@@ -73,7 +73,7 @@
                             if (!currentOrderId.isEmpty()) {
                 %>
                 <%
-                    // Parse the SQL date string and format it
+                   
                     String formattedDate = "";
                     try {
                         SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
@@ -81,10 +81,10 @@
                         Date date = inputFormat.parse(currentOrderDate);
                         formattedDate = outputFormat.format(date);
                     } catch (Exception e) {
-                        formattedDate = currentOrderDate; // fallback
+                        formattedDate = currentOrderDate; 
                     }
                 %>                
-                <!-- Close previous order panel -->
+               
                                 <tr>
                                     <td colspan="5">
                                         <br/>
@@ -95,10 +95,9 @@
                                     </td>
                                 </tr>
                                 </table><br/><br/>
-                                </div> <!-- end panel -->
+                                </div> 
                 <%
                             }
-                            // New order block
                             currentOrderId = orderId;
                             currentOrderDate = orderdate;
                             currentTotalAmount = totalAmount;
@@ -135,7 +134,6 @@
 
                     if (hasItem) {
 
-                    // Parse the SQL date string and format it
                     String formattedDate = "";
                     try {
                         SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
@@ -143,11 +141,10 @@
                         Date date = inputFormat.parse(currentOrderDate);
                         formattedDate = outputFormat.format(date);
                     } catch (Exception e) {
-                        formattedDate = currentOrderDate; // fallback
+                        formattedDate = currentOrderDate; 
                     }
               
                 %>
-                        <!-- Final panel close -->
                         <tr>
                             <td colspan="5">
                                 <br/>
@@ -158,7 +155,7 @@
                             </td>
                         </tr>
                         </table><br/><br/>
-                        </div> <!-- end final panel -->
+                        </div> 
                 <%
                     } else {
                 %>

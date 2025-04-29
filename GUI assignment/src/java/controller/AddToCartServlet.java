@@ -26,22 +26,17 @@ public class AddToCartServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         request.setCharacterEncoding("UTF-8");
         
-        // Get user ID from session
         String userId = (String) request.getSession().getAttribute("name");
-//          String userId = "user123";
 
-        // Make sure user is logged in
         if (userId == null) {
-            response.sendRedirect("login.jsp"); // or any login page
+            response.sendRedirect("login.jsp");
             return;
         }
 
-        // Get bookId and quantity from form
         String bookId = request.getParameter("bookId");
         String quantityStr = request.getParameter("quantity");
         String bookname = request.getParameter("name");
 
-        // Validate input
         if (bookId == null || quantityStr == null || quantityStr.isEmpty()) {
             response.getWriter().println("Missing bookId or quantity.");
             return;
@@ -55,9 +50,6 @@ public class AddToCartServlet extends HttpServlet {
             bookDB.addToCart(userId, bookId, cartId, quantity);
 
             response.sendRedirect("product.jsp?added=true&bookname=" + URLEncoder.encode(bookname, "UTF-8"));
-            // Redirect to cart page
-//            response.sendRedirect("product.jsp");
-
         } catch (NumberFormatException e) {
             response.getWriter().println("Invalid quantity format.");
         } catch (Exception e) {

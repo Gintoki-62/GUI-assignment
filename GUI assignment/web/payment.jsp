@@ -384,11 +384,10 @@
               if (!/^\d{10,11}$/.test(phoneInput.value.trim())) isValid = false;
             } 
             else if (selectedMethod === "Cash") {
-              // Cash doesn't require validation
               isValid = true;
             } 
             else {
-              isValid = false; // No method selected
+              isValid = false;
             }
 
             if (!isValid) {
