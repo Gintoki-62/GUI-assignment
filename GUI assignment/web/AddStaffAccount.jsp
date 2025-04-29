@@ -177,46 +177,48 @@
 
                  <!------------------------------------------------ Form------------------------------------------------------------>        
                       <div class="container1">
-                        <form action="AddStaff" method="POST" class="">
-                           <div class="row1">
-                              <div class="col1">
-                                 <p class="title">New Staff Account</p>
+                        <form action="AddStaff" method="POST" enctype="multipart/form-data">
+                        <div class="row1">
+                           <div class="col1">
+                              <p class="title">New Staff Account</p>
 
-                                    <div class="inputBox">
-                                       <label><span>Profile :</span></label>
-                                       <input style="color: gray" type="file" name="profile" value="" required/>
-                                    </div>
-                  
-                                    <div class="inputBox">
-                                       <label><span>User ID (ST000):</span></label>
-                                       <input type="text" name="id" value="" required />
-                                    </div>
-
-                                    <div class="inputBox">
-                                       <label><span>User Name :</span></label>
-                                       <input type="text" name="name" value="" required />
-                                    </div>
-
-                                    <div class="inputBox">
-                                       <label><span>Email :</span></label>
-                                       <input type="text" name="email" value="" required />
-                                    </div>
-                                 
-                                    <div class="inputBox">
-                                       <label><span>Password :</span></label>
-                                       <input type="text" name="psw" value="" required />
-                                    </div>
-                                 
-                                    <div class="inputBox">
-                                       <label><span>Gender(F/M) :</span></label>
-                                       <input type="text" name="gender" value="" required />
-                                    </div>
-
-                                    <input type="reset" value="Cancel" name="cancel" class="button" onclick="window.location.href='productAdmin.jsp'"/>
-                                    <input type="submit" value="Insert" name="Confirm" class="button"/>
+                              <div class="inputBox">
+                                 <label><span>Profile :</span></label>
+                                 <input style="color: gray" type="file" name="profile" accept="image/*" required />
                               </div>
+
+                              <div class="inputBox">
+                                 <label><span>User ID (ST000):</span></label>
+                                 <input type="text" name="id" pattern="^ST\d{3}$" title="Must follow format ST followed by 3 digits (e.g., ST001)" value="ST" required />
+                              </div>
+
+                              <div class="inputBox">
+                                 <label><span>User Name :</span></label>
+                                 <input type="text" name="name"  value="" required />
+                              </div>
+
+                              <div class="inputBox">
+                                 <label><span>Email :</span></label>
+                                 <input type="email" name="email" value="" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" 
+                                        title="Enter a valid email address (e.g., user@example.com)" required />
+                              </div>
+
+                              <div class="inputBox">
+                                 <label><span>Password :</span></label>
+                                 <input type="password" name="psw" minlength="5" value="" title="Password must be at least 5 characters" required />
+                              </div>
+
+                              <div class="inputBox">
+                                 <label><span>Gender (F/M):</span></label>
+                                 <input type="text" name="gender" pattern="^[FfMm]$" value="" title="Enter 'F' for Female or 'M' for Male" required />
+                              </div>
+
+                              <input type="reset" value="Cancel" name="cancel" class="button" onclick="window.location.href='productAdmin.jsp'; return false;" />
+                              <input type="submit" value="Insert" name="Confirm" class="button" />
                            </div>
-                        </form>
+                        </div>
+                     </form>
+
                      </div>   
                 <!------------------------------------------------End Form------------------------------------------------------------>   
                   </div>

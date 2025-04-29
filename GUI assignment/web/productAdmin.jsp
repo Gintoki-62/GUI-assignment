@@ -319,7 +319,7 @@
          <script>
             var options = {
               valueNames: ['book-name', 'book-price', 'book-quantity'],
-              page: 6,
+              page: 8,
               pagination: true
             };
 

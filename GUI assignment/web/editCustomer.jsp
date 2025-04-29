@@ -212,17 +212,18 @@
                                     
                                     <div class="inputBox">
                                        <label><span>Password :</span></label>
-                                       <input type="text" name="psw" value="<%= isSuccess ? "" : customer.getCusPsw() %>" required />
+                                       <input type="text" name="psw" minlength="5" title="Password must be at least 5 characters" value="<%= isSuccess ? "" : customer.getCusPsw() %>" required />
                                     </div>
                                  
                                     <div class="inputBox">
                                        <label><span>E-mail :</span></label>
-                                       <input type="text" name="email" value="<%= isSuccess ? "" : customer.getCusEmail() %>" required />
+                                       <input type="text" name="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" 
+                                            title="Enter a valid email address (e.g., user@example.com)" value="<%= isSuccess ? "" : customer.getCusEmail() %>" required />
                                     </div>
                                     
                                     <div class="inputBox">
                                        <label><span>Phone Number :</span></label>
-                                       <input type="text" name="phone" value="<%= isSuccess ? "" : customer.getCusPhone() %>" required />
+                                       <input type="text" name="phone" value="<%= isSuccess ? "" : customer.getCusPhone() %>" pattern="^01[0-9]{8,9}$" title="Enter in format like 01234567890" required />
                                     </div>
                                     
                                     <div class="inputBox">

@@ -254,7 +254,7 @@
                                  
                                     <div class="inputBox">
                                        <label><span>No of Pages :</span></label>
-                                       <input type="number" name="no_pages" value="<%= isSuccess ? "" : prd.getNoPages() %>" required />
+                                       <input type="number" name="no_pages" value="<%= isSuccess ? "" : prd.getNoPages() %>"  min="0" required />
                                     </div>                                   
                                     
                                     <div class="inputBox">
@@ -289,7 +289,7 @@
                                  
                                     <div class="inputBox">
                                        <label><span>Book Quantity :</span></label>
-                                       <input type="number" name="quantity" value="<%= isSuccess ? "" : prd.getQuantity() %>" required />
+                                       <input type="number" name="quantity" value="<%= isSuccess ? "" : prd.getQuantity() %>"  min="0" required />
                                     </div>
 
                                     <input type="reset" value="Cancel" name="cancel" class="button" onclick="window.location.href='productAdmin.jsp'"/>

@@ -52,7 +52,7 @@ public class AddCustomerServlet extends HttpServlet {
                     password, gender, address);
             customer.addRecord(c);
         
-            // response.sendRedirect("AddStaffAccount.jsp");
+            // response.sendRedirect("AddCustomer.jsp");
             request.setAttribute("CustomerName", name);
             request.getRequestDispatcher("AddCustomer.jsp").forward(request, response);
 

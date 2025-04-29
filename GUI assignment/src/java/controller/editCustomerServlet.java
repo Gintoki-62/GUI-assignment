@@ -45,7 +45,7 @@ public class editCustomerServlet extends HttpServlet {
             CustomerDB db = new CustomerDB();
             db.updateRecord(customer);  
             
-            // response.sendRedirect("AddStaffAccount.jsp");
+            // response.sendRedirect("editCustomer.jsp");
             request.setAttribute("CustomerName", name);
             request.getRequestDispatcher("editCustomer.jsp").forward(request, response);
             

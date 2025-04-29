@@ -207,9 +207,9 @@
                                     </div>
                                  
                                     <div class="inputBox">
-                                       <label><span>Book ID (25BOK00000):</span></label>
-                                       <input type="text" name="id" value="25BOK" required />
-                                    </div>
+                                        <label><span>Book ID (25BOK00000):</span></label>
+                                        <input type="text" name="id" value="25BOK" pattern="^25BOK\d{5}$" title="Must follow format 25BOK followed by 5 digits (e.g., 25BOK12345)" maxlength="10" minlength="10" required />
+                                     </div>
 
                                     <div class="inputBox">
                                        <label><span>Book Name :</span></label>
@@ -237,7 +237,7 @@
                                  
                                     <div class="inputBox">
                                        <label><span>No of Pages :</span></label>
-                                       <input type="number" name="no_pages" value="" required />
+                                       <input type="number" name="no_pages" value="" min="0" required />
                                     </div>                                   
                                     
                                     <div class="inputBox">
@@ -266,7 +266,7 @@
                                  
                                     <div class="inputBox">
                                        <label><span>Book Quantity :</span></label>
-                                       <input type="number" name="quantity" value="" required />
+                                       <input type="number" name="quantity" value="" min="0" required />
                                     </div>
 
                                     <input type="reset" value="Cancel" name="cancel" class="button" onclick="window.location.href='productAdmin.jsp'"/>

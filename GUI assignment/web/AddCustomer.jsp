@@ -189,22 +189,23 @@
                                  
                                     <div class="inputBox">
                                        <label><span>Gender :</span></label>
-                                       <input type="text" name="gender" value="" required />
+                                       <input type="text" name="gender" value="" maxlength="1" required />
                                     </div>
                                     
                                     <div class="inputBox">
                                        <label><span>Password :</span></label>
-                                       <input type="text" name="psw" value="" required />
+                                       <input type="password"  name="psw" minlength="5" title="Password must be at least 5 characters" value="" required />
                                     </div>
                                  
                                     <div class="inputBox">
                                        <label><span>E-mail :</span></label>
-                                       <input type="text" name="email" value="" required />
+                                       <input type="text" name="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" 
+                                            title="Enter a valid email address (e.g., user@example.com)" value="" required />
                                     </div>
                                     
                                     <div class="inputBox">
                                        <label><span>Phone Number :</span></label>
-                                       <input type="text" name="phone" value="" required />
+                                       <input type="text" name="phone"  pattern="^01[0-9]{8,9}$" title="Enter in format like 01234567890" value="" required />
                                     </div>
                                     
                                     <div class="inputBox">

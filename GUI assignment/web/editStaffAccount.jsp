@@ -210,17 +210,18 @@
 
                                     <div class="inputBox">
                                        <label><span>Email :</span></label>
-                                       <input type="text" name="email" value="<%= isSuccess ? "" : staff.getEmail() %>" required />
+                                       <input type="text" name="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" 
+                                            title="Enter a valid email address (e.g., user@example.com)" value="<%= isSuccess ? "" : staff.getEmail() %>" required />
                                     </div>
                                  
                                     <div class="inputBox">
                                        <label><span>Password :</span></label>
-                                       <input type="text" name="psw" value="<%= isSuccess ? "" : staff.getPsw() %>" required />
+                                       <input type="text" name="psw" minlength="5" value="<%= isSuccess ? "" : staff.getPsw() %>" title="Password must be at least 5 characters" required />
                                     </div>
                                  
                                     <div class="inputBox">
                                        <label><span>Gender(F/M) :</span></label>
-                                       <input type="text" name="gender" value="<%= isSuccess ? "" : staff.getGender() %>" required />
+                                       <input type="text" name="gender" pattern="^[FfMm]$" title="Enter 'F' for Female or 'M' for Male" value="<%= isSuccess ? "" : staff.getGender() %>" maxlength="1" minlength="1" required />
                                     </div>
 
                                     <input type="button" value="Cancel" onclick="window.location.href='staffAcc.jsp'" class="button"/>

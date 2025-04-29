@@ -114,7 +114,7 @@
                         if (customerName != null) {
                     %>
                        <div class="success-msg" style="padding-left: 20px; padding-bottom: 20px; padding-top: 20px; color: green; font-weight: bold; background-color: whitesmoke;">
-                            Staff "<%= customerName %>" has been deleted successfully.
+                            Customer "<%= customerName %>" has been deleted successfully.
                         </div>
                     <%
                         }

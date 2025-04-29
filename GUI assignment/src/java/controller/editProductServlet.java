@@ -51,9 +51,9 @@ public class editProductServlet extends HttpServlet {
 
         try {
             ProductDB db = new ProductDB();
-            db.updateRecord(prd);  // you can also use updateStaffAccount()
+            db.updateRecord(prd);  // you can also use updateProduct()
             
-            // response.sendRedirect("AddStaffAccount.jsp");
+            // response.sendRedirect("editProduct.jsp");
             request.setAttribute("bookName", name);
             request.getRequestDispatcher("editProduct.jsp").forward(request, response);
             
